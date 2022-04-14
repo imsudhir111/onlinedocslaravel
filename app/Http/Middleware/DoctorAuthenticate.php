@@ -6,6 +6,7 @@ use Illuminate\Auth\Middleware\Authenticate as Middleware;
 
 class DoctorAuthenticate extends Middleware
 {
+    //Step 7: Created DoctorAuthenticate middleware for doctor
     /**
      * Get the path the user should be redirected to when they are not authenticated.
      *

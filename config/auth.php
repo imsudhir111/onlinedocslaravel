@@ -34,7 +34,7 @@ return [
     | Supported: "session"
     |
     */
-
+    // Step 3 : Created guard for doctor
     'guards' => [
         'web' => [
             'driver' => 'session',
@@ -70,7 +70,7 @@ return [
     | Supported: "database", "eloquent"
     |
     */
-
+    // Step 4 : Created provider for doctors
     'providers' => [
         'users' => [
             'driver' => 'eloquent',

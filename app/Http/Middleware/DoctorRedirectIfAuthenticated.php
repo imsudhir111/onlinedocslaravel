@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class DoctorRedirectIfAuthenticated
 {
+    //Step 8: Created DoctorRedirectIfAuthenticated middleware for doctor
     /**
      * Handle an incoming request.
      *

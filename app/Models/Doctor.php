@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 class Doctor extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-
+    //Step 2 : Created Doctor model
     /**
      * The attributes that are mass assignable.
      *

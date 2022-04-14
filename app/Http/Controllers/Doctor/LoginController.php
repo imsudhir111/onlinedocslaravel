@@ -9,6 +9,7 @@ use Validator;
 
 class LoginController extends Controller
 {
+    //Step 5: Created LoginController for doctor
     public function login() {
         return view('backend.doctor.auth.login');
     }

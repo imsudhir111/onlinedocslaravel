@@ -43,6 +43,7 @@ Route::group(['prefix' => 'admin'], function() {
     });
 });
 
+//Step 7: Created routes for doctor
 Route::group(['prefix' => 'doctor'], function() {
     Route::group(['middleware' => 'doctor.guest'], function(){
         Route::get('/login',[App\Http\Controllers\Doctor\LoginController::class, 'login'])->name('doctor.login');
