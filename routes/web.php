@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\QuestionController; 
 
 /*
 |--------------------------------------------------------------------------
@@ -28,18 +33,19 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\Customer\HomeController::class, 'index'])->name('home');
-Route::post('/user/logout', [App\Http\Controllers\Auth\LoginController::class, 'userLogout'])->name('user.logout');
+Route::post('/user/logout', [LoginController::class, 'userLogout'])->name('user.logout');
 
 Route::group(['prefix' => 'admin'], function() {
     Route::group(['middleware' => 'admin.guest'], function(){
-        Route::get('/login',[App\Http\Controllers\Admin\LoginController::class, 'login'])->name('admin.login');
-        Route::post('/adminlogin',[App\Http\Controllers\Admin\LoginController::class, 'authenticate'])->name('admin.auth');
+        Route::get('/login',[LoginController::class, 'login'])->name('admin.login');
+        Route::post('/adminlogin',[LoginController::class, 'authenticate'])->name('admin.auth');
     });
 
     Route::group(['middleware' => 'admin.auth'], function(){
-        Route::get('/dashboard',[App\Http\Controllers\Admin\DashboardController::class, 'dashboard'])->name('admin.dashboard');
-        Route::post('/logout', [App\Http\Controllers\Admin\LoginController::class, 'logout'])->name('admin.logout');
-
+        Route::get('/dashboard',[DashboardController::class, 'dashboard'])->name('admin.dashboard');
+        Route::post('/logout', [LoginController::class, 'logout'])->name('admin.logout');
+        Route::resource('/service', ServiceController::class);
+        Route::resource('/question', QuestionController::class);
     });
 });
 
