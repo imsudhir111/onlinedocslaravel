@@ -18,7 +18,7 @@
             </div>
         </div><!-- /.container-fluid -->
     </section> --}}
-<!-- start add new contact form -->
+<!-- start add new service form -->
 <div class="card-body">
     <form  id="add_new_service" >
     @csrf
@@ -30,90 +30,45 @@
           <!-- <div class="modal-header">
             <h4 class="modal-title">Change Password</h4>
           </div> -->
-          <div class="card-header style=" float:inherit="" !important;"="">
-                        <h3 class="card-title">Add New <small>Contact</small></h3>
+          <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title"><b>ADD SERVICE</b>
+            </h3>
           </div>
+      </div>
         <div class="modal-body">
           <div class="form-group">
-              <label for="exampleInputPassword1">Full Name</label>
-              <input type="text" name="name" class="form-control" id="name" placeholder="Full Name">
-              
-              <span id="s_full_name" class="text-danger" role="alert">
+              <label for="service">Service Name</label>
+              <input type="text" name="service_name" class="form-control" id="service_name" placeholder="Service Name">
+
+              <span id="error_service_name" class="text-danger" role="alert">
+              </span>
+            
+            </div>
+            <div class="form-group">
+              <label for="caption">Caption</label>
+              <input type="text" name="service_caption" class="form-control" id="service_caption" placeholder="Caption">
+              <span id="error_caption" class="text-danger" role="alert">
+              </span>
+            
+            </div>
+            <div class="form-group">
+              <label for="description">Description</label>
+              <input type="text" name="description" class="form-control" id="description" placeholder="mobile">
+              <textarea name="description" id="description" cols="30" rows="10"  placeholder="Description"></textarea>
+              <span id="error_description" class="text-danger" role="alert">
                 
               </span>
             
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword1">Email</label>
-              <input type="text" name="email" class="form-control" id="s_email" placeholder="Email">
-              
-              <span id="error_s_email" class="text-danger" role="alert">
+              <label for="icon">Icon</label>
+              <input type="file" name="service_icon" class="form-control" id="service_icon" placeholder="photo">
+              <span id="error_service_icon" class="text-danger" role="alert">
                 
               </span>
             
             </div>
-            <div class="form-group">
-              <label for="mobile">Mobile</label>
-              <input type="text" name="mobile" class="form-control" id="s_mobile" placeholder="mobile">
-              
-              <span id="error_s_mobile" class="text-danger" role="alert">
-                
-              </span>
-            
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Photo</label>
-              <input type="file" name="photo" class="form-control" id="s_photo" placeholder="photo">
-              
-              <span id="error_s_photo" class="text-danger" role="alert">
-                
-              </span>
-            
-            </div>
-            <div class="row">
-    
-            <div class="col-xl-6">
-                          <div class="form-group">
-                          <label for="p_address">State*</label>
-                          <select class="form-control" name="state" id="state" onchange="city_filter_handler()">
-                            <option value="">select state</option>
-    
-                             
-                          </select>
-                          <span id="error_state" class="text-danger" role="alert">
-                
-                          </span>
-                          {{-- <input type="text" name="city" class="form-control" id="city" placeholder="City"> --}}
-                          @error('city')
-                          <span class="text-danger" role="alert">
-                              {{ $message }}
-                          </span>
-                      @enderror
-                          </div>
-                        
-                    </div>
-                        <div class="col-xl-6">
-                          <div class="form-group">
-                            <label for="p_address" >City*</label>
-                            <select class="form-control" name="city" id="city_list">
-                            <option value="">select state</option>
-                            
-                            </select>
-                            <span id="error_city_list" class="text-danger" role="alert">
-                
-                            </span>
-                              @error('city')
-                            <span class="text-danger" role="alert">
-                                {{ $message }}
-                            </span>
-                          @enderror
-                          </div>
-                        </div>
-                        </div>
-    
-                        <div id="update_password_msg" class="mt-3 btn btn-block btn-warning" role="alert" style="display:none;" > updated successfully </div>
-          
-        </div>
         
           <div class="modal-footer">
     
@@ -127,7 +82,7 @@
     </div>
     </div>
     </form>
-    <!-- end add new contact form -->
+    <!-- end add new service form -->
     
     <!-- Main content -->
     <section class="content pt-4">
@@ -136,17 +91,13 @@
             <div class="col-12">
               <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title"><b>CONTACT LISTS</b>
-                        <a  href="{{url('/')}}" data-toggle="modal" data-target="#addNewService" id="addservice" class="btn-sm btn btn-primary" style="
-                        position: absolute;
-                        right: 14px;
-                        margin: 0 auto;
-                        top: 8px;
-                        ">
-                    <i class="fa fa-plus"></i>
-                    Add New
-                  </a>
-      
+                    <h3 class="card-title"><b>SERVICE LISTS</b> 
+                    <a href="{{ route('service.create') }}" class="btn-sm btn btn-primary" 
+                    style="position: absolute;
+                    right: 14px;
+                    margin: 0 auto;
+                    top:8px;
+                    ">  <i class="fa fa-plus"></i>&nbsp;Add New </a>      
                       </h3>
       
                 </div>

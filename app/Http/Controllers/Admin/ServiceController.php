@@ -42,7 +42,7 @@ class ServiceController extends Controller
             'service_name' => 'required|max:255',
             'caption' => 'required|max:255',
             'description' => 'required|max:255',
-            'service_icon' => 'mimes:jpg,png,jpeg,webp|max:200',
+            'service_icon' => 'required|mimes:jpg,png,jpeg,webp|max:200',
         ]);
 
         $service_id = Service::insertGetId([
@@ -66,8 +66,9 @@ class ServiceController extends Controller
             'message' => 'Service Added Successfully',
             'alert-type' => 'success'
         );
+        return redirect()->route('service.index')->with($notification);
 
-        return redirect()->route('service.show', $service_id)->with($notification);
+        // return redirect()->route('service.show', $service_id)->with($notification);
     }
 
     /**
@@ -132,7 +133,8 @@ class ServiceController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->route('service.show', $id)->with($notification);
+        // return redirect()->route('service.show', $id)->with($notification);
+        return redirect()->route('service.index')->with($notification);
     }
 
     /**
