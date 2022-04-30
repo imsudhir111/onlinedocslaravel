@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Service;
@@ -14,6 +14,26 @@ class ServiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function addemp()
+    {
+        $services = Service::latest()->get();
+        return view('backend.admin.service.addemp');
+    }
+    public function treeview()
+    {
+        $services = Service::latest()->get();
+        return view('backend.admin.service.treeview');
+    }
+    public function create_emp(Request $request)
+    {
+        $validated = $request->validate([
+            'employee_name' => 'required|max:255'
+        ]);
+
+    }
+
+// main resource controller start here
+
     public function index()
     {
         $services = Service::latest()->get();
@@ -38,6 +58,35 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
+// return $request;
+if($request->emp_secretid==001){
+    $validated = $request->validate([
+        'employee_name' => 'required'
+    ]);
+
+    $data = 1;
+$length = 4;
+$code = substr(str_repeat(0, $length) . $data, -$length);
+
+// return $code;
+    $str=str_replace(' ', '', $request->employee_name);
+    
+    $cmp_id='bmw001';
+    $sbstr=substr($str,0,3);
+    $last_id =DB::table('employee')
+                    ->orderBy('id','desc')->first();
+    $emp_id_last_digits = substr(str_replace(' ', '', $last_id->emp_id),-5);
+    $emp_id_last_digits = $emp_id_last_digits+1;
+    $emp_id= $cmp_id.'-'.$sbstr.'-'.substr(str_repeat(0, 4) . $emp_id_last_digits, -4);;
+    
+    $status= DB::table('employee')->insert(
+        ['emp_id' => $emp_id, 'emp_name' => $request->employee_name]
+    );
+echo $emp_id;
+     
+// return $status;
+}
+
         $validated = $request->validate([
             'service_name' => 'required|max:255',
             'caption' => 'required|max:255',

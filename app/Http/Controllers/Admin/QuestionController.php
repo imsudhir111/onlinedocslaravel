@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Question;
 use App\Models\Option;
+use App\Models\Service;
+use Illuminate\Support\Facades\DB;
 
 class QuestionController extends Controller
 {
@@ -16,7 +18,9 @@ class QuestionController extends Controller
      */
     public function index()
     {
+        
         $questions = Question::with('service:id,service_name')->latest()->get();
+        
         // return $questions;
 
         return view('backend.admin.question.index', compact('questions'));
@@ -29,7 +33,8 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        return view('backend.admin.question.create');
+        $services = Service::select('id','service_name')->get();
+         return view('backend.admin.question.create',compact('services'));
     }
 
     /**
@@ -40,6 +45,7 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request->selected_service;
         $validated = $request->validate([
             'question' => 'required|max:255',
             'option' => 'required|max:255',
@@ -47,6 +53,7 @@ class QuestionController extends Controller
 
         $question_id = Question::insertGetId([
             'question' => $request->question,
+            'service_id' => $request->selected_service,
         ]);
 
         if(count($request->option)>0){
@@ -64,7 +71,7 @@ class QuestionController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->route('question.show', $question_id)->with($notification);
+        return redirect()->route('question.index', $question_id)->with($notification);
     }
 
     /**
@@ -87,7 +94,13 @@ class QuestionController extends Controller
      */
     public function edit($id)
     {
-        $question = Question::with('options')->where('id',$id)->first();
+        // $question = Question::with('options')->where('id',$id)->first();
+        // $question = Question::with([
+        //     'options'  => function($query) {
+        //     $query->select(['option']);
+        // }])->find($id);
+        $question = Question::with('options')->find($id);
+        // return $question;
         return view('backend.admin.question.edit', compact('question'));
     }
 
@@ -100,38 +113,38 @@ class QuestionController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // return $request;
         $validated = $request->validate([
             'question' => 'required|max:255',
-            'option' => 'required|max:255',
+            'option' => 'required|array|min:4',
         ]);
+      
+             $options = $request->option;
+            $options_id = $request->option_id;
 
-        Question::find($id)->update([
-            'question' => $request->question,
-        ]);
-
-        if(count($request->option)>0){
-            $options = $request->option;
-            foreach($options as $option){
-                Option::insert([
-                    'ques_id' => $id,
-                    'option' => $option,
+            DB::table('questions')
+                ->where('id','=', $id)
+                ->update([
+                'question' => $request->question,
                 ]);
-            }
-        }
 
-        Question::find($id)->update([
-            'service_name' => $request->service_name,
-            'caption' => $request->caption,
-            'description' => $request->description,
-        ]);
+            for ($i = 0; $i < count($options_id); $i++) {
+                $option_id=$i+1;
+                DB::table('options')
+                ->where('id','=', $options_id[$i])
+                ->update([
+                'option' => $options[$i],
+                ]);
+              }
 
+        // return 'yes';
         $notification = array(
-            'message' => 'Question Updated Successfully',
+            'message' => 'Question Deleted Successfully',
             'alert-type' => 'success'
         );
+        return redirect()->route('question.index')->with($notification);
 
-        return redirect()->route('question.show', $id)->with($notification);
-    }
+     }
 
     /**
      * Remove the specified resource from storage.

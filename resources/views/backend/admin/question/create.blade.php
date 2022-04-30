@@ -3,24 +3,9 @@
 @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Add Service</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Add Question</li>
-                    </ol>
-                </div>
-            </div>
-        </div><!-- /.container-fluid -->
-    </section>
-
+   
     <!-- Main content -->
-    <section class="content">
+    <section class="content pt-3">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
@@ -35,52 +20,70 @@
                             enctype="multipart/form-data">
                             @csrf
                             {{-- <input type="hidden" name="doctorid" id="doctorid"> --}}
-                            <div class="card-body">
+                            <div class="card-body" id="wrapx">
                                 <div class="row">
-                                    <div class="col-9">
-                                        <div class="form-group row">
-                                            <label for="question" class="col-2 col-form-label">Question </label>
-                                            <div class="col-10">
-                                                <input type="text" class="form-control" id="question"
-                                                    name="question" placeholder="Question"
-                                                    value="{{old('question')}}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="option1" class="col-2 col-form-label">Option 1</label>
-                                            <div class="col-10">
+                                    <div class="col-lg-6 form-group">
+                                        <label for="question"  >Question </label>
+                                             <input type="text" class="form-control" id="question"
+                                                name="question" placeholder="Question"
+                                                value="{{old('question')}}">
+                                     </div>
+                                     <div class="col-lg-6 form-group">
+                                        <label for="question"  >Services </label>
+                                             {{-- <input type="text" class="form-control" id="question"
+                                                name="question" placeholder="Question"
+                                                value="{{old('question')}}"> --}}
+                                                <select class="form-control" name="selected_service">
+                                                    <option value="">Select service</option>
+                                                    @foreach ($services as $service)
+                                                    <option value="{{$service->id}}">{{$service->service_name}}</option>
+                                                    @endforeach
+                                                  </select>
+                                     </div>
+                                </div>
+                                <div class="row">
+                                        
+                                        <div class="col-lg-6  form-group">
+                                            <label for="option1" >Option 1</label>
                                                 <input type="text" class="form-control" id="option1"
                                                     name="option[]" placeholder="Option">
-                                            </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="option2" class="col-2 col-form-label">Option 2</label>
-                                            <div class="col-10">
-                                                <input type="text" class="form-control" id="option2"
+                                        <div class="col-lg-6  form-group">
+                                            <label for="option2" >Option 2</label>
+                                                 <input type="text" class="form-control" id="option2"
                                                     name="option[]" placeholder="Option">
-                                            </div>
+                                         </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="option3" class="col-2 col-form-label">Option 3</label>
-                                            <div class="col-10">
-                                                <input type="text" class="form-control" id="option3"
+                                <div class="row" id="wrap">
+
+                                        <div class="col-lg-6 form-group">
+                                            <label for="option3">Option 3</label>
+                                                 <input type="text" class="form-control" id="option3"
                                                     name="option[]" placeholder="Option">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="option4" class="col-2 col-form-label">Option 4</label>
-                                            <div class="col-10">
-                                                <input type="text" class="form-control" id="option4"
+                                         </div>
+                                         
+                                        <div class="col-lg-6 form-group">
+                                            <label for="option4" >Option 4</label>
+                                                 <input type="text" class="form-control" id="option4"
                                                     name="option[]" placeholder="Option">
-                                            </div>
+                                         </div>
+                                         
                                         </div>
+
+                                       
+                                         <input type="hidden" id="box_count" value="1">
+                                         <input type="hidden" id="option_count" value="4">
+                                         <input type="hidden" name="__update_id" id="__update_id" value="">
                                     </div>
-                                </div>
+                                    <div class="form-group btn-group col-lg-1 col-sm-1 col-md-1 col-xs-1 pl-3" role="group" aria-label="First group">
+                                        <a onclick="add_more()" class="btn btn-primary "><i class="fa fa-plus"></i></a>
+                                       </div>
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
                             </div>
                             <!-- /.card-body -->
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                            </div>
+                            
                         </form>
                     </div>
                 </div>

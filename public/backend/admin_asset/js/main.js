@@ -1,3 +1,63 @@
+// option_count=1;
+function add_more(){
+  var box_count=jQuery("#box_count").val();
+  box_count++;
+  jQuery("#box_count").val(box_count);
+
+  var option_count=jQuery("#option_count").val();
+  option_count++;
+  jQuery("#option_count").val(option_count);
+  jQuery("#wrap").append('<div id="box_loop_'+box_count+'" class="col-lg-6 form-group"><label for="option4" >option '+option_count+'</label><input type="text" class="form-control" id="option4" name="option[]" placeholder="Option"> <a href="#" onclick=remove_more("'+box_count+'") class=""><i class="fas text-danger fa-trash" aria-hidden="true"></i></button></div>');
+console.log("option_count",option_count);
+
+}
+function remove_more(box_count){
+  jQuery("#box_loop_"+box_count).remove();
+  var box_count=jQuery("#box_count").val();
+  box_count--;
+  jQuery("#box_count").val(box_count);
+  var option_count=jQuery("#option_count").val();
+  option_count--;
+  jQuery("#option_count").val(option_count);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 $('#add_new_service').submit(function(e){
     e.preventDefault();
     alert("kkk");

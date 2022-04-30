@@ -36,7 +36,11 @@
                         <th>Id</th>
                         <th>Service Name</th>
                         <th>Question</th>
-                        <th>Actions</th>
+                        {{-- <th>Option1</th>
+                        <th>Option2</th>
+                        <th>Option3</th>
+                        <th>Option4</th> --}}
+                        <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -44,17 +48,21 @@
                     $sr_no=1;    
                     ?>
                     @foreach($questions as $question)
+                    {{-- {{$question}} --}}
+                    {{-- {{$question->service}} --}}
+                    {{-- {{$question['service']}} --}}
+
                     <tr>
                         <td>{{$sr_no++}}</td>
-                        <td>{{$question->service['service_name']}}</td>
-                        <td>{{$question->question}}</td>
+                        <td>{{$question->service_name ?'':''}}</td>
+                        <td >{{$question->question}}</td> 
                         <td>
                             <form class="form-inline"
                                 action="{{ route('service.destroy', $question->id) }}"
                                 method="POST" onsubmit="return confirm('Are you sure?');">
                                 <a href="{{ route('service.show', $question->id) }}"
                                     class="btn btn-info btn-xs m-1" title="Edit Data"> View </a>
-                                <a href="{{ route('service.edit', $question->id) }}"
+                                <a href="{{ route('question.edit', $question->id) }}"
                                     class="btn btn-warning btn-xs m-1" title="Edit Data"> Edit
                                 </a>
                                 <input type="hidden" name="_method" value="DELETE">
@@ -69,12 +77,12 @@
                     @endforeach
                     </tbody>
                     <tfoot>
-                    <tr>
+                    {{-- <tr>
                         <th>Id</th>
                         <th>Service Name</th>
                         <th>Question</th>
                         <th>Actions</th>
-                    </tr>
+                    </tr> --}}
                     </tfoot>
                   </table>
                 </div>

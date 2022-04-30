@@ -26,6 +26,7 @@ use App\Http\Controllers\Admin\QuestionController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -46,6 +47,9 @@ Route::group(['prefix' => 'admin'], function() {
         Route::post('/logout', [LoginController::class, 'logout'])->name('admin.logout');
         Route::resource('/service', ServiceController::class);
         Route::resource('/question', QuestionController::class);
+        Route::get('/addemp',[ServiceController::class, 'addemp']);
+        Route::get('/treeview',[ServiceController::class, 'treeview']);
+
     });
 });
 
