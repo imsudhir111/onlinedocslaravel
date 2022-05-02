@@ -21,6 +21,7 @@ class Question extends Model
     }
     public function options(){
         // return $this->belongsTo('services');
+            // return $this->hasMany(Option::class,'ques_id','id');
             return $this->hasMany(Option::class,'ques_id','id');
         }
 }

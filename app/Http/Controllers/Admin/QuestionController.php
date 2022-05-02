@@ -19,11 +19,18 @@ class QuestionController extends Controller
     public function index()
     {
         
-        $questions = Question::with('service:id,service_name')->latest()->get();
+        $questions_list = Question::with('service:id,service_name')->latest()->get();
+        $services_list = Service::select('id','service_name')->get();
+
+        $questions['questions_list']=$questions_list;
+        $questions['services_list']=$services_list;
+       
+        $ques_options_list = Question::with('options')->get();
+        $questions['ques_options_list']=$ques_options_list;
         
         // return $questions;
 
-        return view('backend.admin.question.index', compact('questions'));
+        return view('backend.admin.question.index', $questions);
     }
 
     /**

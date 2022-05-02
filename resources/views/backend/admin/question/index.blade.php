@@ -30,39 +30,56 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
+                    <div class="col-lg-6 form-group">
+                             {{-- <input type="text" class="form-control" id="question"
+                                name="question" placeholder="Question"
+                                value="{{old('question')}}"> --}}
+                                <select class="form-control" name="selected_service">
+                                    <option value="">Select service</option>
+                                    <option value=""> service 1</option>
+                                    <option value=""> service 2</option>
+                                    <option value=""> service 3</option>
+                                    {{-- @foreach ($services as $service)
+                                    <option value="{{$service->id}}">{{$service->service_name}}</option>
+                                    @endforeach --}}
+                                  </select>
+                     </div>
                   <table id="question_list" class="table table-bordered table-striped">
                     <thead>
+                        {{-- {{$questions_list}}
+                        {{$services_list}} --}}
                     <tr>
                         <th>Id</th>
-                        <th>Service Name</th>
                         <th>Question</th>
-                        {{-- <th>Option1</th>
+                        <th>Option1</th>
                         <th>Option2</th>
                         <th>Option3</th>
-                        <th>Option4</th> --}}
+                        <th>Option4</th>
+                        <th>Option5</th>
+                        <th>Option6</th>
                         <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
                     <?php 
                     $sr_no=1;    
+                    // die();
+                    $i=1;
                     ?>
-                    @foreach($questions as $question)
-                    {{-- {{$question}} --}}
-                    {{-- {{$question->service}} --}}
-                    {{-- {{$question['service']}} --}}
-
+                    @foreach($ques_options_list as $question_option)
+                     
                     <tr>
                         <td>{{$sr_no++}}</td>
-                        <td>{{$question->service_name ?'':''}}</td>
-                        <td >{{$question->question}}</td> 
+                        <td >{{$question_option->question}}</td> 
+                         @for ($i = 0; $i < 6; $i++)
+                        <td >{{isset($question_option->options[$i]['option']) ? $question_option->options[$i]['option']:'n/a'}}</td> 
+                        @endfor
+ 
                         <td>
                             <form class="form-inline"
-                                action="{{ route('service.destroy', $question->id) }}"
+                                action="{{ route('question.destroy', $question_option->id) }}"
                                 method="POST" onsubmit="return confirm('Are you sure?');">
-                                <a href="{{ route('service.show', $question->id) }}"
-                                    class="btn btn-info btn-xs m-1" title="Edit Data"> View </a>
-                                <a href="{{ route('question.edit', $question->id) }}"
+                                <a href="{{ route('question.edit', $question_option->id) }}"
                                     class="btn btn-warning btn-xs m-1" title="Edit Data"> Edit
                                 </a>
                                 <input type="hidden" name="_method" value="DELETE">
@@ -77,12 +94,7 @@
                     @endforeach
                     </tbody>
                     <tfoot>
-                    {{-- <tr>
-                        <th>Id</th>
-                        <th>Service Name</th>
-                        <th>Question</th>
-                        <th>Actions</th>
-                    </tr> --}}
+                    
                     </tfoot>
                   </table>
                 </div>
