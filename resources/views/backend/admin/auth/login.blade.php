@@ -39,24 +39,20 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-8">
-              <div class="icheck-primary">
-                <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                <label for="remember">
-                    {{ __('Remember Me') }}
-                </label>
-              </div>
-            </div>
-            <!-- /.col -->
-            <div class="col-4">
+         
+            <div class="col-12 mb-2">
               <button type="submit" class="btn btn-primary btn-block">{{ __('Login') }}</button>
-              @if (Route::has('password.request'))
-                    <a href="{{ route('password.request') }}">
-                        {{ __('Forgot Your Password?') }}
-                    </a>
-                @endif
+           
             </div>
             <!-- /.col -->
+            @if('message')
+            <div class="alert alert-className">
+            {{session('message')}}
+            </div>
+            @endif
+            <div class="d-flex ml-2 justify-content-center links">
+              <a href="{{url('admin/reset-password')}}">Forgot your password?</a>
+          </div>
           </div>
         </form>
 
@@ -72,11 +68,11 @@
         <!-- /.social-auth-links -->
 
         <p class="mb-1">
-            @if (Route::has('password.request'))
+            {{-- @if (Route::has('password.request'))
                 <a href="{{ route('password.request') }}">
                     {{ __('Forgot Your Password?') }}
                 </a>
-            @endif
+            @endif --}}
         </p>
         {{-- <p class="mb-0">
           <a href="register.html" class="text-center">Register a new membership</a>

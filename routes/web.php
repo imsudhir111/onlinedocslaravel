@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\QuestionController; 
+use App\Http\Controllers\Admin\PasswordController; 
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,12 @@ Route::group(['prefix' => 'admin'], function() {
     Route::group(['middleware' => 'admin.guest'], function(){
         Route::get('/login',[LoginController::class, 'login'])->name('admin.login');
         Route::post('/adminlogin',[LoginController::class, 'authenticate'])->name('admin.auth');
+        Route::get('/reset-password', [PasswordController::class, 'forgot_password']);
+        Route::post('/forgot-password-process', [PasswordController::class, 'forgot_password_process'])->name('admin.reset_mail');
+        Route::get('/forgot-password-process-change/{id}', [PasswordController::class, 'forgot_password_process_change']);
+        Route::post('/forgot-password-uodate', [PasswordController::class, 'forgot_password_update'])->name('admin.password_update');
+
+
     });
 
     Route::group(['middleware' => 'admin.auth'], function(){
