@@ -16,9 +16,25 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        
+        if(isset($request->selected_service)){
+            $questions_list = Question::with('service:id,service_name')->latest()->get();
+            $services_list = Service::select('id','service_name')->get();
+    
+            $questions['questions_list']=$questions_list;
+            $questions['services_list']=$services_list;
+           
+            $ques_options_list = Question::with('options')
+            ->where('service_id', $request->selected_service)
+            ->orderBy('id', 'DESC')
+            ->get();
+            $questions['ques_options_list']=$ques_options_list;
+            return view('backend.admin.question.index', $questions);
+
+        }
+
+
         $questions_list = Question::with('service:id,service_name')->latest()->get();
         $services_list = Service::select('id','service_name')->get();
 
@@ -32,7 +48,37 @@ class QuestionController extends Controller
 
         return view('backend.admin.question.index', $questions);
     }
+    public function question_filter(Request $request)
+    {
+        if(isset($request->selected_service)){
+            $questions_list = Question::with('service:id,service_name')->latest()->get();
+            $services_list = Service::select('id','service_name')->get();
+    
+            $questions['questions_list']=$questions_list;
+            $questions['services_list']=$services_list;
+           
+            $ques_options_list = Question::with('options')
+            ->where('service_id', $request->selected_service)
+            ->get();
+            $questions['ques_options_list']=$ques_options_list;
+            return view('backend.admin.question.index', $questions);
 
+        }
+
+
+        $questions_list = Question::with('service:id,service_name')->latest()->get();
+        $services_list = Service::select('id','service_name')->get();
+
+        $questions['questions_list']=$questions_list;
+        $questions['services_list']=$services_list;
+       
+        $ques_options_list = Question::with('options')->get();
+        $questions['ques_options_list']=$ques_options_list;
+        
+        // return $questions;
+
+        return view('backend.admin.question.index', $questions);
+    }
     /**
      * Show the form for creating a new resource.
      *

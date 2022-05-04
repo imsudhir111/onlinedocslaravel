@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\QuestionController; 
 use App\Http\Controllers\Admin\PasswordController; 
+use App\Http\Controllers\Doctor\LoginSignupController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +57,7 @@ Route::group(['prefix' => 'admin'], function() {
         Route::resource('/question', QuestionController::class);
         Route::get('/addemp',[ServiceController::class, 'addemp']);
         Route::get('/treeview',[ServiceController::class, 'treeview']);
+        // Route::get('/question',[QuestionController::class, 'question_filter'])->name('admin.question_filter');
 
     });
 });
@@ -63,13 +65,16 @@ Route::group(['prefix' => 'admin'], function() {
 //Step 7: Created routes for doctor
 Route::group(['prefix' => 'doctor'], function() {
     Route::group(['middleware' => 'doctor.guest'], function(){
-        Route::get('/login',[App\Http\Controllers\Doctor\LoginController::class, 'login'])->name('doctor.login');
-        Route::post('/doctorlogin',[App\Http\Controllers\Doctor\LoginController::class, 'authenticate'])->name('doctor.auth');
+        Route::get('/login',[LoginSignupController::class, 'login'])->name('doctor.login');
+        Route::post('/doctorlogin',[LoginSignupController::class, 'authenticate'])->name('doctor.auth');
+        Route::get('/signup',[LoginSignupController::class, 'signupform']);
+        Route::post('/signup-process',[LoginSignupController::class, 'signup_process'])->name('doctor.signup_process');
+
     });
 
     Route::group(['middleware' => 'doctor.auth'], function(){
         Route::get('/dashboard',[App\Http\Controllers\Doctor\DashboardController::class, 'dashboard'])->name('doctor.dashboard');
-        Route::post('/logout', [App\Http\Controllers\Doctor\LoginController::class, 'logout'])->name('doctor.logout');
+        Route::post('/logout', [LoginSignupController::class, 'logout'])->name('doctor.logout');
 
     });
 });

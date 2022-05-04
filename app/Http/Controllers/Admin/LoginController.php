@@ -25,8 +25,7 @@ class LoginController extends Controller
             return redirect('/admin/dashboard');
 
         } else {
-            session()->flash('error','Either Email/Password is incorrect');
-            return back()->withInput($request->only('email'));
+             return back()->withInput($request->only('email'))->with('message','Invalid Login credentials');
         }
 
     }

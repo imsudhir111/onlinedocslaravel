@@ -1,4 +1,4 @@
-@extends('layouts.admin-app')
+@extends('layouts.app')
 
 @section('content')
 <div class="login-box">
@@ -12,44 +12,47 @@
 
         <form method="POST" action="{{ route('admin.auth') }}">
             @csrf
-          <div class="input-group mb-3">
-            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  placeholder="Email" required autocomplete="email" autofocus>
-            @error('email')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
+          <div class="input-group">
+            <input id="email" type="email" class="form-control " name="email" value="{{ old('email') }}"  placeholder="Email"   autocomplete="email" autofocus>
+       
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-envelope"></span>
               </div>
             </div>
+          
           </div>
-          <div class="input-group mb-3">
-            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  placeholder="Password" required autocomplete="current-password">
-            @error('password')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
+          @error('email')
+          <span class="text-danger" role="alert">
+              {{ $message }}
+          </span>
+          @enderror
+          <div class="input-group pt-3">
+            <input id="password" type="password" class="form-control " name="password"  placeholder="Password"   autocomplete="current-password">
+           
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-lock"></span>
               </div>
             </div>
           </div>
-          <div class="row">
-         
+          @error('password')
+          <span  class="text-danger" role="alert">
+               {{ $message }} 
+          </span>
+       @enderror
+       @if('message')
+        <span  class="text-danger" role="alert">
+          {{session('message')}}
+        </span>
+        @endif
+          <div class="row pt-3">
+        
             <div class="col-12 mb-2">
               <button type="submit" class="btn btn-primary btn-block">{{ __('Login') }}</button>
            
             </div>
             <!-- /.col -->
-            @if('message')
-            <div class="alert alert-className">
-            {{session('message')}}
-            </div>
-            @endif
             <div class="d-flex ml-2 justify-content-center links">
               <a href="{{url('admin/reset-password')}}">Forgot your password?</a>
           </div>

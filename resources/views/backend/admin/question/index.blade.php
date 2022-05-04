@@ -30,24 +30,26 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <div class="col-lg-6 form-group">
-                             {{-- <input type="text" class="form-control" id="question"
-                                name="question" placeholder="Question"
-                                value="{{old('question')}}"> --}}
-                                <select class="form-control" name="selected_service">
-                                    <option value="">Select service</option>
-                                    <option value=""> service 1</option>
-                                    <option value=""> service 2</option>
-                                    <option value=""> service 3</option>
-                                    {{-- @foreach ($services as $service)
-                                    <option value="{{$service->id}}">{{$service->service_name}}</option>
-                                    @endforeach --}}
-                                  </select>
-                     </div>
+                    <div class="row">
+                        <div class="col-lg-4 form-group"> 
+                            <form action="{{ route('question.index') }}" method="resource" enctype="multipart/form-data">
+                                @csrf
+                            <select class="form-control" style="cursor: pointer" required name="selected_service">
+                                <option value="">Select service</option>
+                                @foreach ($services_list as $service)
+                                <option  style="cursor: pointer"  value="{{$service->id}}">{{$service->service_name}}</option>
+                                @endforeach
+                            </select>
+                       
+                        </div>
+                        <div class="col-lg-2 form-group"> 
+                        <button class="btn btn-primary" type="submit">Filter</button>
+                        </div>
+                    </form>
+                    </div>
+             
                   <table id="question_list" class="table table-bordered table-striped">
-                    <thead>
-                        {{-- {{$questions_list}}
-                        {{$services_list}} --}}
+                    <thead> 
                     <tr>
                         <th>Id</th>
                         <th>Question</th>

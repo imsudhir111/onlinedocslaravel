@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-    @include('frontend.layouts.header')
-<body class="hold-transition sidebar-mini layout-fixed">
+    @extends('layouts.app')
+    <body class="hold-transition sidebar-mini layout-fixed">
  
+    
+   
         <!-- Content Header (Page header) -->
         <!-- Main content -->
         <section class="content pt-3">

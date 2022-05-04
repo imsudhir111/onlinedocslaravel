@@ -12,7 +12,9 @@ class PasswordController extends Controller
     //
 
 public function forgot_password(){
-    return view('frontend.passwords.forgot_password_form');
+    return view('backend.admin.auth.passwords.forgot_password_form');
+
+    // return view('frontend.passwords.forgot_password_form');
 
 }
 
@@ -28,7 +30,7 @@ public function forgot_password_process(Request $request){
             ->update(['is_forgot_password'=>1,'rand_id'=>$rand_id]);
             $data=['name'=>'sudhir','rand_id'=>$rand_id];
             $user['to']=$request->post('forgot_password_email');
-            Mail::send('frontend.passwords.forgot_password_mail', $data, function($messages) use ($user){
+            Mail::send('mail.forgot_password_mail', $data, function($messages) use ($user){
                 $messages->to($user['to']);
                 $messages->subject('Reset Password');
             });
@@ -36,16 +38,14 @@ public function forgot_password_process(Request $request){
 
         } else {
             return redirect('/admin/reset-password')->with('message', 'Email id not registerd');
-
-            return response()->json(["status"=>"error", "msg"=>"Email id not registerd"]);
-        }
+         }
     }
     function forgot_password_process_change(Request $request,$id){
          $result = Admin::where(['rand_id'=>$id,'is_forgot_password'=>1])
                 ->get();
         if(isset($result[0])){
             $request->session()->put('FORGOT_PASSWORD_USER_ID', $result[0]->id);
-           return view('frontend.passwords.forgot_password_update');
+           return view('backend.admin.auth.passwords.forgot_password_update');
         } else{
             return redirect('/admin/login');
         }
