@@ -30,7 +30,7 @@ use App\Http\Controllers\Doctor\LoginSignupController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.home');
 });
 
 Auth::routes();

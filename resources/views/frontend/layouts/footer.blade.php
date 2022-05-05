@@ -23,7 +23,7 @@
                   <div class="row">
                       <div class="col-md-4 col-sm-4 col-8 offset-3 offset-md-0">
                           <div class="footerLogo">
-                              <img src="images/white logo 1.png" class="img-fluid">
+                              <img src="{{ asset('/frontend/images/white logo 1.png')}}" class="img-fluid">
                               <p>Second opinion matters</p>
                           </div>
                       </div>
@@ -42,22 +42,22 @@
                           <h5>CONTACT US </h5>
                           <ul class="footer-links">
                               <li>
-                                  <a href="tel:+91080-6803-4357"><img src="images/Icons/phone.png" class="img-fluid"> 080-6803-4357</a>
+                                  <a href="tel:+91080-6803-4357"><img src="{{ asset('/frontend/images/Icons/phone.png')}}" class="img-fluid"> 080-6803-4357</a>
                               </li>
                               <li>
-                                  <a href="mailto:contact@onlinedocs.com"><img src="images/Icons/email.png" class="img-fluid emailIcon"> contact@onlinedocs.com</a>
+                                  <a href="mailto:contact@onlinedocs.com"><img src="{{ asset('/frontend/images/Icons/email.png')}}" class="img-fluid emailIcon"> contact@onlinedocs.com</a>
                               </li>
                           </ul>
                           <div class="follow_us">
                               <fieldset class="border p-2">
                                   <legend class="float-none w-auto">Share</legend>
                                   <div class="row m-2">
-                                      <div class="col-md-4  col-sm-4 col-4 text-center"><img src="images/Icons/whatsapp.png" class="img-fluid"> </div>
+                                      <div class="col-md-4  col-sm-4 col-4 text-center"><img src="{{ asset('/frontend/images/Icons/whatsapp.png')}}" class="img-fluid"> </div>
                                       <div class="col-md-8  col-sm-8  col-8">
                                           <div class="row g-sm-2 g-2 social-margin border-left">
-                                              <div class="col-md-4  col-sm-4  col-4"><img src="images/Icons/twitter.png" class="img-fluid"></div>
-                                              <div class="col-md-4  col-sm-4 col-4"><img src="images/Icons/facebook.png" class="img-fluid fbIcon"></div>
-                                              <div class="col-md-4  col-sm-4 col-4"><img src="images/Icons/pinterest.png" class="img-fluid"></div>
+                                              <div class="col-md-4  col-sm-4  col-4"><img src="{{ asset('/frontend/images/Icons/twitter.png')}}" class="img-fluid"></div>
+                                              <div class="col-md-4  col-sm-4 col-4"><img src="{{ asset('/frontend/images/Icons/facebook.png')}}" class="img-fluid fbIcon"></div>
+                                              <div class="col-md-4  col-sm-4 col-4"><img src="{{ asset('/frontend/images/Icons/pinterest.png')}}" class="img-fluid"></div>
                                           </div>
                                       </div>
                                   </div>

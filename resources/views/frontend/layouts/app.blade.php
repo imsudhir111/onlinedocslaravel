@@ -13,9 +13,6 @@
   @include('frontend.layouts.header_menu')
   <!-- /.navbar -->
 
-  <!-- Main Sidebar Container -->
-  @include('frontend.layouts.sidebar')
-
   <!-- Content Wrapper. Contains page content -->
   @yield('content')
 
