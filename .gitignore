@@ -1,4 +1,10 @@
-
+/node_modules
+/public/hot
+/public/storage
+/public/backend/dist
+/public/backend/plugins
+/storage/*.key
+/vendor
 .env
 .env.backup
 .phpunit.result.cache
@@ -9,4 +15,3 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
-app/Http/Controllers/Admin/zoom_meeting
