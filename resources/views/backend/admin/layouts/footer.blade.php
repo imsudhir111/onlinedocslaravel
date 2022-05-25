@@ -73,7 +73,7 @@
 <script src={{ asset('/backend/jquery-validation/jquery.validate.js') }}></script>
 <script src={{ asset('/backend/jquery-validation/additional-methods.js') }}></script>
 <script src={{ asset('/backend/admin_asset/js/validations.js') }}></script> -->
-<script src="{{ asset('backend/admin_asset/js/main.js')}}"></script>
+<script src="{{ asset('backend/admin_asset/js/custom_admin.js')}}"></script>
 
   <script>
   $(function () {

@@ -37,6 +37,7 @@ class ServiceController extends Controller
     public function index()
     {
         $services = Service::latest()->get();
+        // return(($services));
         return view('backend.admin.service.index', compact('services'));
     }
 
@@ -58,7 +59,8 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-// return $request;
+// return print_r($request->list);
+// return gettype($request->list);
 if($request->emp_secretid==001){
     $validated = $request->validate([
         'employee_name' => 'required'
@@ -88,16 +90,20 @@ echo $emp_id;
 }
 
         $validated = $request->validate([
-            'service_name' => 'required|max:255',
-            'caption' => 'required|max:255',
-            'description' => 'required|max:255',
+            'service_name' => 'required',
+            'caption' => 'required',
+            'description' => 'required',
+            'paragraph_1' => 'required',
             'service_icon' => 'required|mimes:jpg,png,jpeg,webp|max:200',
         ]);
-
+// return gettype(urlencode(json_encode($request->list)));
         $service_id = Service::insertGetId([
             'service_name' => $request->service_name,
             'caption' => $request->caption,
             'description' => $request->description,
+            'paragraph1' => $request->paragraph_1,
+            'paragraph2' => $request->paragraph_2,
+            'list' => json_encode($request->list),
             'created_at' => Carbon::now()
         ]);
 
@@ -154,27 +160,38 @@ echo $emp_id;
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
-            'service_name' => 'required|max:255',
-            'caption' => 'required|max:255',
-            'description' => 'required|max:255',
-            'service_icon' => 'mimes:jpg,png,jpeg,webp|max:200',
+            'service_name' => 'required',
+            'caption' => 'required',
+            'description' => 'required',
+            'paragraph_1' => 'required',
         ]);
-
         Service::find($id)->update([
             'service_name' => $request->service_name,
             'caption' => $request->caption,
+            'paragraph1' => $request->paragraph_1,
+            'paragraph2' => $request->paragraph_2,
+            'list' => json_encode($request->list),
             'description' => $request->description,
             'updated_at' => Carbon::now()
         ]);
-
-        if($request->file('service_icon')) {
-            $data = Service::find($id);
+        $data = Service::find($id);
+        if($request->hasFile('service_icon')){
             $file = $request->file('service_icon');
             @unlink(public_path('upload/service_icon/' . $data->service_icon));
             $filename = date('YmdHi') . $file->getClientOriginalName();
             $file->move(public_path('upload/service_icon'), $filename);
             $data['service_icon'] = $filename;
-            $data->save();
+        }
+        $status=$data->save();
+        if($status){
+            $notification = array(
+                'message' => 'Service Updated Successfully',
+                'alert-type' => 'success'
+            );
+    
+            return redirect()->route('service.index')->with($notification);
+        }else{
+        
         }
 
         $notification = array(
@@ -183,7 +200,6 @@ echo $emp_id;
         );
 
         // return redirect()->route('service.show', $id)->with($notification);
-        return redirect()->route('service.index')->with($notification);
     }
 
     /**

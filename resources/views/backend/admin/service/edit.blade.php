@@ -11,6 +11,10 @@
                         <div class="card card-primary">
                             <div class="card-header">
                                 <h3 class="card-title">Edit Service</h3>
+                                <a href="{{url('admin/service')}}" class="btn-sm btn-primary"
+                                style="float: right; position: absolute;right: 14px;margin: 0 auto;top: 8px;">
+                                <i class="fas fa-arrow-left" aria-hidden="true"></i>
+                            </a>
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
@@ -21,68 +25,116 @@
                                 @method('PUT')
                                 {{-- <input type="hidden" name="doctorid" id="doctorid"> --}}
                                 <div class="card-body">
-                                    
-                                    
-                                            <div class="form-group">
-                                                <label for="service_name">Service Name </label>
-                                                    <input type="text" class="form-control" id="service_name" name="service_name" placeholder="Service Name"
-                                                        value="{{ $service->service_name }}">
-                                                        @error('service_name')
-                                                            <span class="text-danger" role="alert">
-                                                            {{ $message }}
-                                                            </span>
-                                                        @enderror
+
+
+                                    <div class="form-group">
+                                        <label for="service_name">Service Name </label>
+                                        <input type="text" class="form-control" id="service_name" name="service_name"
+                                            placeholder="Service Name" value="{{ $service->service_name }}">
+                                        @error('service_name')
+                                            <span class="text-danger" role="alert">
+                                                {{ $message }}
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="caption">Caption </label>
+
+                                        <input type="text" class="form-control" id="caption" name="caption"
+                                            placeholder="Caption" value="{{ $service->caption }}">
+                                        @error('caption')
+                                            <span class="text-danger" role="alert">
+                                                {{ $message }}
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="caption">Paragraph 1 </label>
+
+                                        <input type="text" class="form-control" id="paragraph_1" name="paragraph_1"
+                                            placeholder="paragraph 1" value="{{ $service->paragraph1 }}">
+                                        @error('paragraph_1')
+                                            <span class="text-danger" role="alert">
+                                                {{ $message }}
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="caption">Paragraph 2 </label>
+
+                                        <input type="text" class="form-control" id="paragraph_2" name="paragraph_2"
+                                            placeholder="paragraph 2" value="{{ $service->paragraph2 }}">
+                                       
+                                    </div>
+                                    <div class="row">
+                                        <?php $i=1; ?>
+                                        @foreach (json_decode(urldecode($service->list)) as $list)
+                                            <div class="col-lg-6  form-group">
+                                                <label for="list1">List {{$i}}</label>
+                                                <input type="text" class="form-control" id="list1"
+                                                    value="{{ $list }}" name="list[]" placeholder="List {{$i}}">
                                             </div>
-                                            <div class="form-group">
-                                                <label for="caption">Caption </label>
-                                                
-                                                    <input type="text" class="form-control" id="caption" name="caption"
-                                                        placeholder="Caption" value="{{ $service->caption }}">
-                                                        @error('caption')
-                                                        <span class="text-danger" role="alert">
-                                                        {{ $message }}
-                                                        </span>
-                                                        @enderror
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="caption" >Description </label>
-                                                     <textarea type="text" class="form-control" id="description" name="description"
-                                                        placeholder="Description">{{ $service->description }}</textarea>
-                                                        @error('description')
-                                                        <span class="text-danger" role="alert">
-                                                        {{ $message }}
-                                                        </span>
-                                                        @enderror
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="caption" >Service Icon </label> 
-                                                
-                                                     <input type="file" class="form-control p-1" id="service_icon"
-                                                        name="service_icon" placeholder="Service Icon"
-                                                        {{-- onchange="readURL(this)" --}}
-                                                        onchange="document.getElementById('update_icon_image').src = window.URL.createObjectURL(this.files[0])">
-                                                        <br>
-                                                        <img style="max-height:auto;" id="update_icon_image" width="100px" src="{{ !empty($service->service_icon) ? url('upload/service_icon/' . $service->service_icon) : url('upload/service_icon/no_image.jpg') }}" alt="">
-                                                        <input type="hidden" class="form-control" id="old_service_icon"
-                                                        name="old_service_icon" value="{{ $service->service_icon }}">
-                                            </div>
-                                        </div>
-                                   
-                                
-                                <!-- /.card-body -->
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                            <?php $i++; ?>
+                                        @endforeach
+
+
+                                    </div>
+                                    <div class="row" id="wrap">
+ 
+                                    </div>
+
+
+                                    <input type="hidden" id="box_count" value="1">
+                                    <input type="hidden" id="list_count" value="4">
+                                    <input type="hidden" name="__update_id" id="__update_id" value="">
+
+                                    <div class="form-group btn-group" role="group"
+                                        aria-label="First group">
+                                        <a onclick="add_more_list()" id="add_more_list" class="btn btn-primary "><i
+                                                class="fa fa-plus"></i></a>
+                                    </div>
+
+                            
+                                <div class="form-group">
+                                    <label for="caption">Description </label>
+                                    <textarea type="text" class="form-control" id="description" name="description"
+                                        placeholder="Description">{{ $service->description }}</textarea>
+                                    @error('description')
+                                        <span class="text-danger" role="alert">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
                                 </div>
-                            </form>
+                                <div class="form-group">
+                                    <label for="caption">Service Icon </label>
+
+                                    <input type="file" class="form-control p-1" id="service_icon" name="service_icon"
+                                        placeholder="Service Icon" {{-- onchange="readURL(this)" --}}
+                                        onchange="document.getElementById('update_icon_image').src = window.URL.createObjectURL(this.files[0])">
+                                    <br>
+                                    <img style="max-height:auto;" id="update_icon_image" width="100px"
+                                        src="{{ !empty($service->service_icon) ? url('upload/service_icon/' . $service->service_icon) : url('upload/service_icon/no_image.jpg') }}"
+                                        alt="">
+                                    <input type="hidden" class="form-control" id="old_service_icon"
+                                        name="old_service_icon" value="{{ $service->service_icon }}">
+                                </div>
                         </div>
+
+
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                        </form>
                     </div>
-                    <!-- /.col -->
                 </div>
-                <!-- /.row -->
+                <!-- /.col -->
             </div>
-            <!-- /.container-fluid -->
-        </section>
-        <!-- /.content -->
+            <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
     </div>
 @endsection
 @section('script')

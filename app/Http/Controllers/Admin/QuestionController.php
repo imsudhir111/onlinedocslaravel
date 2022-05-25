@@ -50,6 +50,7 @@ class QuestionController extends Controller
     }
     public function question_filter(Request $request)
     {
+        
         if(isset($request->selected_service)){
             $questions_list = Question::with('service:id,service_name')->latest()->get();
             $services_list = Service::select('id','service_name')->get();
@@ -98,6 +99,7 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request;
         // return $request->selected_service;
         $validated = $request->validate([
             'question' => 'required|max:255',
@@ -208,7 +210,8 @@ class QuestionController extends Controller
     public function destroy($id)
     {
         Question::where('id',$id)->delete();
-
+        Option::where('ques_id',$id)->delete();
+         
         $notification = array(
             'message' => 'Question Deleted Successfully',
             'alert-type' => 'success'

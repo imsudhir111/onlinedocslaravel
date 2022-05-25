@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\QuestionController; 
 use App\Http\Controllers\Admin\PasswordController; 
 use App\Http\Controllers\Doctor\LoginSignupController;
+use App\Http\Controllers\Doctor\DoctorProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::get('/zoom-meeting', [LoginController::class, 'zoom_meeting'])->name('zoom_meeting');
 
 Route::get('/home', [App\Http\Controllers\Customer\HomeController::class, 'index'])->name('home');
 Route::post('/user/logout', [LoginController::class, 'userLogout'])->name('user.logout');
@@ -69,12 +71,21 @@ Route::group(['prefix' => 'doctor'], function() {
         Route::post('/doctorlogin',[LoginSignupController::class, 'authenticate'])->name('doctor.auth');
         Route::get('/signup',[LoginSignupController::class, 'signupform']);
         Route::post('/signup-process',[LoginSignupController::class, 'signup_process'])->name('doctor.signup_process');
+        // Route::post('/getcity', [DoctorProfileController::class, 'getcity'])->name('doctor.getcity');
+
+        
+
 
     });
 
     Route::group(['middleware' => 'doctor.auth'], function(){
         Route::get('/dashboard',[App\Http\Controllers\Doctor\DashboardController::class, 'dashboard'])->name('doctor.dashboard');
         Route::post('/logout', [LoginSignupController::class, 'logout'])->name('doctor.logout');
+        Route::resource('/profile', DoctorProfileController::class);
+        Route::post('/getstate', [DoctorProfileController::class, 'getstate'])->name('doctor.getstate');
+        Route::post('/getcity', [DoctorProfileController::class, 'getcity'])->name('doctor.getcity');
+
+
 
     });
 });

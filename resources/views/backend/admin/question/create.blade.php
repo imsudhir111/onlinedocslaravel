@@ -76,10 +76,10 @@
                                          <input type="hidden" name="__update_id" id="__update_id" value="">
                                     </div>
                                     <div class="form-group btn-group" role="group" style="padding-left: 1.2rem!important;" aria-label="First group">
-                                        <a onclick="add_more()" class="btn btn-primary "><i class="fa fa-plus"></i></a>
+                                        <a onclick="add_more()" id="add_more_option" class="btn btn-primary "><i class="fa fa-plus"></i></a>
                                        </div>
                                     <div class="card-footer">
-                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <button type="submit" id="add_question_option" onclick="add_question_option()" class="btn btn-primary">Save</button>
                                     </div>
                             </div>
                             <!-- /.card-body -->

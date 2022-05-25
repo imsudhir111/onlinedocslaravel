@@ -109,6 +109,9 @@
                         <th>Sr No.</th>
                         <th>Service Name</th>
                         <th>Caption</th>
+                        {{-- <th>Paragraph-1</th>
+                        <th>Paragraph-2</th>
+                        <th>List</th> --}}
                         <th>Description</th>
                         <th>Icon</th>
                         <th>Actions</th>
@@ -121,6 +124,14 @@
                         <td>{{$sr_no++}}</td>
                         <td>{{$service->service_name}}</td>
                         <td>{{$service->caption}}</td>
+                        {{-- <td>{{$service->paragraph1}}</td>
+                        <td>{{$service->paragraph2}}</td> --}}
+                        {{-- <td>
+                          @foreach (json_decode(urldecode($service->list)) as $list)
+                          <li>{{$list}}</li>
+                        @endforeach
+                        </td> --}}
+                        
                         <td>{{$service->description}}</td>
                         <td><img class="profile-user-img img-fluid img-circle" src="{{ !empty($service->service_icon) ? url('upload/service_icon/' . $service->service_icon) : url('upload/service_icon/no_image.jpg') }}" alt="profile"></td>
                         <td>

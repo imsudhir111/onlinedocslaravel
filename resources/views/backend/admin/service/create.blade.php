@@ -45,6 +45,68 @@
 
                                     </div>
                                     <div class="form-group">
+                                        <label for="caption">Paragraph 1</label>
+                                        <input type="text" class="form-control" id="caption" name="paragraph_1"
+                                            placeholder="Paragraph 1" >
+
+                                        @error('paragraph_1')
+                                            <span class="text-danger" role="alert">
+                                                {{ $message }}
+                                            </span>
+                                        @enderror
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="caption">Paragraph 2</label>
+                                        <input type="text" class="form-control" id="paragraph_2" name="paragraph_2"
+                                            placeholder="paragraph 2" >
+
+                                        @error('paragraph_2')
+                                            <span class="text-danger" role="alert">
+                                                {{ $message }}
+                                            </span>
+                                        @enderror
+
+                                    </div>
+                                    <div class="row">
+                                        
+                                        <div class="col-lg-6  form-group">
+                                            <label for="list1" >List 1</label>
+                                                <input type="text"  class="form-control" id="list1"
+                                                    name="list[]" placeholder="List 1">
+                                        </div>
+                                        <div class="col-lg-6  form-group">
+                                            <label for="list2" >List 2</label>
+                                                 <input type="text"  class="form-control" id="list2"
+                                                    name="list[]" placeholder="List 2">
+                                         </div>
+                                        </div>
+                                <div class="row" id="wrap">
+
+                                        <div class="col-lg-6 form-group">
+                                            <label for="option3">List 3</label>
+                                                 <input type="text"  class="form-control" id="list3"
+                                                    name="list[]" placeholder="List 3">
+                                         </div>
+                                         
+                                        <div class="col-lg-6 form-group">
+                                            <label for="list4" >List 4</label>
+                                                 <input type="text"  class="form-control" id="option4"
+                                                    name="list[]" placeholder="List 4">
+                                         </div>
+                                         
+                                        </div>
+
+                                       
+                                         <input type="hidden" id="box_count" value="1">
+                                         <input type="hidden" id="list_count" value="4">
+                                         <input type="hidden" name="__update_id" id="__update_id" value="">
+                                   
+                                    <div class="form-group btn-group" role="group" aria-label="First group">
+                                        <a onclick="add_more_list()" class="btn btn-primary" id="add_more_list"><i class="fa fa-plus"></i></a>
+                                       </div>
+
+                                    <div class="form-group">
                                         <label for="description">Description</label>
                                         <textarea type="text" class="form-control" id="description" name="description"
                                             placeholder="Description">{{ old('description') }}</textarea> 

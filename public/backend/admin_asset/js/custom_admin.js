@@ -1,9 +1,14 @@
 // option_count=1;
+//option dynamic
 function add_more(){
   var box_count=jQuery("#box_count").val();
   box_count++;
   jQuery("#box_count").val(box_count);
-
+  if(option_count === 10){
+    jQuery("#add_more_option").css("pointer-events", "none");
+  }else{
+    jQuery("#add_more_option").css("pointer-events", "auto");
+  }
   var option_count=jQuery("#option_count").val();
   option_count++;
   jQuery("#option_count").val(option_count);
@@ -19,11 +24,44 @@ function remove_more(box_count){
   var option_count=jQuery("#option_count").val();
   option_count--;
   jQuery("#option_count").val(option_count);
+  jQuery("#add_more_list").css("pointer-events", "auto");
+
+}
+// dynamic service lists
+function add_more_list(){
+  var box_count=jQuery("#box_count").val();
+  box_count++;
+  jQuery("#box_count").val(box_count);
+
+  var list_count=jQuery("#list_count").val();
+  list_count++;
+  if(list_count === 10){
+    jQuery("#add_more_list").css("pointer-events", "none");
+  }else{
+    jQuery("#add_more_list").css("pointer-events", "pointer");
+  }
+  jQuery("#list_count").val(list_count);
+  jQuery("#wrap").append('<div id="box_loop_'+box_count+'" class="col-lg-6 form-group"><label for="List" >List '+list_count+'</label><input type="text" class="form-control" required name="list[]" placeholder="List '+list_count+'"> <a href="#" onclick=remove_more_list("'+box_count+'") class=""><i class="fas text-danger fa-trash" aria-hidden="true"></i></button></div>');
+  console.log("list_count",list_count);
+
+}
+function remove_more_list(box_count){
+  jQuery("#box_loop_"+box_count).remove();
+  var box_count=jQuery("#box_count").val();
+  box_count--;
+  jQuery("#box_count").val(box_count);
+  var list_count=jQuery("#list_count").val();
+  list_count--;
+  jQuery("#list_count").val(list_count);
+  jQuery("#add_more_list").css("pointer-events", "auto");
+
+  console.log('list_count after remove',list_count);
 
 }
 
-
-
+function add_question_option(){
+   jQuery("#add_question_option").html("Saving...");
+}
 
 
 

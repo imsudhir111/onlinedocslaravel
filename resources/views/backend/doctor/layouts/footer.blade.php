@@ -1,9 +1,9 @@
 <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+    <strong>Copyright &copy; 2022 <a href="#">Online Docs</a>.</strong>
     All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
+    {{-- <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 3.2.0
-    </div>
+    </div> --}}
   </footer>
 
   <!-- Control Sidebar -->
@@ -17,13 +17,34 @@
 <!-- jQuery -->
 <script src="{{ asset('/backend/plugins/jquery/jquery.min.js')}}"></script>
 <!-- jQuery UI 1.11.4 -->
-<script src="{{ asset('/backend/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
+{{-- <script src="{{ asset('/backend/plugins/jquery-ui/jquery-ui.min.js')}}"></script> --}}
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
+<!-- <script>
   $.widget.bridge('uibutton', $.ui.button)
-</script>
+</script> -->
 <!-- Bootstrap 4 -->
 <script src="{{ asset('/backend/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+<!-- DataTables  & Plugins -->
+<script src="{{ asset('/backend/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{ asset('/backend/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{ asset('/backend/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{ asset('/backend/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<script src="{{ asset('/backend/plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
+<script src="{{ asset('/backend/plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>  
+<script src="{{ asset('/backend/plugins/jszip/jszip.min.js')}}"></script>
+<script src="{{ asset('/backend/plugins/pdfmake/pdfmake.min.js')}}"></script>
+<script src="{{ asset('/backend/plugins/pdfmake/vfs_fonts.js')}}"></script> -->
+<!-- <script src="{{ asset('/backend/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
+<script src="{{ asset('/backend/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
+<script src="{{ asset('/backend/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+
+<!-- AdminLTE App -->
+<!-- <script src="{{ asset('/backend/dist/js/adminlte.min.js')}}"></script> -->
+<!-- AdminLTE for demo purposes -->
+<!-- <script src="{{ asset('/backend/dist/js/demo.js')}}"></script> -->
+<!-- Page specific script -->
+
 <!-- ChartJS -->
 <script src="{{ asset('/backend/plugins/chart.js/Chart.min.js')}}"></script>
 <!-- Sparkline -->
@@ -45,7 +66,63 @@
 <!-- AdminLTE App -->
 <script src="{{ asset('/backend/dist/js/adminlte.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="{{ asset('/backend/dist/js/demo.js')}}"></script>
+{{-- <script src="{{ asset('/backend/dist/js/demo.js')}}"></script> --}}
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('/backend/dist/js/pages/dashboard.js')}}"></script>
+<!-- 
+<script src={{ asset('/backend/jquery-validation/jquery.validate.js') }}></script>
+<script src={{ asset('/backend/jquery-validation/additional-methods.js') }}></script>
+<script src={{ asset('/backend/admin_asset/js/validations.js') }}></script> -->
+<script src="{{ asset('backend/admin_asset/js/main.js')}}"></script>
+<script src="{{ asset('backend/admin_asset/js/custom_doctor_function.js')}}"></script>
 
+  <script>
+  $(function () {
+    $("#question_list").DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+    $("#all_services").DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+  });
+</script> 
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script>
+@if(Session::has('message'))
+var type = "{{ Session::get('alert-type','info') }}"
+switch(type){
+    case 'info':
+    toastr.info(" {{ Session::get('message') }} ");
+    break;
+
+    case 'success':
+    toastr.success(" {{ Session::get('message') }} ");
+    break;
+
+    case 'warning':
+    toastr.warning(" {{ Session::get('message') }} ");
+    break;
+
+    case 'error':
+    toastr.error(" {{ Session::get('message') }} ");
+    break;
+}
+@endif
+</script>

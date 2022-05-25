@@ -22,6 +22,20 @@ class Doctor extends Authenticatable
         'name',
         'email',
         'password',
+        'age',
+        'mobile',
+        'photo',
+        'gender',
+        'highest_education',
+        'experience',
+        'address',
+        'state_id',
+        'city_id',
+        'working_days',
+        'day_from_time',
+        'day_to_time',
+        'night_from_time',
+        'night_to_time'
     ];
 
     /**
