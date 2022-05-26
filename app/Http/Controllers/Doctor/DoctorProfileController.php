@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
+use App\Models\DoctorWorkingHour;
 use App\Models\Doctor;
 use App\Models\State;
 use App\Models\City;
@@ -134,6 +134,16 @@ class DoctorProfileController extends Controller
         //  return $status;
         if($request->file('profile_image')) {
             $status = Doctor::find($id)->update($doctor_profile);
+                    DoctorWorkingHour::insert([
+                        [
+                        'doctor_id' => $id,
+                        'fromTime' => $request->day_from_time,
+                        'ToTime' => $request->day_to_time,
+                    ],[
+                        'doctor_id' => $id,
+                        'fromTime' => $request->night_from_time,
+                        'ToTime' => $request->night_to_time,
+                    ]]);
             $data = Doctor::find($id);
             $file = $request->file('profile_image');
             @unlink(public_path('upload/profile_image/' . $data->profile_image));
@@ -232,8 +242,7 @@ class DoctorProfileController extends Controller
         'night_to_time' => $request->night_to_time,
         'updated_at' => Carbon::now()
         ];     
-        $status = Doctor::find($id)->update($doctor_profile);
-
+        $profile_update_status = Doctor::find($id)->update($doctor_profile);
         if($request->hasFile('profile_image')){
             $data = Doctor::find($id);
             $profile_img=$request->file('profile_image');
@@ -243,18 +252,35 @@ class DoctorProfileController extends Controller
             $data['photo'] = $filename;
             $data->save();
         }
+        $working_hours = [
+            [
+            'fromTime' => $request->day_from_time,
+            'ToTime' => $request->day_to_time,
+        ],[
+            'fromTime' => $request->night_from_time,
+            'ToTime' => $request->night_to_time,
+        ]]; 
+
+
+        $morning_shift= DoctorWorkingHour::where('doctor_id', '=', $id)->first();
+        $evening_shift= DoctorWorkingHour::where('doctor_id', '=', $id)->latest('id')->first();
+        $evening_shift->fromTime=$request->night_from_time;
+        $evening_shift->toTime=$request->night_to_time;
+        $morning_shift->fromTime=$request->day_from_time;
+        $morning_shift->toTime=$request->day_to_time;
+        if($evening_shift->save() && $morning_shift->save()){
+            if($profile_update_status){
+                $notification = array(
+                    'message' => 'Profile Updated Successfully',
+                    'alert-type' => 'success'
+                );
         
-       
-        if($status){
-            $notification = array(
-                'message' => 'Profile Updated Successfully',
-                'alert-type' => 'success'
-            );
-    
-            return redirect('/doctor/profile')->with($notification);
-        }else{
-            return redirect('/admin/reset-password')->with('message', 'Please check something went wrong !!');
+                return redirect('/doctor/profile')->with($notification);
+            }else{
+                return redirect('/admin/reset-password')->with('message', 'Please check something went wrong !!');
+            }
         }
+      
     }
 
     function getstate(Request $request){
