@@ -1,0 +1,116 @@
+.about {
+    background: linear-gradient(180deg, #FFFFFF 50%, var(--deepBlue) 50%);
+}
+
+.about img {
+    position: relative;
+    z-index: 1;
+}
+
+.about hr {
+    color: var(--deepBlue);
+    height: 0.15rem;
+    background-color: var(--deepBlue);
+    opacity: 1;
+    position: relative;
+    top: 15.7rem;
+}
+
+.about p {
+    font-size: 1rem;
+    text-align: justify;
+}
+
+.about p:nth-child(3) {
+    color: white;
+    margin-top: 17%;
+}
+
+.about p:nth-child(4) {
+    color: white;
+}
+
+.leftQuoteGolden {
+    color: var(--gold);
+    font-size: 5rem;
+    margin-bottom: 5%;
+}
+
+.triangleAbout::before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-top: 50px solid var(--gold);
+    float: right;
+}
+
+.dr-chaudhri::before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 16px solid var(--DarkGrey);
+    border-top: 17px solid transparent;
+    float: left;
+    position: relative;
+    top: -1.02rem;
+    transform: rotate(-90deg);
+    margin-left: -0%;
+}
+
+.founder {
+    margin-bottom: 8%;
+}
+
+.founder img {
+    width: 92%;
+    margin-left: 10%;
+}
+
+.about_health {
+    border-top: 1px solid var(--DarkGrey);
+    padding: 3%;
+}
+
+.health-list {
+    list-style-type: square;
+}
+
+.health-list li {
+    margin-bottom: 3%;
+}
+
+.health-list li::marker {
+    color: var(--gold1);
+}
+
+.second-opinion {
+    color: #FFFFFF;
+    width: 107%;
+    font-size: 3rem;
+}
+
+.second-opinion::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 16px solid var(--DarkGrey);
+    border-top: 17px solid transparent;
+    float: left;
+    position: relative;
+    top: 1.5rem;
+    transform: rotate(90deg);
+    margin-left: 103.5%;
+}
+
+.w-95 {
+    width: 95%;
+    box-shadow: 0px 32px 38px -22px black;
+}
+
+.top-padding {
+    padding-top: 1.4rem;
+}

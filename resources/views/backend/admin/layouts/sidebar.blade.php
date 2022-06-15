@@ -6,7 +6,7 @@
       <!-- Sidebar user panel (optional) -->
      
    <div class="user-panel-1 mt-3 pb-3 mb-3 d-flex">
-        <a  href="{{url('user/dashboard')}}" class="image">
+        <a  href="{{url('admin/dashboard')}}" class="image">
             <img style="height:auto; max-width:40%;" class="text-center" src="https://www.compendiousmedworks.com/assets/img/logo/cmw-logo.png" alt="">
         </a>
         <div class="info">
@@ -76,7 +76,40 @@
               </li>
             </ul>
           </li>
-
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-cog"></i>
+              <p>
+                Zoom Settings
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ url('admin/add-zoom-setting') }}" class="nav-link">
+                  <i class="fas fa-plus" aria-hidden="true"></i>&nbsp;
+                  <p>Add Setting</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fas fa-user-md"></i>&nbsp;
+              <p>
+                Doctor Management
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ url('admin/doctor-list') }}" class="nav-link">
+                  <i class="fas fa-list" aria-hidden="true"></i>&nbsp;
+                  <p>Doctor's List</p>
+                </a>
+              </li>
+            </ul>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ route('admin.logout') }}"
                onclick="event.preventDefault();

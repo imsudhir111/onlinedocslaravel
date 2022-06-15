@@ -35,7 +35,11 @@ class Doctor extends Authenticatable
         'day_from_time',
         'day_to_time',
         'night_from_time',
-        'night_to_time'
+        'night_to_time',
+        'zoom_gmail_id',
+        'zoom_gmail_password',
+        'zoom_api_key',
+        'zoom_api_secret_key'
     ];
 
     /**

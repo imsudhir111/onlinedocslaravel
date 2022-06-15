@@ -36,11 +36,18 @@
                       Services
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                      <li><a class="dropdown-item" href="#">Action</a></li>
-                      <li><a class="dropdown-item" href="#">Another action</a></li>
-                      <li>
-                          <a class="dropdown-item" href="#">Something else here</a>
-                      </li>
+                      <li><a class="dropdown-item" href="#">ANXIETY</a></li>
+                      <li><a class="dropdown-item" href="#">ALCOHOL USE DISORDER</a></li>
+                      <li><a class="dropdown-item" href="#">BEHAVIORAL AND EMOTIONAL DISORDERS IN CHILDREN/TEENAGERS</a></li>
+                      <li><a class="dropdown-item" href="#">BIPOLAR DISORDER</a></li>
+                      <li><a class="dropdown-item" href="#">DEPRESSION</a></li>
+                      <li><a class="dropdown-item" href="#">DISSOCIATION</a></li>
+                      <li><a class="dropdown-item" href="#">EATING DISORDERS</a></li>
+                      <li><a class="dropdown-item" href="#">OBSESSIVE COMPULSIVE DISORDER</a></li>
+                      <li><a class="dropdown-item" href="#">PARANOIA</a></li>
+                      <li><a class="dropdown-item" href="#">POST-TRAUMATIC STRESS DISORDER</a></li>
+                      <li><a class="dropdown-item" href="#">PSYCHOSIS</a></li>
+                      <li><a class="dropdown-item" href="#">SCHIZOPHRENIA</a></li>
                   </ul>
               </li>
 
@@ -52,11 +59,8 @@
                       Join Us
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                      <li><a class="dropdown-item" href="#">Action</a></li>
-                      <li><a class="dropdown-item" href="#">Another action</a></li>
-                      <li>
-                          <a class="dropdown-item" href="#">Something else here</a>
-                      </li>
+                      <li><a class="dropdown-item" href="{{url('doctor/signup')}}">Doctor Sign up</a></li>
+                      <li><a class="dropdown-item" href="{{url('doctor/login')}}">Doctor Login</a></li>
                   </ul>
               </li>
               <a class="navbar-brand logo" href="#"><img src="{{ asset('/frontend/images/logo.png')}}" class="img-fluid" /></a>

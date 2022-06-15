@@ -8,8 +8,14 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\QuestionController; 
 use App\Http\Controllers\Admin\PasswordController; 
+use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\DoctorManagementController;
 use App\Http\Controllers\Doctor\LoginSignupController;
+use App\Http\Controllers\Doctor\DashboardController as DoctorDashboardController;
 use App\Http\Controllers\Doctor\DoctorProfileController;
+use App\Http\Controllers\Doctor\AppointmentController;
+use App\Http\Controllers\Doctor\DoctorRemarkController;
+use App\Http\Controllers\Doctor\PasswordController as DoctorPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +54,7 @@ Route::group(['prefix' => 'admin'], function() {
         Route::post('/forgot-password-process', [PasswordController::class, 'forgot_password_process'])->name('admin.reset_mail');
         Route::get('/forgot-password-process-change/{id}', [PasswordController::class, 'forgot_password_process_change']);
         Route::post('/forgot-password-uodate', [PasswordController::class, 'forgot_password_update'])->name('admin.password_update');
+        
 
 
     });
@@ -59,6 +66,10 @@ Route::group(['prefix' => 'admin'], function() {
         Route::resource('/question', QuestionController::class);
         Route::get('/addemp',[ServiceController::class, 'addemp']);
         Route::get('/treeview',[ServiceController::class, 'treeview']);
+        Route::get('/add-zoom-setting',[SettingController::class, 'add_zoom_setting'])->name('admin.add_zoom_setting');
+        Route::post('/update-zoom-setting',[SettingController::class, 'update_zoom_setting'])->name('admin.update_zoom_setting');
+        Route::resource('/doctor-list', DoctorManagementController::class);
+
         // Route::get('/question',[QuestionController::class, 'question_filter'])->name('admin.question_filter');
 
     });
@@ -72,6 +83,7 @@ Route::group(['prefix' => 'doctor'], function() {
         Route::get('/signup',[LoginSignupController::class, 'signupform']);
         Route::post('/signup-process',[LoginSignupController::class, 'signup_process'])->name('doctor.signup_process');
         // Route::post('/getcity', [DoctorProfileController::class, 'getcity'])->name('doctor.getcity');
+        Route::get('/forgot-password', [DoctorPasswordController::class, 'forgot_password'])->name('doctor.forgot_password');
 
         
 
@@ -79,14 +91,26 @@ Route::group(['prefix' => 'doctor'], function() {
     });
 
     Route::group(['middleware' => 'doctor.auth'], function(){
-        Route::get('/dashboard',[App\Http\Controllers\Doctor\DashboardController::class, 'dashboard'])->name('doctor.dashboard');
-        Route::post('/logout', [LoginSignupController::class, 'logout'])->name('doctor.logout');
+        Route::get('/dashboard',[DoctorDashboardController::class, 'dashboard'])->name('doctor.dashboard');
+        Route::get('/myappointment',[AppointmentController::class, 'myappointment'])->name('doctor.myappointment');
+        Route::get('/logout', [LoginSignupController::class, 'logout'])->name('doctor.logout');
         Route::resource('/profile', DoctorProfileController::class);
         Route::post('/getstate', [DoctorProfileController::class, 'getstate'])->name('doctor.getstate');
         Route::post('/getcity', [DoctorProfileController::class, 'getcity'])->name('doctor.getcity');
+        // Route::get('/dashboard', [DoctorProfileController::class, 'dashboard'])->name('doctor.dashboard');
+        
+        Route::get('/all-appointment', [AppointmentController::class, 'all_appointment'])->name('doctor.all_appointment');
+        Route::get('/all-appointments', [AppointmentController::class, 'all_appointments_ajax'])->name('doctor.all_appointments_ajax');
+        Route::get('/appointments/{id}', [AppointmentController::class, 'datewise_appointment'])->name('doctor.datewise_appointment');
+        Route::get('/appointments/{id}/{date}/patient-detail', [AppointmentController::class, 'patient_detail'])->name('doctor.patient_detail');
+        Route::post('/doctor-save-remark',[DoctorRemarkController::class, 'doctor_save_remark'])->name('doctor.doctor_save_remark);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   k');
+        // Route::get('/appointments/{id}/{date}/patient-detail/doctor-save-remark/doctor-save-remark',[AppointmentController::class, 'doctor_save_remark'])->name('doctor.doctor_save_remark);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   k');
+        
+        Route::get('/zoom-meeting-setting', [DoctorProfileController::class, 'zoom_meeting_setting'])->name('doctor.zoom_meeting_setting');
 
-
-
+        Route::get('/change-password', [DoctorPasswordController::class, 'change_doctor_password'])->name('doctor.change_doctor_password');
+        Route::post('/change-doctor-password-update', [DoctorPasswordController::class, 'change_doctor_password_update'])->name('doctor.change_doctor_password_update');
+        
     });
 });
 

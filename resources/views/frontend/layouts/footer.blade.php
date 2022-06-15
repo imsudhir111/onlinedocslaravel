@@ -1,21 +1,5 @@
 
-    <div class="container-fluid upperFooter">
-      <div class="row">
-          <div class="col-md-12">
-              <div class="container">
-                  <div class="row">
-                      <div class="col-md-6 col-sm-6 col-6">
-                          <div class="footerPhoto"></div>
-                      </div>
-                      <div class="col-md-6  col-sm-6 col-6 callDetail">
-                          <h5>CALL NOW !</h5>
-                          <a>+91-080-6803-4357</a>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+  
   <div class="container-fluid footer">
       <div class="row">
           <div class="col-md-12">
@@ -85,6 +69,8 @@
           </div>
       </div>
   </div>
+<script src="{{asset('frontend/js/myscript.js')}}"></script>
+
   <script type="text/javascript">
       $(document).ready(function() {
 
@@ -130,4 +116,7 @@
       var Height = window.innerHeight;
       $("#menu").css('height', Height + "px");
   </script>
- 
+<script src="{{asset('frontend/js/script.js')}}"></script>
+ <script src={{ asset('/frontend/jquery-validation/jquery.validate.js') }}></script>
+<script src={{ asset('/frontend/jquery-validation/additional-methods.js') }}></script>
+<script src="{{ asset('/backend/admin_asset/js/backend_form_validation.js') }}"></script>

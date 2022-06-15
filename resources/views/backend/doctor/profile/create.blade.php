@@ -1,288 +1,345 @@
 @extends('backend.doctor.layouts.app')
 
 @section('content')
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-
-
-        <!-- Main content -->
-        <section class="content pt-3">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card card-primary">
-                            <div class="card-header">
-                                <h3 class="card-title">Profile</h3>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <hr>
+        </div>
+    </div>
+</div>
+<form  role="form" id="create_doctor_profile_form" action="{{ route('profile.store') }}" method="POST"
+enctype="multipart/form-data">
+@csrf
+    <div class="container-fluid bg-golden doctorEdit">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container">
+                    <div class="row mt-3 ">
+                        <div class="col-lg-6 offset-lg-3 offset-md-2 col-md-8">
+                            <h3 class="heading text-black text-uppercase">Edit Doctor Profile </h3>
+                        </div>
+                    </div>
+                    <div class="row g-0 ">
+                        <div class="col-md-1 offset-1">
+                            <div class="bg-deepblue appointment-columns">
+                                <div class="appointment-labels">
+                                    <i class="fa-solid fa-envelope-open"></i>
+                                </div>
+                                <div class="appointment-labels">
+                                    <i class="fa-solid fa-user"></i>
+                                </div>
+                                <div class="appointment-labels">
+                                    <i class="fa-solid fa-mobile-alt"></i>
+                                </div>
+                                <div class="appointment-labels">
+                                    <i class="fa-solid fa-user"></i>
+                                </div>
+                                <div class="appointment-labels">
+                                    <i class="fa-solid fa-calendar"></i>
+                                </div>
+                                <div class="appointment-labels">
+                                    <i class="fa-solid fa-map-marker-alt"></i>
+                                </div>
+                                <div class="appointment-labels">
+                                    <i class="fa-solid fa-map-marker-alt"></i>
+                                </div>
+                                <div class="appointment-labels">
+                                    <i class="fa-solid fa-graduation-cap"></i>
+                                </div>
+                                <div class="appointment-labels">
+                                    <i class="fa-solid fa-calendar-alt"></i>
+                                </div>
+                                <div class="appointment-labels">
+                                    <i class="fa-solid fa-clock"></i>
+                                </div>
+                                <div class="appointment-labels">
+                                    <i class="fa-solid fa-clock"></i>
+                                </div>
                             </div>
-                            <!-- /.card-header  -->
-                            <!-- form start -->
-
-                            <form role="form" id="serviceForm" action="{{ route('profile.store') }}" method="POST"
-                                enctype="multipart/form-data">
-                                @csrf
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="col-lg-12 form-group">
-                                                <label for="full name">Name</label>
-                                                <input type="text" name="full_name" class="form-control" id="full_name"
-                                                    placeholder="Full Name">
-                                                @error('full_name')
-                                                    <span class="text-danger" role="alert">
-                                                        {{ $message }}
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                            <div class="row" style="padding-right: 7.5px; padding-left: 7.5px;">
-                                            <div class="col-lg-6 form-group">
-                                                <label for="Phone">Phone</label>
-                                                <input type="text" class="form-control" id="phone" name="phone"
-                                                    placeholder="Phone"></textarea>
-                                                @error('phone')
-                                                    <span class="text-danger" role="alert">
-                                                        {{ $message }}
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                            <div class="col-lg-6 form-group">
-                                                <label for="gender">Gender</label>
-                                                <select class="form-control" id="gender" placeholder="Gender" required
-                                                    name="gender">
-                                                    <option value="male">Male</option>
-                                                    <option value="female">Female</option>
-                                                    <option value="transgender">Other</option>
-                                                </select>
-                                                @error('gender')
-                                                    <span class="text-danger" role="alert">
-                                                        {{ $message }}
-                                                    </span>
-                                                @enderror
-
-                                            </div>
-                                            </div>
-                                          
-                                            <div class="col-lg-12 form-group">
-                                                <label for="full name">Photo</label>
-                                                <input type="file" name="profile_image" class="form-control p-1" id="profile_image"
-                                                onchange="document.getElementById('preview_profile_image').src = window.URL.createObjectURL(this.files[0])"
-                                                placeholder="Profile Image">
-                                                @error('profile_image')
-                                                    <span class="text-danger" role="alert">
-                                                        {{ $message }}
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                        
-
+                        </div>
+                        <div class="col-md-9">
+                            <div class="bg-gray appointment-columns">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="form-group mb-3">
+                                            <label for="Email">Email</label>
+                                            <input id="email" class="form-control" type="text" readonly name="email" value="{{Auth::guard('doctor')->user()->email}}" placeholder="Email">
+                                            @error('email')
+                                            <span class="text-danger" role="alert">
+                                                {{ $message }}
+                                            </span>
+                                        @enderror
                                         </div>
-                                        <div class="col-lg-6 pt-3">
-                                            <div class="row">
-                                                    <img id="preview_profile_image" class=" img-circle" style="margin:0 auto;" height="200" width="200" src="https://sitechecker.pro/wp-content/uploads/2017/12/URL-meaning.png">
-                                            </div>
-                                        </div> 
+                                        <div class="form-group mb-3">
+                                            <label for="full name">Name</label>
+                                            <input id="full_name" class="form-control" type="text" 
+                                            value="{{ old('full_name') }}"
+                                            name="full_name" placeholder="Name">
+                                            @error('full_name')
+                                            <span class="text-danger" role="alert">
+                                                {{ $message }}
+                                            </span>
+                                        @enderror
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label for="phone">Phone</label>
+                                            <input id="phone" class="form-control" type="text"
+                                            value="{{ old('phone') }}"
+                                            name="phone" placeholder="Phone">
+                                            @error('phone')
+                                            <span class="text-danger" role="alert">
+                                                {{ $message }}
+                                            </span>
+                                        @enderror
+                                        </div>
                                     </div>
- 
-                                    <div class="row">
-                                        <div class="col-lg-4 form-group">
-                                            <label for="Age">Age</label>
-                                            <input type="text" class="form-control" id="age" name="age" placeholder="Age"
-                                                value="{{ old('age') }}">
-                                            @error('age')
+                                    <div class="col-md-4">
+                                        <img class="img-fluid user-photo" id="preview_profile_image" 
+                                        src="{{asset('/frontend/images/user.png')}}">
+                                        <input type="file" name="profile_image" class="form-control" id="profile_image"
+                                        onchange="document.getElementById('preview_profile_image').src = window.URL.createObjectURL(this.files[0])"
+                                        placeholder="Profile Image">
+                                        @error('profile_image')
+                                        <span class="text-danger" role="alert">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group mb-3">
+                                            <label for="">Gender</label>
+                                            <select class="form-control" id="gender" placeholder="Gender" required
+                                            name="gender">
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                            <option value="transgender">Other</option>
+                                        </select>
+                                        @error('gender')
+                                            <span class="text-danger" role="alert">
+                                                {{ $message }}
+                                            </span>
+                                        @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label for="">DOB</label>
+                                            <input id="dob" class="form-control" onChange="getage()" type="date" name="dob" placeholder="DOB" 
+                                            value="{{ old('dob') }}">
+                                            @error('dob')
+                                            <span class="text-danger" role="alert">
+                                                {{ $message }}
+                                            </span>
+                                        @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label for="">Age</label>
+                                            <input type="text" class="form-control" id="age" readonly
+                                            value="{{ old('age') }}"
+                                            name="age" placeholder="Age">
+                                        @error('age')
+                                            <span class="text-danger" role="alert">
+                                                {{ $message }}
+                                            </span>
+                                        @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="">Address</label>
+                                <textarea id="" class="form-control" type="text" name="address" value="{{ old('address') }}" id="address" placeholder="Address"></textarea>
+                                            @error('address')
                                                 <span class="text-danger" role="alert">
                                                     {{ $message }}
                                                 </span>
                                             @enderror
-                                        </div>
-
-                                     
-                                     
-                                        <div class="col-lg-4 form-group">
-                                            <label for="Highest Education">Highest Education</label>
-                                            <input type="text" class="form-control"
-                                                value="{{ old('highest_education') }}" id="highest_education"
-                                                name="highest_education" placeholder="Highest Education"></textarea>
-                                            @error('highest_education')
-                                                <span class="text-danger" role="alert">
-                                                    {{ $message }}
-                                                </span>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label for="">State</label>
+                                            <select class="form-control" name="state" id="state" onchange="city_filter_handler()">
+                                                <option value="">--Choose--</option>
+                                                @foreach ($states as $list)
+                                                <option value="{{ $list->id }}">{{$list->state}}</option>
+                                                @endforeach 
+                                            </select>
+                                            @error('state')
+                                            <span class="text-danger" role="alert">
+                                                {{ $message }}
+                                            </span>
                                             @enderror
                                         </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label for="">City</label>
+                                            <select class="form-control" name="city" id="city_list">
+                                                <option value="">--Choose--</option>
 
+                                            </select>
+                                            @error('city')
+                                            <span class="text-danger" role="alert">
+                                                {{ $message }}
+                                            </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label for="">Highest Education</label>
+                                            <select class="form-control" name="highest_education" id="highest_education">
+                                                <option value="">--Choose--</option>
+                                                <option value="Post Graduate Diploma in Community Based Rehabilitation">Post Graduate Diploma in Community Based Rehabilitation</option>
+                                                <option value="Master of Science in Psychiatry">Master of Science in Psychiatry</option>
 
-
- 
-                                            <div class="col-lg-4 form-group">
-                                                <label for="Professional Experience">Professional Experience</label>
-                                                <select class="form-control" id="professional_experience"
+                                            </select>
+                                        @error('highest_education')
+                                            <span class="text-danger" role="alert">
+                                                {{ $message }}
+                                            </span>
+                                        @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label for="">Professional Experience</label>
+                                            <select class="form-control" id="professional_experience"
                                                     placeholder="Professional Experience" required
                                                     name="professional_experience">
                                                     <option value="">Select</option>
                                                     <?php  
                                                 for ($i=1; $i <= 40; $i++) { 
                                                 ?>
-                                                    <option selected value="<?php echo $i; ?>"><?php echo $i . ' year'; ?></option>
+                                                    <option selected value="<?php echo $i; ?>"><?php echo $i . ' year (s)'; ?></option>
                                                     <?php 
                                                 }
                                                 ?>
-                                                    <option value="40">40+ year</option>
+                                                    <option value="40">40+ year (s)</option>
     
     
                                                 </select>
                                                 @error('professional_experience')
-                                                    <span class="text-danger" role="alert">
-                                                        {{ $message }}
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                          
-                                                
-                                            </div>
- 
-                                    <hr>
- 
-                                    <div class="row">
-                                        <div class="col-lg-4 form-group">
-                                            <label for="Address">Address</label>
-                                            <input type="text" class="form-control" id="address" name="address"
-                                                placeholder="Addresss"></textarea>
-                                            @error('address')
                                                 <span class="text-danger" role="alert">
                                                     {{ $message }}
                                                 </span>
                                             @enderror
                                         </div>
-                                        <div class="col-xl-4">
-                                            <div class="form-group">
-                                            <label for="p_address">State*</label>
-                                            <select class="form-control" name="state" id="state" onchange="city_filter_handler()">
-                                              <option value="">select state</option>
-                      
-                                              @foreach ($states as $list)
-                                              <option value="{{$list->id}}">{{$list->state}}</option>
-                                              @endforeach 
-                                            </select>
-                                            {{-- <input type="text" name="city" class="form-control" id="city" placeholder="City"> --}}
-                                            @error('city')
-                                            <span class="text-danger" role="alert">
-                                                {{ $message }}
-                                            </span>
-                                        @enderror
-                                            </div>
-                                          
-                                      </div>
-                                      <div class="col-xl-4">
-                                              <div class="form-group">
-                                                <label for="city-list" >City*</label>
-                                                <select class="form-control" name="city" id="city_list">
-                                                {{-- @foreach ($city as $list)
-                                              <option  {{$personal_info[0]->city==$list->id ? 'selected':'no' }} value="{{$list->id}}">{{$list->city}}</option>
-                                              @endforeach  --}}
-                                                </select>
-                                                 @error('city')
-                                                <span class="text-danger" role="alert">
-                                                    {{ $message }}
-                                                </span>
-                                              @enderror
-                                              </div>
-                                           </div>
-                                          
-                                     
-                                  
                                     </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="" class="d-block">Working Days</label>
+                                    <input type="checkbox" value="1" name="working_days['Monday']" id="monday">
+                                    <label for="Monday">Monday</label>
+                                    <input type="checkbox" value="1" name="working_days['Tuesday']" id="tuesday">
+                                    <label for="tuesday">Tuesday</label>
+                                    <input type="checkbox" value="1" name="working_days['Wednesday']"
+                                        id="wednesday">
+                                    <label for="wednesday">Wednesday</label>
+                                    <input type="checkbox" value="1" name="working_days['Thursday']" id="thursday">
+                                    <label for="thursday">Thursday</label>
+                                    <input type="checkbox" value="1" name="working_days['Friday']" id="friday">
+                                    <label for="friday">Friday</label>
+                                    <input type="checkbox" value="1" name="working_days['Saturday']" id="saturday">
+                                    <label for="saturday">Saturday</label>
+                                    <input type="checkbox" value="1" name="working_days['Sunday']" id="sunday">
+                                    <label for="sunday">Sunday</label>
+                                    @error('working_days')
+                                    <br> <span class="text-danger" role="alert">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
+                                 </div>
+                                <div class="form-group mb-3">
+                                    <label for="" class="d-block">Working Hours (Morning)</label>
                                     <div class="row">
-                                        <div class="col-lg-12 form-group">
-                                            <label for="Working Days">Working Days</label><br>
-
-                                            <input type="checkbox" value="1" name="working_days['Monday']" id="monday">
-                                            <label for="Monday">Monday</label>
-                                            <input type="checkbox" value="1" name="working_days['Tuesday']" id="tuesday">
-                                            <label for="tuesday">Tuesday</label>
-                                            <input type="checkbox" value="1" name="working_days['Wednesday']"
-                                                id="wednesday">
-                                            <label for="wednesday">Wednesday</label>
-                                            <input type="checkbox" value="1" name="working_days['Thursday']" id="thursday">
-                                            <label for="thursday">Thursday</label>
-                                            <input type="checkbox" value="1" name="working_days['Friday']" id="friday">
-                                            <label for="friday">Friday</label>
-                                            <input type="checkbox" value="1" name="working_days['Saturday']" id="saturday">
-                                            <label for="saturday">Saturday</label>
-                                            <input type="checkbox" value="1" name="working_days['Sunday']" id="sunday">
-                                            <label for="sunday">Sunday</label>
-                                            @error('working_days')
-                                            <br> <span class="text-danger" role="alert">
+                                        <div class="col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="">From</label>
+                                                <input type="time" class="form-control" id="day_from_time"
+                                                name="day_from_time" placeholder="From"> </textarea>
+                                            @error('day_from_time')
+                                                <span class="text-danger" role="alert">
                                                     {{ $message }}
                                                 </span>
                                             @enderror
+                                            </div>
                                         </div>
-                                        <div class="col-lg-12 form-group">
-                                            <label for="Working Hours">Working Hours</label><br>
-                                            <hr>
-                                            <div class="row">
-                                                <div class="col-lg-6">
-                                                    <label for="From">From (Day Shift)</label>
-                                                    <input type="time" class="form-control" id="day_from_time"
-                                                        name="day_from_time" placeholder="From"> </textarea>
-                                                    @error('day_from_time')
-                                                        <span class="text-danger" role="alert">
-                                                            {{ $message }}
-                                                        </span>
-                                                    @enderror
-
-                                                </div>
-
-                                                <div class="col-lg-6">
-                                                    <label for="To">To (Day Shift)</label>
-                                                    <input type="time" class="form-control" id="day_to_time" name="day_to_time"
+                                        <div class="col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="">To</label>
+                                                <input type="time" class="form-control" id="day_to_time" name="day_to_time" onchange="day_to_time_validation('day_from_time','day_to_time','day_to_time_validation')"
                                                         placeholder="To"> </textarea>
                                                     @error('day_to_time')
-                                                        <span class="text-danger" role="alert">
+                                                        <span  class="text-danger" role="alert">
                                                             {{ $message }}
                                                         </span>
                                                     @enderror
-                                                </div>
+                                                    <span id="day_to_time_validation" class="text-danger" role="alert">
+                                                      
+                                                    </span>
                                             </div>
-                                            <div class="row mt-2">
-                                                <div class="col-lg-6">
-                                                    <label for="From">From (Night Shift)</label>
-                                                    <input type="time" class="form-control" id="night_from_time"
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="" class="d-block">Working Hours (Evening)</label>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="">From</label>
+                                                <input type="time" class="form-control" id="night_from_time"
                                                         name="night_from_time" placeholder="From"> </textarea>
                                                     @error('night_from_time')
                                                         <span class="text-danger" role="alert">
                                                             {{ $message }}
                                                         </span>
                                                     @enderror
-
-                                                </div>
-
-                                                <div class="col-lg-6">
-                                                    <label for="To">To (Night Shift)</label>
-                                                    <input type="time" class="form-control" id="night_to_time" name="night_to_time"
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="">To</label>
+                                                <input type="time" class="form-control" id="night_to_time" name="night_to_time" onchange="day_to_time_validation('night_from_time','night_to_time','evening_to_time_validation')"
                                                         placeholder="To"> </textarea>
                                                     @error('night_to_time')
                                                         <span class="text-danger" role="alert">
                                                             {{ $message }}
                                                         </span>
                                                     @enderror
-                                                </div>
+                                                    <span id="evening_to_time_validation" 
+                                                    class="text-danger" role="alert">
+                                                      
+                                                    </span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- /.card-body -->
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
-                    <!-- /.col -->
+                    <div class="row mt-5 mb-5 g-0">
+                        <div class="col-md-9 text-right mt-2"></div>
+                        <div class="col-md-2 text-right"><button type="submit" class="btn btn-deepBlue">Submit</button></div>
+                    </div>
                 </div>
-                <!-- /.row -->
             </div>
-            <!-- /.container-fluid -->
-        </section>
-        <!-- /.content -->
+        </div>
+        <div class="row">
+
+        </div>
     </div>
+</form>
+ 
 @endsection
 @section('script')
 @endsection

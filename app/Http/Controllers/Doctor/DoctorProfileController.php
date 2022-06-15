@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use App\Models\DoctorWorkingHour;
 use App\Models\Doctor;
 use App\Models\State;
@@ -56,13 +57,29 @@ class DoctorProfileController extends Controller
     public function store(Request $request)
     {
         //
+        // return $request;
+        $lastname=explode(' ',$request->full_name);
         $id = Auth::guard('doctor')->user()->id;
+         if(isset($lastname[1])){
+             $zoom_gmail_id=$lastname[1].$id.'.onlinedocs@gmail.com';
+             $zoom_gmail_password='Onlinedocs@123';
+            //  return $zoom_gmail_id.$zoom_gmail_password;
+         }else{
+            $zoom_gmail_id=$lastname[0].$id.'.onlinedocs@gmail.com';
+            $zoom_gmail_password='Onlinedocs@123';
+            // return 'elsepart'.$zoom_gmail_id.$zoom_gmail_password;
+
+         }
+
+ 
         $validated = $request->validate([
             'full_name' => 'required',
+            'email'=> 'required',
+            'dob' => 'required',
             'age' => 'required',
             'gender' => 'required',
-            'phone' => 'required|required|digits:10',
-            'profile_image' => 'required',
+            'phone' => 'required|digits:10',
+            'profile_image' => 'mimes:png,jpeg,jpg',
             'address' => 'required',
             'state' => 'required',
             'city' => 'required',
@@ -86,6 +103,7 @@ class DoctorProfileController extends Controller
       
         $doctor_profile=[
         'name' => $request->full_name,
+        'email'=> $request->email,
         'age' => $request->age,
         'gender' => $request->gender,
         'mobile' => $request->phone,
@@ -99,51 +117,24 @@ class DoctorProfileController extends Controller
         'day_to_time' => $request->day_to_time,
         'night_from_time' => $request->night_from_time,
         'night_to_time' => $request->night_to_time,
+        'zoom_gmail_id'=>$zoom_gmail_id,
+        'zoom_gmail_password'=>Hash::make($zoom_gmail_password),
         'updated_at' => Carbon::now()
         ];         
 
-        // return gettype($request->working_days);
-        //  return dd($doctor_profile);
-        // [
-        //     'name' => $request->full_name,
-        //     'age' => $request->age,
-        //     'gender' => $request->gender,
-        //     'mobile' => $request->phone,
-        //     'address' => $request->address,
-        //     'highest_education' => $request->highest_education,
-        //     'experience' => $request->professional_experience,
-        //     'working_days' => $request->working_days,
-        //     'from_time' => $request->from_time,
-        //     'to_time' => $request->to_time,
-        //     'updated_at' => Carbon::now()
-        //  ];
-        //  return $doctor_profile;
-        // $status=DB::table('Doctors')->where('id', $id)->update([
-        //         'name' => $request->full_name,
-        //         'age' => $request->age,
-        //         'gender' => $request->gender,
-        //         'mobile' => $request->phone,
-        //         'address' => $request->address,
-        //         'highest_education' => $request->highest_education,
-        //         'experience' => $request->professional_experience,
-        //         'working_days' => $request->working_days,
-        //         'from_time' => $request->from_time,
-        //         'to_time' => $request->to_time,
-        //         'updated_at' => Carbon::now()
-        //  ]);
-        //  return $status;
-        if($request->file('profile_image')) {
-            $status = Doctor::find($id)->update($doctor_profile);
-                    DoctorWorkingHour::insert([
-                        [
-                        'doctor_id' => $id,
-                        'fromTime' => $request->day_from_time,
-                        'ToTime' => $request->day_to_time,
-                    ],[
-                        'doctor_id' => $id,
-                        'fromTime' => $request->night_from_time,
-                        'ToTime' => $request->night_to_time,
-                    ]]);
+        $status = Doctor::find($id)->update($doctor_profile);
+        DoctorWorkingHour::insert([
+            [
+            'doctor_id' => $id,
+            'fromTime' => $request->day_from_time,
+            'ToTime' => $request->day_to_time,
+        ],[
+            'doctor_id' => $id,
+            'fromTime' => $request->night_from_time,
+            'ToTime' => $request->night_to_time,
+        ]]);
+
+        if($request->hasFile('profile_image')) {
             $data = Doctor::find($id);
             $file = $request->file('profile_image');
             @unlink(public_path('upload/profile_image/' . $data->profile_image));
@@ -153,7 +144,12 @@ class DoctorProfileController extends Controller
             $data->save();
         }
         if($status){
-            return redirect('/doctor/profile')->with('message', 'Successfully updated');
+            $notification = array(
+                'message' => 'Profile Updated Successfully',
+                'alert-type' => 'success'
+            );
+            return redirect()->route('doctor.dashboard')->with($notification);
+            return redirect('/doctor/dashboard')->with('message', 'Successfully updated');
         }else{
             return redirect('/admin/reset-password')->with('message', 'Please check something went wrong !!');
         }
@@ -287,7 +283,7 @@ class DoctorProfileController extends Controller
         $state=State::All();
         return $state;
         $state=DB::table('states')->orderBy('state','asc')->get();
-       $html='<option value="">select state</option>';
+        $html='<option value="">select state</option>';
        
        foreach ($state as $list){
          $html.='<option value="'.$list->id.'">'.$list->state.'</option>';
@@ -306,7 +302,10 @@ class DoctorProfileController extends Controller
           echo $html;
      }
      
-
+     function zoom_meeting_setting(){
+     
+        return view('backend.doctor.pages.zoom_meeting_setting');
+     } 
     /**
      * Remove the specified resource from storage.
      *

@@ -137,6 +137,9 @@ right connector from last child*/
 .tree li a:hover+ul ul::before{
 	border-color:  #94a0b4;
 }
+.user-img{
+  max-height: 15.2rem !important;
+}
     </style>
 
 </head>

@@ -85,7 +85,7 @@
                             <hr>
                             <div class="row">
                                 <div class="col-lg-12 form-group">
-                                    <label for="Working Days">Working Days:</label> 
+                                    <label for="Working Days">Workinga Days:</label> 
                                     {{-- {{print_r(json_decode($profile_info->working_days))}} --}}
                                     @foreach (json_decode($profile_info->working_days) as $key=>$working_day)
                                          {{$working_day ==='1' ? $key : '' }}

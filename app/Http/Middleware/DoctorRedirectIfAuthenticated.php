@@ -23,6 +23,9 @@ class DoctorRedirectIfAuthenticated
 
 
         if (Auth::guard('doctor')->check()) {
+            if(is_null(Auth::guard('doctor')->user()->name)){
+                return redirect()->route('profile.index');
+            }
             return redirect()->route('doctor.dashboard');
         }
 

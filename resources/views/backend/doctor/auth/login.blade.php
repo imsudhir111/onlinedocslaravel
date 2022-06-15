@@ -1,87 +1,78 @@
 @extends('layouts.doctor-app')
 
 @section('content')
-    <div class="login-box">
-        <div class="login-logo">
-            <a href="#"><b>ONLINE</b>DOCS</a>
-        </div>
-        <!-- /.login-logo -->
-        <div class="card">
-            <div class="card-body login-card-body">
-                <p class="login-box-msg">Doctor {{ __('Login') }}</p>
-
-                <form method="POST" action="{{ route('doctor.auth') }}">
-                    @csrf
-                    <div class="input-group">
-                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}"
-                            placeholder="Email"   autocomplete="email" autofocus>
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
-                            </div>
-                        </div>
-                    </div>
-                    @error('email')
-                    <span class="text-danger" role="alert">
-                        {{ $message }}
-                    </span>
-                    @enderror
-                    <div class="input-group pt-3">
-                        <input id="password" type="password" class="form-control" name="password" placeholder="Password"
-                            autocomplete="current-password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
-                    </div>
-                    @error('password')
-                        <span class="text-danger" role="alert">
-                            {{ $message }}
-                        </span>
-                    @enderror
-                    @if ('message')
-                    <span class="text-danger" role="alert">
-                    {{ session('message') }}
-                    </span>
-                   @endif
-                    <div class="row pt-3">
-                       
-                        <!-- /.col -->
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-primary btn-block">{{ __('Login') }}</button>
-
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                </form>
-
-                {{-- <div class="social-auth-links text-center mb-3">
-          <p>- OR -</p>
-          <a href="#" class="btn btn-block btn-primary">
-            <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-          </a>
-          <a href="#" class="btn btn-block btn-danger">
-            <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-          </a>
-        </div> --}}
-                <!-- /.social-auth-links -->
-
-                <p class="mb-1">
-                    @if (Route::has('password.request'))
-                        <a href="{{ route('password.request') }}">
-                            {{ __('Forgot Your Password?') }}
-                        </a>
-                    @endif
-                    <a href="{{ url('doctor/signup') }}">
-                        Sign Up
-                    </a>
-                </p>
-                {{-- <p class="mb-0">
-          <a href="register.html" class="text-center">Register a new membership</a>
-        </p> --}}
-            </div>
-            <!-- /.login-card-body -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <hr>
         </div>
     </div>
+</div>
+<form method="POST" id="doctor_login_form" action="{{ route('doctor.auth') }}">
+    @csrf
+    <div class="container-fluid bg-golden doctorLogin">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container">
+                    <div class="row mt-3 ">
+                        <div class="col-lg-6 offset-lg-3 offset-md-2 col-md-8">
+                            <h3 class="heading text-black text-uppercase">Doctor Login</h3>
+                        </div>
+                    </div>
+                    <div class="row g-0 symptoms">
+                        <div class="col-md-1 offset-3">
+                            <div class="bg-deepblue appointment-columns">
+                                <div class="appointment-labels">
+                                    <i class="fa-solid fa-envelope-open"></i>
+                                </div>
+                                <div class="appointment-labels">
+                                    <i class="fa-solid fa-lock"></i>
+                                </div>
+                                  
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="bg-gray appointment-columns">                                    
+                                <div class="form-group mb-3">
+                                    <label for="">Email</label>
+                                    <input id="" class="form-control" type="text" name="email" placeholder="Email">
+                                    @error('email')
+                                    <span class="text-danger" role="alert">
+                                        {{ $message }}
+                                    </span>
+                                    @enderror   
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="">Password</label>
+                                    <input id="" class="form-control" type="password" name="password" placeholder="Password">
+                                    @error('password')
+                                    <span class="text-danger" role="alert">
+                                        {{ $message }}
+                                    </span>
+                                @enderror
+                                @if ('message')
+                                <span class="text-danger" role="alert">
+                                {{ session('message') }}
+                                </span>
+                               @endif
+                                </div>   
+                                <div class="form-group mb-3">
+                                    <div class="text-right forgot"><a href="{{route('doctor.forgot_password')}}">Forgot Password?</a></div>
+                                </div>                               
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="row mt-5 mb-5 g-0">
+                        <div class="col-md-4 offset-3 text-right mt-2"></div>
+                        <div class="col-md-2 text-right"><button type="submit" class="btn btn-deepBlue">Login</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+        </div>
+    </div>
+</form>
 @endsection

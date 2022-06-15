@@ -1,0 +1,582 @@
+     /* XX-Large devices (larger desktops, 1400px and up) */
+     
+     @media (max-width: 1400px) {
+         .mobileNavigation {
+             display: none;
+         }
+         .hipaIcons img {
+             top: 198.43%;
+         }
+         .appointment {
+             top: 97%;
+         }
+         .yellowDoctor {
+             width: 29%;
+             top: 42rem;
+         }
+         .servicesText {
+             background-color: var(--Grey);
+             padding: 26.8% 11% 21% 13%;
+         }
+         .trialReportPhotoSection {
+             top: 126.6rem;
+         }
+         .blueHorizontal {
+             height: 31rem;
+         }
+         .women-overlap {
+             left: 5%;
+             top: 197rem;
+         }
+         .habbit-text {
+             height: 19.7rem;
+         }
+         .newsSectionRight form button {
+             margin-left: 10%;
+         }
+         .footerPhoto {
+             height: 22rem;
+         }
+     }
+     
+     @media (max-width: 1397px) {
+         .servicesText {
+             background-color: var(--Grey);
+             padding: 21.8% 11% 21% 13%;
+         }
+         .trialReportPhotoSection {
+             top: 121.1rem;
+         }
+         .women-overlap {
+             left: 11%;
+             top: 192rem;
+         }
+         .blueHorizontal {
+             height: 32.5rem;
+         }
+         .habbit-text {
+             height: 17rem;
+         }
+         .newsSectionRight form button {
+             margin-left: 19%;
+         }
+     }
+     
+     @media (max-width: 1396px) {
+         .appointment {
+             top: 80%;
+         }
+         .hipaIcons img {
+             top: 161.43%;
+         }
+     }
+     
+     @media (max-width: 1394px) {
+         .hipaIcons img {
+             top: 200.43%;
+         }
+         .appointment {
+             top: 99%;
+         }
+     }
+     
+     @media (max-width: 1392px) {
+         .hipaIcons img {
+             top: 161.43%;
+         }
+         .appointment {
+             top: 80%;
+         }
+     }
+     
+     @media (max-width: 1391px) {
+         .hipaIcons img {
+             top: 181.43%;
+         }
+     }
+     
+     @media (max-width: 1388px) {
+         .hipaIcons img {
+             top: 161.43%;
+         }
+     }
+     
+     @media (max-width: 1387px) {
+         .hipaIcons img {
+             top: 197.43%;
+         }
+         .appointment {
+             top: 90%;
+         }
+     }
+     
+     @media (max-width: 1385px) {
+         .hipaIcons img {
+             top: 174.43%;
+         }
+     }
+     
+     @media (max-width: 1384px) {
+         .hipaIcons img {
+             top: 161.43%;
+         }
+         .appointment {
+             top: 80%;
+         }
+         .yellowDoctor {
+             width: 34%;
+             top: 40rem;
+         }
+     }
+     
+     @media (max-width: 1383px) {
+         .hipaIcons img {
+             top: 181.43%;
+         }
+         .appointment {
+             top: 85%;
+         }
+     }
+     
+     @media (max-width: 1376px) {
+         .hipaIcons img {
+             top: 160.43%;
+         }
+         .appointment {
+             top: 80%;
+         }
+     }
+     
+     @media (max-width: 1375px) {
+         .hipaIcons img {
+             top: 202.43%;
+         }
+         .appointment {
+             top: 90%;
+         }
+     }
+     
+     @media (max-width: 1372px) {
+         .hipaIcons img {
+             top: 160.43%;
+         }
+         .appointment {
+             top: 80%;
+         }
+     }
+     
+     @media (max-width: 1371px) {
+         .hipaIcons img {
+             top: 202.43%;
+         }
+         .appointment {
+             top: 90%;
+         }
+     }
+     
+     @media (max-width: 1370px) {
+         .hipaIcons img {
+             top: 190.43%;
+         }
+     }
+     
+     @media (max-width: 1368px) {
+         .hipaIcons img {
+             top: 154.43%;
+         }
+         .appointment {
+             top: 71%;
+         }
+     }
+     
+     @media (max-width: 1367px) {
+         .hipaIcons img {
+             top: 34rem;
+         }
+         .appointment {
+             top: 40%;
+         }
+     }
+     
+     @media (max-width: 1365px) {
+         .hipaIcons img {
+             top: 160.43%;
+         }
+         .appointment {
+             top: 80%;
+         }
+     }
+     
+     @media (max-width: 1363px) {
+         .hipaIcons img {
+             top: 199.43%;
+         }
+         .appointment {
+             top: 97%;
+         }
+     }
+     
+     @media (max-width: 1356px) {
+         .hipaIcons img {
+             top: 160.43%;
+         }
+         .appointment {
+             top: 80%;
+         }
+     }
+     
+     @media (max-width: 1354px) {
+         .hipaIcons img {
+             top: 199.43%;
+         }
+         .appointment {
+             top: 97%;
+         }
+     }
+     
+     @media (max-width: 1352px) {
+         .hipaIcons img {
+             top: 160.43%;
+         }
+         .appointment {
+             top: 80%;
+         }
+     }
+     
+     @media (max-width: 1351px) {
+         .hipaIcons img {
+             top: 199.43%;
+         }
+         .appointment {
+             top: 97%;
+         }
+     }
+     
+     @media (max-width: 1348px) {
+         .hipaIcons img {
+             top: 160.43%;
+         }
+         .appointment {
+             top: 80%;
+         }
+     }
+     
+     @media (max-width: 1347px) {
+         .hipaIcons img {
+             top: 199.43%;
+         }
+         .appointment {
+             top: 97%;
+         }
+     }
+     
+     @media (max-width: 1345px) {
+         .hipaIcons img {
+             top: 160.43%;
+         }
+         .appointment {
+             top: 80%;
+         }
+     }
+     
+     @media (max-width: 1343px) {
+         .hipaIcons img {
+             top: 199.43%;
+         }
+         .appointment {
+             top: 97%;
+         }
+     }
+     
+     @media (max-width: 1336px) {
+         .hipaIcons img {
+             top: 160.43%;
+         }
+         .appointment {
+             top: 80%;
+         }
+     }
+     
+     @media (max-width: 1334px) {
+         .hipaIcons img {
+             top: 199.43%;
+         }
+         .appointment {
+             top: 97%;
+         }
+     }
+     
+     @media (max-width: 1332px) {
+         .hipaIcons img {
+             top: 160.43%;
+         }
+         .appointment {
+             top: 80%;
+         }
+     }
+     
+     @media (max-width: 1331px) {
+         .hipaIcons img {
+             top: 199.43%;
+         }
+         .appointment {
+             top: 97%;
+         }
+     }
+     
+     @media (max-width: 1330px) {
+         .hipaIcons img {
+             top: 186.43%;
+         }
+     }
+     
+     @media (max-width: 1329px) {
+         .hipaIcons img {
+             top: 203.43%;
+         }
+     }
+     
+     @media (max-width: 1328px) {
+         .hipaIcons img {
+             top: 160.43%;
+         }
+         .appointment {
+             top: 80%;
+         }
+     }
+     
+     @media (max-width: 1327px) {
+         .hipaIcons img {
+             top: 199.43%;
+         }
+         .appointment {
+             top: 97%;
+         }
+     }
+     
+     @media (max-width: 1324px) {
+         .hipaIcons img {
+             top: 160.43%;
+         }
+         .appointment {
+             top: 80%;
+         }
+     }
+     
+     @media (max-width: 1323px) {
+         .hipaIcons img {
+             top: 199.43%;
+         }
+         .appointment {
+             top: 97%;
+         }
+     }
+     /* X-Large devices (large desktops, 1200px and up) */
+     
+     @media (max-width: 1224px) {
+         /*  Header Section starts here  */
+         .services {
+             width: 18% !important;
+         }
+         .navbar-nav li {
+             width: 10%;
+         }
+         .counsellor {
+             width: 14% !important;
+         }
+         .login a img {
+             width: 28%;
+         }
+         .logo img {
+             margin-left: 23%;
+         }
+         .appointment {
+             top: 70%;
+         }
+         .hipaIcons img {
+             top: 31rem;
+         }
+         .yellowDoctor {
+             top: 36rem;
+             width: 39%;
+         }
+         .trialReportPhotoSection {
+             top: 117.4rem;
+         }
+         .women-overlap {
+             top: 185rem;
+             left: 4%;
+             width: 34%;
+         }
+     }
+     
+     @media (max-width: 1199px) {
+         .yellowDoctor {
+             top: 34rem;
+             width: 39%;
+         }
+         .servicesText {
+             padding: 21.8% 11% 14.5% 13%;
+         }
+         .trialReportPhotoSection {
+             top: 112.765rem;
+         }
+         .happy-women {
+             margin-top: -7%;
+             height: 35rem;
+         }
+         .women-overlap {
+             top: 180rem;
+             left: 12%;
+             font-size: 2.8rem;
+         }
+         .blueHorizontal {
+             height: 33rem;
+         }
+         .habbit-text {
+             height: 14.3rem;
+         }
+         .floatViewBtn {
+             top: 15.5rem;
+         }
+         .newsSectionRight form input[type="text"] {
+             width: 20rem;
+         }
+         .newsSectionRight form button {
+             margin-left: 5%;
+         }
+         .footerPhoto {
+             height: 21rem;
+         }
+     }
+     
+     @media (max-width: 1186px) {
+         .counsellor {
+             width: 15% !important;
+         }
+         .yellowDoctor {
+             top: 34.5rem;
+             width: 38%;
+             left: 60%;
+         }
+         .servicesText {
+             padding: 22% 11% 14.5% 13%;
+         }
+         .trialReportPhotoSection {
+             top: 112.68rem;
+         }
+         .blueHorizontal {
+             height: 33.96rem;
+         }
+         .happy-women {
+             height: 35.4rem;
+             margin-top: -5%;
+         }
+         .women-overlap {
+             top: 183rem;
+             left: 11%;
+             width: 35%;
+             padding: 1%;
+             height: 50%;
+         }
+         .habbit-text {
+             height: 14.12rem;
+         }
+         .newsSectionLeft {
+             font-size: 1.3rem;
+         }
+         .newsSectionRight form input[type="text"] {
+             width: 20.1rem;
+         }
+         .newsSectionRight form button {
+             margin-left: 7%;
+         }
+         .follow_us img {
+             width: 67%;
+         }
+         .fbIcon {
+             width: 100% !important;
+         }
+     }
+     
+     @media (max-width: 1166px) {
+         .hipaIcons img {
+             top: 29rem;
+         }
+         .appointment {
+             top: 59%;
+         }
+     }
+     
+     @media (max-width: 1145px) {
+         .women-overlap {
+             top: 181rem;
+             left: 10%;
+         }
+     }
+     
+     @media (max-width: 1103px) {
+         .counsellor {
+             width: 16% !important;
+         }
+         .hipaIcons img {
+             top: 28rem;
+         }
+         .appointment {
+             height: 215px;
+             padding-top: 3%;
+         }
+         .yellowDoctor {
+             top: 32.5rem;
+             width: 41%;
+         }
+         .trialReportPhotoSection {
+             top: 111rem;
+         }
+         .women-overlap {
+             top: 179rem;
+             left: 9%;
+         }
+     }
+     
+     @media (max-width: 1103px) {
+         .counsellor {
+             width: 17% !important;
+         }
+         .hipaIcons img {
+             top: 27rem;
+         }
+         .yellowDoctor {
+             top: 31.5rem;
+             width: 43%;
+         }
+         .trialReportPhotoSection {
+             top: 110rem;
+         }
+         .women-overlap {
+             top: 178rem;
+             left: 8%;
+             font-size: 220%;
+             width: 31%;
+         }
+         .appointment {
+             height: 200px;
+             padding-top: 2%;
+             padding-left: 2%;
+             top: 60%;
+         }
+     }
+     /* Large devices (desktops, 992px and up) */
+     
+     @media (max-width: 1060px) {
+         .women-overlap {
+             left: 5%;
+         }
+     }
+     
+     @media (max-width: 1010px) {
+         .women-overlap {
+             left: 4%;
+             top: 175rem;
+         }
+     }

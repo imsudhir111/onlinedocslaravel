@@ -1,0 +1,139 @@
+.appointmentPage {
+    margin-bottom: 5%;
+}
+
+.appointment-columns {
+    height: 52rem;
+}
+
+.appointmentPage {
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+    box-shadow: 0px 32px 38px -22px black;
+}
+
+.appointment-columns,
+.appointment-columns {
+    padding: 3rem 2rem 2rem 2rem;
+}
+
+.appointment-icons {
+    border-radius: 50%;
+    text-align: center;
+    width: 2rem;
+    height: 2rem;
+}
+
+.appointment-icons img {
+    width: 80%;
+    padding: 7% 0% 0% 6%;
+}
+
+.icons-columns {
+    color: var(--lightGray);
+}
+
+.appoint_health h3 {
+    margin-top: 5%;
+    color: var(--gold);
+    line-height: 4rem;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.laptop {
+    margin-top: -35%;
+    margin-left: 10%;
+}
+
+.appointment-labels {
+    background-color: var(--gold);
+    width: 5rem;
+    position: relative;
+    padding: 25%;
+    margin-top: 82%;
+    text-align: center;
+}
+
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active,
+a.ui-button:active,
+.ui-button:active,
+.ui-button.ui-state-active:hover {
+    background: var(--gold) !important;
+    border: 1px solid var(--gold) !important;
+}
+
+.ui-state-active a,
+.ui-state-active a:link,
+.ui-state-active a:visited {
+    color: black !important;
+}
+
+.singleSlot {
+    border: 1px solid var(--deepBlue);
+    background-color: var(--deepBlue);
+    padding: 6%;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.appointment-labels:nth-child(2) {
+    margin-top: 2.65rem;
+}
+
+.appointment-labels:nth-child(3) {
+    margin-top: 2.5rem;
+}
+
+.appointment-labels:nth-child(4) {
+    margin-top: 2.55rem;
+}
+
+.appointment-labels:nth-child(5) {
+    margin-top: 2.5rem;
+}
+
+.appointment-labels:nth-child(6) {
+    margin-top: 2.6rem;
+}
+
+.appointment-labels:nth-child(7) {
+    margin-top: 5rem;
+}
+
+.doctorEdit .appointment-labels:nth-child(5) {
+    margin-top: 5rem !important;
+}
+
+.doctorEdit .appointment-labels:nth-child(7) {
+    margin-top: 3.2rem !important;
+}
+
+.doctorEdit .appointment-labels:nth-child(8) {
+    margin-top: 5rem !important;
+}
+
+.appointment-footer h4 {
+    line-height: 2.3rem;
+    text-transform: uppercase;
+}
+
+.appointment-footer i {
+    font-size: 4rem;
+    margin-top: 26%;
+}
+
+.appointment-footer p,
+.appointment-footer-left p,
+.appointment-footer-left ul li {
+    font-size: 0.8rem;
+}
+
+.appointment-footer-left {
+    border: 4px solid var(--DarkGrey);
+    margin-bottom: 2%;
+}
