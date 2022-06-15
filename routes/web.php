@@ -16,6 +16,9 @@ use App\Http\Controllers\Doctor\DoctorProfileController;
 use App\Http\Controllers\Doctor\AppointmentController;
 use App\Http\Controllers\Doctor\DoctorRemarkController;
 use App\Http\Controllers\Doctor\PasswordController as DoctorPasswordController;
+use App\Http\Controllers\Agent\AgentLoginController;
+use App\Http\Controllers\Agent\AgentDashboardController;
+use App\Http\Controllers\Agent\PatientInfoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -111,6 +114,23 @@ Route::group(['prefix' => 'doctor'], function() {
         Route::get('/change-password', [DoctorPasswordController::class, 'change_doctor_password'])->name('doctor.change_doctor_password');
         Route::post('/change-doctor-password-update', [DoctorPasswordController::class, 'change_doctor_password_update'])->name('doctor.change_doctor_password_update');
         
+    });
+});
+
+Route::group(['prefix' => 'agent'], function() {
+    Route::group(['middleware' => 'agent.guest'], function(){
+        Route::get('/login',[AgentLoginController::class, 'login'])->name('agent.login');
+        Route::post('/agentlogin',[AgentLoginController::class, 'authenticate'])->name('agent.auth'); 
+
+
+    });
+    Route::group(['middleware' => 'agent.auth'], function(){
+        Route::get('/dashboard',[AgentDashboardController::class, 'dashboard'])->name('agent.dashboard');
+        Route::post('/logout', [AgentLoginController::class, 'logout'])->name('agent.logout');
+        Route::resource('/patient', PatientInfoController::class);
+
+        // Route::get('/question',[QuestionController::class, 'question_filter'])->name('admin.question_filter');
+
     });
 });
 

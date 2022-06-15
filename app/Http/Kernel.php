@@ -67,6 +67,8 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'doctor.auth' => \App\Http\Middleware\DoctorAuthenticate::class,
         'doctor.guest' => \App\Http\Middleware\DoctorRedirectIfAuthenticated::class,
+        'agent.auth' => \App\Http\Middleware\AgentAuthenticate::class,
+        'agent.guest' => \App\Http\Middleware\AgentRedirectIfAuthenticated::class,
         'support.auth' => \App\Http\Middleware\SupportAuthenticate::class,
         'support.guest' => \App\Http\Middleware\SupportRedirectIfAuthenticated::class,
     ];

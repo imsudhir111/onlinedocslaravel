@@ -48,6 +48,10 @@ return [
             'driver' => 'session',
             'provider' => 'doctors',
         ],
+        'agent' => [
+            'driver' => 'session',
+            'provider' => 'agents',
+        ],
         'support' => [
             'driver' => 'session',
             'provider' => 'supports',
@@ -83,6 +87,10 @@ return [
         'doctors' => [
             'driver' => 'eloquent',
             'model' => App\Models\Doctor::class,
+        ],
+        'agents' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Agent::class,
         ],
         'supports' => [
             'driver' => 'eloquent',

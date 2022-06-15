@@ -9,7 +9,6 @@
 /resources/views/backend/admin/service/addemp.blade1.php
 /resources/views/backend/admin/service/addemp.blade2.php
 /resources/views/backend/admin/service/addemp.blade--.php
-/resources/views/backend/agent/
 .env
 .env.backup
 .phpunit.result.cache
