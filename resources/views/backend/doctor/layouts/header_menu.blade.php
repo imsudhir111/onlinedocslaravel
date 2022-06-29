@@ -55,7 +55,7 @@
                 <li class="nav-item">
                     <a class="nav-link text-right" aria-current="page" href="about.php">Know Us</a>
                 </li>
-                <li  class="nav-item dropdown">
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         My Account
                     </a>
@@ -64,10 +64,11 @@
                         <li><a class="dropdown-item" href="{{url('doctor/myappointment')}}">My Appointment</a></li>
                         <li><a class="dropdown-item" href="{{url('doctor/all-appointment')}}">All Appointment</a></li>
                         <li><a class="dropdown-item" href="{{url('doctor/zoom-meeting-setting')}}">Zoom Meeting Setting</a></li>
-                        <li><a class="dropdown-item" href="{{url('doctor/all-appointment')}}">Change Password</a></li>
+                        <li><a class="dropdown-item" href="{{url('doctor/change-password')}}">Change Password</a></li>
+                        <li><a class="dropdown-item" href="{{url('doctor/logout')}}">Logout</a></li>
                     </ul>
                 </li>
-                <a class="navbar-brand logo" href="index.php"><img src="{{ asset('/frontend/images/logo.png')}}" class="img-fluid" /></a>
+                <a class="navbar-brand logo" href="{{url('doctor/dashboard')}}"><img src="{{ asset('/frontend/images/logo.png')}}" class="img-fluid" /></a>
                 <li>
                     <a class="nav-link text-right"><span class="timeline">24x7</span></a>
                 </li>

@@ -69,6 +69,7 @@
           </div>
       </div>
   </div>
+  
 <script src="{{asset('frontend/js/myscript.js')}}"></script>
 
   <script type="text/javascript">

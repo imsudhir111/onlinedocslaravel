@@ -294,7 +294,7 @@ class DoctorProfileController extends Controller
     function getcity(Request $request){
         $state_id= $request->state_id;
         $city=City::where('state_id', $state_id)->get();
-        $html='<option value="">select state</option>';
+        $html='<option value="">select city</option>';
        
           foreach ($city as $list){
             $html.='<option value="'.$list->id.'">'.$list->name.'</option>';

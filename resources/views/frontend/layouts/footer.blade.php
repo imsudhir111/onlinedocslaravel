@@ -69,6 +69,13 @@
           </div>
       </div>
   </div>
+  <div class="call_icon_sticky sticky_icon_" style="
+    background: #333d51;">
+   <a href="tel:+080-6803-4357" class="white" style="color: #fff !important;">
+   <i class="fa fa-phone"></i>
+   <span class="d-none d-sm-inline">+080-6803-4357</span>
+   </a>
+</div>
 <script src="{{asset('frontend/js/myscript.js')}}"></script>
 
   <script type="text/javascript">

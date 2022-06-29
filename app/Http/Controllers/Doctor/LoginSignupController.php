@@ -36,7 +36,11 @@ class LoginSignupController extends Controller
             return redirect('/doctor/dashboard');
 
         } else {
-            return back()->withInput($request->only('email'))->with('message', 'Invalid Login details');
+            $notification = array(
+                'message' => 'Invalid Login details',
+                'alert-type' => 'warning'
+            );
+            return back()->withInput($request->only('email'))->with($notification);
         }
 
     }

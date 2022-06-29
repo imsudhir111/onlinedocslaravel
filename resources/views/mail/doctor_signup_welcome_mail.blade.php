@@ -25,8 +25,11 @@
             <div class="recipent">
                 <p>Dear <b> {{$name}}</b>,</p>
                 <p>
-                    We are immensely thankful to you for offering us the chance to take care of you and provide
-                    you with treatment. Your confidence in us is highly appreciated.
+                    Thank you for signing up with us on Online Docs. <br>
+                    We hope your onboarding on this platform will strengthen our resolution to provide world-class<br>
+                    mental health solutions in India. It will be a pleasure having a professional like you on our team.<br>
+                    Warm Regards,<br> 
+                    Online Docs Team
                 </p>
             </div>
         </div>

@@ -19,6 +19,7 @@ use App\Http\Controllers\Doctor\PasswordController as DoctorPasswordController;
 use App\Http\Controllers\Agent\AgentLoginController;
 use App\Http\Controllers\Agent\AgentDashboardController;
 use App\Http\Controllers\Agent\PatientInfoController;
+use App\Http\Controllers\Agent\BookAppointmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +49,7 @@ Route::get('/zoom-meeting', [LoginController::class, 'zoom_meeting'])->name('zoo
 
 Route::get('/home', [App\Http\Controllers\Customer\HomeController::class, 'index'])->name('home');
 Route::post('/user/logout', [LoginController::class, 'userLogout'])->name('user.logout');
+Route::get('/payment/thanyou',[PatientInfoController::class, 'payment_with_link_thankyou'])->name('user.payment_with_link_thankyou');
 
 Route::group(['prefix' => 'admin'], function() {
     Route::group(['middleware' => 'admin.guest'], function(){
@@ -128,6 +130,9 @@ Route::group(['prefix' => 'agent'], function() {
         Route::get('/dashboard',[AgentDashboardController::class, 'dashboard'])->name('agent.dashboard');
         Route::post('/logout', [AgentLoginController::class, 'logout'])->name('agent.logout');
         Route::resource('/patient', PatientInfoController::class);
+        Route::get('/book-appointment',[BookAppointmentController::class, 'book_appointment'])->name('agent.book_appointment');
+        Route::post('/check-available-slot',[BookAppointmentController::class, 'check_available_slot'])->name('agent.check_available_slot');
+        Route::post('/confirm-appointment-booking',[BookAppointmentController::class, 'confirm_appointment_booking'])->name('agent.confirm_appointment_booking');
 
         // Route::get('/question',[QuestionController::class, 'question_filter'])->name('admin.question_filter');
 

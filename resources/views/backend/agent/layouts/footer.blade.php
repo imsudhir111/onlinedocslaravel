@@ -73,10 +73,15 @@
 <script src={{ asset('/backend/jquery-validation/jquery.validate.js') }}></script>
 <script src={{ asset('/backend/jquery-validation/additional-methods.js') }}></script>
 <script src={{ asset('/backend/admin_asset/js/validations.js') }}></script> -->
+<script src="{{ asset('backend/admin_asset/js/custom_agent_function.js')}}"></script>
 <script src="{{ asset('backend/admin_asset/js/custom_admin.js')}}"></script>
+<script src="{{asset('/frontend/datetimepicker-master/build/jquery.datetimepicker.full.min.js')}}"></script>
+<link rel="stylesheet" href="{{asset('/frontend/datetimepicker-master/jquery.datetimepicker.css')}}"/>
 
   <script>
+   
   $(function () {
+   
     $("#question_list").DataTable({
       "paging": true,
       "lengthChange": true,
@@ -98,7 +103,15 @@
       "responsive": true,
       "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-
+    $('#datetimepicker3').datetimepicker({
+            minDate: 0,
+            hours24:true,
+            formatDate:'Y-m-d',
+            format:'Y-m-d H:00:00',
+            formatTime:'H:00:00',
+            allowTimes:['10:00:00','11:00:00','12:00:00','13:00:00','14:00:00','15:00:00','16:00:00','17:00:00']
+        });
+     
   });
 </script> 
 
@@ -123,5 +136,7 @@ switch(type){
     toastr.error(" {{ Session::get('message') }} ");
     break;
 }
-@endif
+@endif 
+        
+
 </script>
