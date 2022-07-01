@@ -23,30 +23,37 @@ function check_available_slot(patient_id){
         }
         if (result.status=="notfound") {
           var todays_slot =  '';
+          const today = new Date()
+          const tomorrow = new Date(today)
+          var i1=tomorrow.setDate(tomorrow.getDate() + 0)
+          var i2=tomorrow.setDate(tomorrow.getDate() + 1)
+          var i3=tomorrow.setDate(tomorrow.getDate() + 1)
+          var dateFormatter = Intl.DateTimeFormat('sv-SE');
+          // var i11=console.log(dateFormatter.format(i1)); 
           $.each(result.data.todays, function(slot, doctor_id) {
-          console.log("slot:",slot,"doctor_id:",doctor_id);
           var complete_slot1 = slot.split(':')[0];
           complete_slot1++;
+           
           if(doctor_id>0){
-          todays_slot +=  `<label class="tab"><input type="radio" name="tab-input" value= `+doctor_id+` class="tab-input"><div class="tab-box">`+slot+'-'+complete_slot1+`:00:00</div></label>`;
+          todays_slot +=  `<label class="tab"><input type="radio" name="tab-input" value= `+doctor_id+`|`+slot+`-`+complete_slot1+`:00:00|`+dateFormatter.format(i1)+` class="tab-input"><div class="tab-box">`+slot+'-'+complete_slot1+`:00:00</div></label>`;
           }
           });
           var tomorrows_slot =  '';
           $.each(result.data.tomorrow, function(slot, doctor_id) {
           console.log("slot:",slot,"doctor_id:",doctor_id);
           var complete_slot2 = slot.split(':')[0];
-          complete_slot2++;
+          complete_slot2++; 
+          
           if(doctor_id>0){
-          tomorrows_slot +=  `<label class="tab"><input type="radio" name="tab-input" value= `+doctor_id+` class="tab-input"><div class="tab-box">`+slot+'-'+complete_slot2+`:00:00</div></label>`;
+          tomorrows_slot +=  `<label class="tab"><input type="radio" name="tab-input" value= `+doctor_id+`|`+slot+`-`+complete_slot2+`:00:00|`+dateFormatter.format(i2)+` class="tab-input"><div class="tab-box">`+slot+'-'+complete_slot2+`:00:00</div></label>`;
           }
           });
           var next_to_tomorrow_slot =  '';
           $.each(result.data.next_to_tomorrow, function(slot, doctor_id) {
-          console.log("slot:",slot,"doctor_id:",doctor_id);
           var complete_slot3 = slot.split(':')[0];
           complete_slot3++;
           if(doctor_id>0){
-          next_to_tomorrow_slot +=  `<label class="tab"><input type="radio" name="tab-input" value= `+doctor_id+` class="tab-input"><div class="tab-box">`+slot+'-'+complete_slot3+`:00:00</div></label>`;
+          next_to_tomorrow_slot +=  `<label class="tab"><input type="radio" name="tab-input" value= `+doctor_id+`|`+slot+`-`+complete_slot3+`:00:00|`+dateFormatter.format(i3)+` class="tab-input"><div class="tab-box">`+slot+'-'+complete_slot3+`:00:00</div></label>`;
           }
           });
           $("#tabs-1-data").html(todays_slot);
@@ -64,7 +71,7 @@ function confirm_appointment_booking(patient_id){
   var datetime_value = $("#datetimepicker3").val();
   var doctor_id=null;
   var doctor_id =  $("#doctor_id").val();
-  var if_exact_date_time_not_match_doctorid =  $("[name='tab-input']:checked").val();
+  var if_exact_date_time_not_matched =  $("[name='tab-input']:checked").val();
 
   // if($("#doctor_id").val()!==null){
   //    doctor_id =  $("#doctor_id").val();
@@ -80,13 +87,16 @@ function confirm_appointment_booking(patient_id){
    type :'post',
    delay : 200,
    dataType: 'json',
-   data: {"datetime_value":datetime_value,"patient_id":patient_id,"doctor_id":doctor_id,"if_exact_date_time_not_match_doctorid":if_exact_date_time_not_match_doctorid},
+   data: {"datetime_value":datetime_value,"patient_id":patient_id,"doctor_id":doctor_id,"if_exact_date_time_not_matched":if_exact_date_time_not_matched},
    url: '/agent/confirm-appointment-booking',
       success:function(result){
         if(result.status=="success"){
+          toastr.success(result.data.message);
+          window.location.href=''; 
           $("#schedule_appointment_form")[0].reset();
-        }else{ 
-          console.log('failed');
+        }else{  
+          toastr.warning(result.data.message);
+          window.location.href=''; 
         }
      }
   })

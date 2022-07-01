@@ -87,7 +87,7 @@ $available_doctor_by_day_and_time=[]; // array of all available doctors id by da
             }
         }
     }
-// check if doctaor have allready appointment at given time and date
+// check if doctor have allready appointment at given time and date
     foreach ($available_doctor_by_day_and_time as $key=>$available_doctor_by_day_and_time_id) {
         // print_r($available_doctor_by_day_and_time_id);
     $check_appointment = Appointment::where(['doctor_id'=>$available_doctor_by_day_and_time_id,'appointment_date'=>$appointment_date,'appointment_time'=>$booking_time])->get();
@@ -149,6 +149,17 @@ if(count($available_doctor_by_day_and_time)>0){
         "tomorrow"=>$all_doctors_list_by_tomorrow_id,
         "next_to_tomorrow"=>$all_doctors_list_by_next_to_tomorrow_id,
     ];
+    // print_r($all_doctors_by_three_days['today']);
+    // foreach ($all_doctors_by_three_days['today'] as $key => $doctorid) {
+        # code...
+        // print_r($all_doctors_by_three_days['today'][$key]);
+        // print_r($doctorid);
+    //     $doctor_scheduled = Appointment::where(['doctor_id'=>$doctorid,'appointment_date'=>date("Y-m-d", strtotime("+2 day")),'appointment_time'=>$appointmenttime])->get();
+    // if (count($doctor_scheduled)>0) {
+    //     unset($all_doctors_by_three_days['today'][$key]);
+    // }
+    // }
+    // print_r($all_doctors_by_three_days['today']);
     $today=[];
     $today["10:00:00"]=0;  
     $today["11:00:00"]=0;  
@@ -181,6 +192,69 @@ if(count($available_doctor_by_day_and_time)>0){
     // print_r($todays);
     // print_r($tomorrow);
     // print_r($todays["10:00:00"]);
+ 
+print_r($todays);
+foreach ($todays as $appointmenttime => $doctorid) {
+    # code... 
+    $doctorid_array=explode('|',$doctorid);
+    if(count($doctorid_array)>1){
+        for ($i=0; $i < count($doctorid_array); $i++) { 
+            # code...
+             $doctor_scheduled = Appointment::where(['doctor_id'=>$doctorid_array[$i],'appointment_date'=>date("Y-m-d", strtotime("+0 day")),'appointment_time'=>$appointmenttime])->get();
+            if (count($doctor_scheduled)>0) {
+                 print_r($doctorid_array[$i]);
+                //  print_r($appointmenttime);
+                //  print_r($todays[$appointmenttime][$i]);
+                 //  unset($todays['next_to_tomorrow'][$key]);
+
+            }
+        }
+      
+    }
+   
+    // print_r(count($doctor_scheduled));
+}
+
+foreach ($tomorrow as $appointmenttime => $doctorid) {
+    # code... 
+    $doctorid_array=explode('|',$doctorid);
+    if(count($doctorid_array)>1){
+        for ($i=0; $i < count($doctorid_array); $i++) { 
+            # code...
+             $doctor_scheduled = Appointment::where(['doctor_id'=>$doctorid_array[$i],'appointment_date'=>date("Y-m-d", strtotime("+2 day")),'appointment_time'=>$appointmenttime])->get();
+            if (count($doctor_scheduled)>0) {
+                 print_r($doctorid_array[$i]);
+                //  print_r($appointmenttime);
+                //  print_r($tomorrow[$appointmenttime][$i]);
+                 //  unset($tomorrow['tomorrow'][$key]);
+
+            }
+        }
+      
+    }
+   
+    // print_r(count($doctor_scheduled));
+}
+foreach ($next_to_tomorrow as $appointmenttime => $doctorid) {
+    # code... 
+    $doctorid_array=explode('|',$doctorid);
+    if(count($doctorid_array)>1){
+        for ($i=0; $i < count($doctorid_array); $i++) { 
+            # code...
+             $doctor_scheduled = Appointment::where(['doctor_id'=>$doctorid_array[$i],'appointment_date'=>date("Y-m-d", strtotime("+2 day")),'appointment_time'=>$appointmenttime])->get();
+            if (count($doctor_scheduled)>0) {
+                 print_r($doctorid_array[$i]);
+                //  print_r($appointmenttime);
+                //  print_r($next_to_tomorrow[$appointmenttime][$i]);
+                 //  unset($next_to_tomorrow['next_to_tomorrow'][$key]);
+
+            }
+        }
+      
+    }
+   
+    // print_r(count($doctor_scheduled));
+}
 
     $today_ids_10=explode('|',$todays["10:00:00"]);
     $today_ids_11=explode('|',$todays["11:00:00"]);
@@ -232,7 +306,17 @@ if(count($available_doctor_by_day_and_time)>0){
     // print_r($todays);
     // print_r($tomorrow);
     // print_r($next_to_tomorrow);
- 
+    foreach ($today as $appointmenttime => $doctorid) {
+        # code...
+        $today_doctor_scheduled = Appointment::where(['doctor_id'=>$doctorid,'appointment_date'=>date("Y-m-d", strtotime("+0 day")),'appointment_time'=>$appointmenttime])->get();
+        if (count($today_doctor_scheduled)>0) {
+            unset($today[$appointmenttime]);
+        }
+     }
+
+  
+//  print_r($next_to_tomorrow);
+
     return response()->json(["status"=>"notfound", "request_status"=>"not_matched", "data"=>["todays"=>$todays, "tomorrow"=>$tomorrow, "next_to_tomorrow"=>$next_to_tomorrow]]);
 }
 
@@ -346,15 +430,41 @@ for ($i=0; $i < $evening_time_slot_count; $i++) {
         // return $request;
         $datetime_value=explode(' ',$request->datetime_value);
         // return $datetime_value;
-        $doctor_id = is_null($request->doctor_id) ? $request->if_exact_date_time_not_match_doctorid : $request->doctor_id;
+        if(is_null($request->doctor_id)){
+        $credentails = explode('|',$request->if_exact_date_time_not_matched); 
+        $appointment_time_=explode('-',$credentails[1]);
+        $doctor_id = $request->if_exact_date_time_not_matched;
         $appointment_data=[
-            'doctor_id'=>$request->if_exact_date_time_not_match_doctorid,
+            'doctor_id'=>$credentails[0],
+            'patient_id'=>$request->patient_id,
+            'appointment_date'=>$credentails[2],
+            'appointment_time'=>$appointment_time_[0],
+            'status'=>1,
+            'created_at' => Carbon::now()
+        ];
+
+
+        }else{
+        $doctor_id = $request->doctor_id;
+        $appointment_data=[
+            'doctor_id'=>$doctor_id,
             'patient_id'=>$request->patient_id,
             'appointment_date'=>$datetime_value[0],
             'appointment_time'=>$datetime_value[1],
             'status'=>1,
             'created_at' => Carbon::now()
         ];
+        }
+        
+         // $doctor_id = is_null($request->doctor_id) ? $request->if_exact_date_time_not_matched : $request->doctor_id;
+        // $appointment_data=[
+        //     'doctor_id'=>$doctor_id,
+        //     'patient_id'=>$request->patient_id,
+        //     'appointment_date'=>$datetime_value[0],
+        //     'appointment_time'=>$datetime_value[1],
+        //     'status'=>1,
+        //     'created_at' => Carbon::now()
+        // ];
         $payment_link_id = Patient::find($request->patient_id)
         ->select('last_razorpay_payment_link_id')
         ->get();
@@ -368,11 +478,14 @@ for ($i=0; $i < $evening_time_slot_count; $i++) {
                 $notification = array(
                     'message' => 'Appointment scheduled Successfully',
                     'alert-type' => 'success'
-                );
+                ); 
+               
+            // return redirect()->route('patient.show',$request->patient_id)->with($notification);
+
             return response()->json(["status"=>"success", "data"=>$notification]);
 
             // }
-            return response()->json(["status"=>"failed", "data"=>"failed"]);
+            // return response()->json(["status"=>"failed", "data"=>"failed"]);
 
     }
 

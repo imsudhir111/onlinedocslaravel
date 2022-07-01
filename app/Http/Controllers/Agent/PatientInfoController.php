@@ -85,7 +85,7 @@ class PatientInfoController extends Controller
             'mobile' => $request->phone,
             'address' => $request->address,
             'state' => $request->state,
-            'city' => $request->state,
+            'city' => $request->city,
             'pincode' => $request->pincode,
             'type' => 'tool-free'
         ];
@@ -103,7 +103,7 @@ class PatientInfoController extends Controller
          'phone'=>$patient_by_id->mobile,
          'email'=>$patient_by_id->email,
          'billing_address'=>$patient_by_id->address,
-         'amount'=>$amount,
+         'total_amount'=>$amount,
          'razorpay_payment_link_id'=>$result_response->id
         ];
         $inserted_patient_payments_id = Patient_payment::insertGetId($patient_payment_data);
@@ -132,7 +132,7 @@ class PatientInfoController extends Controller
             $Patient_payment_history = Patient_payment::where(['patient_id'=>$patient_by_id->id])->get();
             $patient_data_by_id['Patient_payment_history']=$Patient_payment_history;
             $patient_data_by_id['patient_by_id']=$patient_by_id;
-            // return $patient_data;
+            // return $patient_data_by_id;
             if(isset($patient_by_id)){
                 // return view('backend.agent.pages.patient_info.show', compact('patient_by_id'));
                 return view('backend.agent.pages.patient_info.show', $patient_data_by_id);

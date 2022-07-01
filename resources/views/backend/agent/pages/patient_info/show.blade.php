@@ -48,7 +48,7 @@
 
                                             </div>
                                             <div class="row">
-                                            <div class="col-4">
+                                            <div class="col-12">
                                             <div class="form-group">
                                                 <label for="caption">Mobile</label>
 
@@ -58,7 +58,7 @@
 
                                             </div>
                                             </div>
-                                             <div class="col-4">
+                                             {{-- <div class="col-4">
                                                 <div class="form-group">
                                                     <label for="caption">Age</label>
             
@@ -72,7 +72,7 @@
                                                     <label for="caption">Gender </label>
                                                    <input type="text" class="form-control" readonly value="{{$patient_by_id->gender ? $patient_by_id->gender : 'n/a'}}"">
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         </div>
             
                                         </div>
@@ -85,10 +85,21 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="caption">Address </label>
-                                            <textarea type="text"  rows="2" cols="50" class="form-control" readonly >{{$patient_by_id->address ? $patient_by_id->address : 'n/a'}} State: {{isset($patient_by_id['state'][0]->state) ? $patient_by_id['state'][0]->state  : 'n/a'}} City: {{isset($patient_by_id['city'][0]->name) ? $patient_by_id['city'][0]->name  : 'n/a'}}</textarea>
+                                            <textarea type="text"  rows="2" cols="50" class="form-control" readonly >{{$patient_by_id->address ? $patient_by_id->address : 'n/a'}}</textarea>
                                         </div>
                                     </div>
-                                     
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="caption">City </label>
+                                            <textarea type="text"  rows="2" cols="50" class="form-control" readonly >{{isset($patient_by_id->city) ? $patient_by_id->city  : 'n/a'}}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="caption">State </label>
+                                            <textarea type="text"  rows="2" cols="50" class="form-control" readonly >{{isset($patient_by_id->state) ? $patient_by_id->state  : 'n/a'}} </textarea>
+                                        </div>
+                                    </div>
 
                                 </div>
                             </div>
@@ -113,6 +124,7 @@
                         <thead>
                         <tr>
                             <th>Sr No.</th>
+                            <th>Appointment Id</th> 
                             <th>Email</th> 
                             <th>Mobile</th>
                             <th>Amount</th>
@@ -126,6 +138,7 @@
                             @foreach($Patient_payment_history as $Patient_paymenthistory)
                             <tr>
                                 <td>{{$sr_no++}}</td>
+                                <td><span class="badge badge-warning"> {{ is_null($Patient_paymenthistory->appointment_id) ? 'Not scheduled' : $Patient_paymenthistory->appointment_id}}</span></td>
                                 <td>{{$Patient_paymenthistory->email}}</td>
                                 <td>{{$Patient_paymenthistory->phone}}</td>
                                 <td>{{$Patient_paymenthistory->amount}}</td>
@@ -159,7 +172,7 @@
                                 <input type="text" id="datetimepicker3" onChange="check_available_slot({{$patient_by_id->id}})" class="form-control" name="datetime" value="">
                             <input type="hidden" name="doctor_id" id="doctor_id" value="">
                             </div>
-                            <div class="form-group" id="show_available_slots">
+                            <div class="form-group" id="show_available_slots" style="display: none;">
                                  <style>
                                      
 .tabs {
@@ -201,23 +214,25 @@
  
                                 <ul class="nav nav-tabs" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active" data-toggle="tab" href="#tabs-1-data" role="tab">First Panel</a>
+                                        <a class="nav-link active" data-toggle="tab" href="#tabs-1-data" role="tab">{{date("Y-m-d", strtotime("+0 day"))}}</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#tabs-2-data" role="tab">Second Panel</a>
+                                        <a class="nav-link" data-toggle="tab" href="#tabs-2-data" role="tab">{{date("Y-m-d", strtotime("+1 day"))}}</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#tabs-3-data" role="tab">Third Panel</a>
+                                        <a class="nav-link" data-toggle="tab" href="#tabs-3-data" role="tab">{{date("Y-m-d", strtotime("+2 day"))}}</a>
                                     </li>
                                 </ul><!-- Tab panes -->
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="tabs-1-data" role="tabpanel">
+                                        <p>No slots available</p>
+                                    
                                     </div>
                                     <div class="tab-pane" id="tabs-2-data" role="tabpanel">
-                                        <p>Second Panel</p>
+                                        <p>No slots available</p>
                                     </div>
                                     <div class="tab-pane" id="tabs-3-data" role="tabpanel">
-                                        <p>Third Panel</p>
+                                        <p>No slots available</p>
                                     </div>
                                 </div>
                             </div>
