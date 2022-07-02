@@ -26,11 +26,13 @@ class SettingController extends Controller
         $zoom_setting=[
             'zoom_api_key' => $request->zoom_api_key,
             'zoom_api_secret_key'=> $request->zoom_api_secret_key,
+            'status'=>1
         ];
+        // dd($zoom_setting);
         $status = Doctor::find($request->selected_doctor)->update($zoom_setting);
         if($status){
-            $notification = array(
-                'message' => 'Zoom Setting Added Successfully',
+            $notification = array   (
+                'message' => 'Zoom Setting Added Successfullyq',
                 'alert-type' => 'success'
             );
           return  redirect()->route('admin.dashboard')->with($notification);

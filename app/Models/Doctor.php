@@ -39,7 +39,8 @@ class Doctor extends Authenticatable
         'zoom_gmail_id',
         'zoom_gmail_password',
         'zoom_api_key',
-        'zoom_api_secret_key'
+        'zoom_api_secret_key',
+        'status',
     ];
 
     /**

@@ -42,8 +42,8 @@
                               <td>{{$appointment->appointment_date ? $appointment->appointment_date : 'n/a'}}</td>
                               <td>{{$appointment->appointment_time ? $appointment->appointment_time : 'n/a'}}</td>
                               <td>{{$appointment->service_name ? $appointment->service_name : 'n/a'}}</td>
-                              <td><a href="#" title="Details"><i class="fa fa-eye"></i></a></td>
-
+                              <td><a href="{{url('doctor/appointments/'.$appointment->patient_id.'/'.$appointment->appointment_date.'/patient-detail')}}" title="Details"><i class="fa fa-eye"></i></a></td>
+                      
                           </tr>
                             @endforeach
                         </table>

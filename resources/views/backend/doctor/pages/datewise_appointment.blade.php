@@ -41,8 +41,8 @@
                                 @foreach ($datewise_appointment as $appointment_details)
                                 <tr>
                                 <td>{{$appointment_details->patient->name}}</td>                                  
-                                <td>{{$appointment_details->appointment_date}}</td>    
-                                <td>{{$appointment_details->service_name}}</td>    
+                                <td>{{$appointment_details->appointment_date ? $appointment_details->appointment_time : 'n/a'}}</td>    
+                                <td>{{$appointment_details->service_name ? $appointment_details->service_name : 'n/a'}}</td>    
                                                             
                                 <td><a href="{{url('doctor/appointments/'.$appointment_details->patient_id.'/'.$appointment_details->appointment_date.'/patient-detail')}}" title="Details"><i class="fa fa-eye"></i></a></td>
                                 </tr>
