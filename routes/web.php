@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Customer\HomeController;
+use App\Http\Controllers\Customer\CounsellorController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ServiceController;
@@ -20,6 +21,7 @@ use App\Http\Controllers\Agent\AgentLoginController;
 use App\Http\Controllers\Agent\AgentDashboardController;
 use App\Http\Controllers\Agent\PatientInfoController;
 use App\Http\Controllers\Agent\BookAppointmentController;
+use App\Http\Controllers\Newsletter\NewsLetterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +50,9 @@ Auth::routes();
 Route::get('/zoom-meeting', [LoginController::class, 'zoom_meeting'])->name('zoom_meeting');
 
 Route::get('/home', [App\Http\Controllers\Customer\HomeController::class, 'index'])->name('home');
+Route::get('/counsellors', [CounsellorController::class, 'counsellors'])->name('frontend.home');
+Route::post('/join-us-news-letter', [NewsLetterController::class, 'news_letter'])->name('frontend.news_letter');
+
 Route::post('/user/logout', [LoginController::class, 'userLogout'])->name('user.logout');
 Route::get('/payment/thanyou',[PatientInfoController::class, 'payment_with_link_thankyou'])->name('user.payment_with_link_thankyou');
 

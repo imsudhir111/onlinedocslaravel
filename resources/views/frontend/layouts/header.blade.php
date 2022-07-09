@@ -34,6 +34,7 @@
     <script src="{{asset('/frontend/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('/frontend/js/jquery-ui.min.js')}}"></script>
     <script src="{{asset('/backend/admin_asset/js/custom_doctor_function.js')}}"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
     
 
 

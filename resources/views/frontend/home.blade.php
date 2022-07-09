@@ -325,9 +325,9 @@
             </div>
             <div class="col-md-3 col-sm-12">
                 <div class="newsSectionRight newsletter">
-                    <form action="" method="post">
-                        <input type="text" class="form-control" placeholder="Email">
-                        <button type="text" class="btn btn-deepBlue"><i class="fa-solid fa-newspaper"></i> Join Our Newsletter</button>
+                    <form  id="join_our_news_letter_form" method="post">
+                        <input type="text" class="form-control" id="join_news_letter" name="email" placeholder="Email">
+                        <button type="submit" class="btn btn-deepBlue"><i class="fa-solid fa-newspaper"></i> Join Our Newsletter</button>
                     </form>
                 </div>
             </div>

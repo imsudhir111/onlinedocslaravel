@@ -177,6 +177,16 @@ $(document).ready(function() {
                 required: true,
             }    
         }
+  
+    });
+    $("#join_our_news_letter_form").validate({
+        rules: {
+            "email": {
+                required: true,
+                email: true
+            }
+            
+        }
     });
     // $("#doctor_save_remark_form").validate({
     //     rules: {
