@@ -34,8 +34,8 @@
 <script src="{{ asset('/backend/plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>  
 <script src="{{ asset('/backend/plugins/jszip/jszip.min.js')}}"></script>
 <script src="{{ asset('/backend/plugins/pdfmake/pdfmake.min.js')}}"></script>
-<script src="{{ asset('/backend/plugins/pdfmake/vfs_fonts.js')}}"></script> -->
-<!-- <script src="{{ asset('/backend/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
+<script src="{{ asset('/backend/plugins/pdfmake/vfs_fonts.js')}}"></script>  
+ <script src="{{ asset('/backend/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
 <script src="{{ asset('/backend/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
 <script src="{{ asset('/backend/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
 
@@ -74,6 +74,8 @@
 <script src={{ asset('/backend/jquery-validation/additional-methods.js') }}></script>
 <script src={{ asset('/backend/admin_asset/js/validations.js') }}></script> -->
 <script src="{{ asset('backend/admin_asset/js/custom_admin.js')}}"></script>
+<script src="{{ asset('backend/admin_asset/js/custom_admin.js')}}"></script>
+<script src="{{ asset('backend/admin_asset/js/custom_blog_function.js')}}"></script>
 
   <script>
   $(function () {
@@ -99,9 +101,32 @@
       "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 
+    $("#news_letters").DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+      "buttons": [{
+                extend: 'excelHtml5',
+                title: 'News Letters Email List'
+            }]
+    }).buttons().container().appendTo('.col-md-6:eq(0)');
+
+    $("#blog_post_list").DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+      
+    }).buttons().container().appendTo('.col-md-6:eq(0)');
   });
 </script> 
-
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script>
 @if(Session::has('message'))
@@ -124,4 +149,12 @@ switch(type){
     break;
 }
 @endif
+</script>
+<script>
+ClassicEditor.create( document.querySelector( '#blog_description' ) , {
+        toolbar: ['Heading', 'save', 'bold', 'Table', 'italic', 'bulletedList', 'textColor', 'bGColor', 'numberedList', 'blockQuote' , 'link', 'preview' ]
+    } )
+    .catch( error => {
+        console.log( error );
+    } );
 </script>

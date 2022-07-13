@@ -68,10 +68,10 @@
                   <a class="nav-link text-right"><span class="timeline">24x7</span></a>
               </li>
               <li class="nav-item counsellor">
-                  <button type="button" class="btn btn-outline-warning">
+                <a href="{{url('/counsellors')}}"><button type="button" class="btn btn-outline-warning">
                       <img src="{{ asset('/frontend/images/Icons/headphones.png')}}" class="yellowFilteredColor" />
                       Our Counsellor
-                  </button>
+                  </button></a>
               </li>
               <li class="nav-item login">
                   <a class="nav-link" href="#"><img src="{{ asset('/frontend/images/Icons/enter.png')}}" class="img-fluid yellowFilteredColor')}}" /> Login

@@ -33,4 +33,9 @@ class NewsLetterController extends Controller
         }
 
     }
+    public function news_letter_emails(Request $request){
+        $news_letter_subscribers_email = News_letter::all();
+
+        return view('backend.admin.newsletter.index', compact('news_letter_subscribers_email'));
+    }
 }

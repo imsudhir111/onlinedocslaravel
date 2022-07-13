@@ -22,6 +22,7 @@ use App\Http\Controllers\Agent\AgentDashboardController;
 use App\Http\Controllers\Agent\PatientInfoController;
 use App\Http\Controllers\Agent\BookAppointmentController;
 use App\Http\Controllers\Newsletter\NewsLetterController;
+use App\Http\Controllers\Admin\Blog\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,6 +80,9 @@ Route::group(['prefix' => 'admin'], function() {
         Route::get('/add-zoom-setting',[SettingController::class, 'add_zoom_setting'])->name('admin.add_zoom_setting');
         Route::post('/update-zoom-setting',[SettingController::class, 'update_zoom_setting'])->name('admin.update_zoom_setting');
         Route::resource('/doctor-list', DoctorManagementController::class);
+        Route::get('/news-letter',[NewsLetterController::class, 'news_letter_emails']);
+        Route::resource('blog', BlogController::class);
+        Route::post('/post-active-deactive',[BlogController::class, 'post_active_deactive'])->name('post.status');
 
         // Route::get('/question',[QuestionController::class, 'question_filter'])->name('admin.question_filter');
 

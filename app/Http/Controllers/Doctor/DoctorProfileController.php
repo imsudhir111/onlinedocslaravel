@@ -247,7 +247,7 @@ class DoctorProfileController extends Controller
             $profile_img->move(public_path('upload/profile_image'), $filename);
             $data['photo'] = $filename;
             $data->save();
-        }
+        }   
         $working_hours = [
             [
             'fromTime' => $request->day_from_time,
