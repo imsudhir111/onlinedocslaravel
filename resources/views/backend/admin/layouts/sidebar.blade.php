@@ -135,6 +135,42 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
+              <i class="fas fa-sticky-note" aria-hidden="true"></i>&nbsp;
+              <p>
+                Media/Press Management
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('media-press.index') }}" class="nav-link">
+                  <i class="fas fa-list" aria-hidden="true"></i>&nbsp;
+                  <p>Media/Press List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('media-press.create') }}" class="nav-link">
+                  <i class="fas fa-plus" aria-hidden="true"></i>&nbsp;
+                  <p>Create New Media/Press</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('media-press-release.index') }}" class="nav-link">
+                  <i class="fas fa-list" aria-hidden="true"></i>&nbsp;
+                  <p>Media/Press Release List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('media-press-release.create') }}" class="nav-link">
+                  <i class="fas fa-plus" aria-hidden="true"></i>&nbsp;
+                  <p>Add New Media/Press Release</p>
+                </a>
+              </li>
+              
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
               <i class="fas fa-envelope"></i>&nbsp;
               <p>
                 News Letter

@@ -188,6 +188,20 @@ $(document).ready(function() {
             
         }
     });
+    $("#assign_media_release_form").validate({
+        rules: {
+            "media_press": {
+                required: true
+            },
+            "url": {
+                required: true
+            },
+            "media_press_release_id":{
+                required: true
+            }
+        }
+    });
+    
     // $("#doctor_save_remark_form").validate({
     //     rules: {
     //         "doctor_remark": {

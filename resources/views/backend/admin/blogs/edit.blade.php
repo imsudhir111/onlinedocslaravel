@@ -72,6 +72,19 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
+                                        <label for="photo">Small Image</label><br>
+                                        <img id="preview_small_photo" src="{{$blog_post->photo ? url('/upload/blog/photo/'.$blog_post->small_image):''}}"  style="margin:0 auto;" max-height="200" max-width="200"> 
+                                        <input type="file" class="form-control p-1" id="small_image" 
+                                        name="small_image"
+                                        onchange="document.getElementById('preview_small_photo').src = window.URL.createObjectURL(this.files[0])"
+                                        placeholder="image" onchange="readURL(this)">
+                                        @error('small_image')
+                                            <span class="text-danger" role="alert">
+                                                {{ $message }}
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
                                         <label for="photo">Publishid By</label>
                                        <select  class="form-control p-1" name="published_by" id="published_by">
                                        <option value="admin">Admin</option>

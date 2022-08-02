@@ -17,7 +17,8 @@ class BlogController extends Controller
     public function index()
     {
         //
-        $blog_post = Blog::all();
+        $blog_post = Blog::all();        
+
          return view('backend.admin.blogs.index',compact('blog_post'));
     }
 
@@ -48,6 +49,7 @@ class BlogController extends Controller
             'tagline' => 'required',
             'description' => 'required',
             'photo' => 'required|mimes:jpg,png,jpeg,webp|max:200',
+            'small_image' => 'required|mimes:jpg,png,jpeg,webp|max:200',
             'published_by'=>'required',
         ]);
         $data = trim($request->description);
@@ -68,6 +70,15 @@ class BlogController extends Controller
             $filename = date('YmdHi') . $file->getClientOriginalName();
             $file->move(public_path('upload/blog/photo/'), $filename);
             $data['photo'] = $filename;
+            $status=$data->save();
+        }
+        if($request->file('small_image')) {
+            $data = Blog::find($post_id);
+            $small_file = $request->file('small_image');
+            @unlink(public_path('upload/blog/images' . $data->small_image));
+            $filename = date('YmdHi') . $small_file->getClientOriginalName();
+            $small_file->move(public_path('upload/blog/photo/'), $filename);
+            $data['small_image'] = $filename;
             $status=$data->save();
         }
        if($status){
@@ -122,7 +133,6 @@ class BlogController extends Controller
         $description='<pre>'.$description.'</pre>';
        
         $post = Blog::find($id);
-   
         $post_data=[
             'caption'=> $request->caption,
             'tagline'=> $request->tagline,
@@ -153,10 +163,19 @@ class BlogController extends Controller
                     // return $image_status;
                     if($image_status){
                         $notification = array(
-                            'message' => 'Post Updated successfullyrtyrtyr',
+                            'message' => 'Post Updated successfully',
                             'alert-type' => 'success'
                         );
                     }
+                }
+                if($request->file('small_image')) {
+                    $data = Blog::find($id);
+                    $small_file = $request->file('small_image');
+                    @unlink(public_path('upload/blog/images' . $data->small_image));
+                    $filename = date('YmdHi') . $small_file->getClientOriginalName();
+                    $small_file->move(public_path('upload/blog/photo/'), $filename);
+                    $data['small_image'] = $filename;
+                    $status=$data->save();
                 }
                 }else{
                     $notification = array(
@@ -176,6 +195,15 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+     public function blog_publish($id){
+        Blog::where(['id'=>$id])->update(['published_at'=>Carbon::now()]);
+        $notification = array(
+            'message' => 'Post Published successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('blog.index')->with($notification);
+     }
     public function destroy($id)
     {
         //
@@ -189,7 +217,7 @@ class BlogController extends Controller
         }else{
             $notification = array(
                 'message' => 'Something went wrong please try later',
-                'alert-type' => 'Waening'
+                'alert-type' => 'Warning'
             );
         return redirect()->route('blog.index')->with($notification);
 
@@ -205,13 +233,13 @@ public function post_active_deactive(Request $request){
  $post_status=0;
  $notification = array(
     'message' => 'Post Deactivated successfuly',
-    'alert-type' => 'Waening'
+    'alert-type' => 'Warning'
 );
  }else{
  $post_status=1;
  $notification = array(
     'message' => 'Post Activated successfuly',
-    'alert-type' => 'Waening'
+    'alert-type' => 'Warning'
 );
 }
 $status = Blog::where(['id'=>$request->id])->update(['active_status'=>$post_status]);

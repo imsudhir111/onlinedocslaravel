@@ -58,3 +58,38 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 5px;
 }
+
+.pointer__event{
+  pointer-events: none !important;
+}
+
+/* for update list media assign */
+.ul__ {
+  margin: 0;
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.li__ {
+  position: relative;
+  padding: 10px;
+  margin-bottom: 2px;
+  background-color: #3f6791;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.delete__ {
+  position: absolute;
+  top: 6px;
+  right: 20px;
+  padding: 4px 10px;
+  background-color: #ffc107;
+  border: 0px;
+  cursor: pointer;
+}
+
+#create__ {
+  margin-top: 10px;
+  padding: 4px 60px;
+}

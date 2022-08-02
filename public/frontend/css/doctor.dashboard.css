@@ -54,9 +54,17 @@
     /* Black */
 }
 
+#tabs-1 a {
+    text-decoration: none;
+}
+
 .all-appoint {
-    margin-bottom: 20.4rem !important;
+    margin-bottom: 21.4rem !important;
     border-bottom: 1px solid #FFFFFF;
+}
+
+.all-appoint-patient {
+    margin-bottom: 19.35rem !important;
 }
 
 .doc-background {
@@ -76,6 +84,10 @@
     padding: 6%;
 }
 
+.patient-profile {
+    text-align: left;
+}
+
 .stethoscope {
     position: absolute;
     width: 14%;
@@ -90,4 +102,23 @@
 .doc-profile .qualification {
     margin-top: -8%;
     font-size: 0.8rem;
+}
+
+@media screen and (max-width: 1024px) {
+    .all-appoint-patient {
+        margin-bottom: 20.2rem !important;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .all-appoint-patient {
+        margin-bottom: 22.9rem !important;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .all-appoint {
+        margin-bottom: -0.65rem !important;
+        border-bottom: none !important;
+    }
 }

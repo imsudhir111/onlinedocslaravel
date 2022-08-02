@@ -23,6 +23,9 @@ use App\Http\Controllers\Agent\PatientInfoController;
 use App\Http\Controllers\Agent\BookAppointmentController;
 use App\Http\Controllers\Newsletter\NewsLetterController;
 use App\Http\Controllers\Admin\Blog\BlogController;
+use App\Http\Controllers\Customer\BlogViewController;
+use App\Http\Controllers\Admin\Media_Press\MediaPressController;
+use App\Http\Controllers\Admin\Media_Press\MediaPressReleaseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,10 +55,20 @@ Route::get('/zoom-meeting', [LoginController::class, 'zoom_meeting'])->name('zoo
 
 Route::get('/home', [App\Http\Controllers\Customer\HomeController::class, 'index'])->name('home');
 Route::get('/counsellors', [CounsellorController::class, 'counsellors'])->name('frontend.home');
+Route::get('/counselor-detail/{id}', [CounsellorController::class, 'counselor_detail'])->name('counselor.detail');
 Route::post('/join-us-news-letter', [NewsLetterController::class, 'news_letter'])->name('frontend.news_letter');
 
 Route::post('/user/logout', [LoginController::class, 'userLogout'])->name('user.logout');
-Route::get('/payment/thanyou',[PatientInfoController::class, 'payment_with_link_thankyou'])->name('user.payment_with_link_thankyou');
+Route::get('/payment/thankyou',[PatientInfoController::class, 'payment_with_link_thankyou'])->name('user.payment_with_link_thankyou');
+Route::get('/payment-confirmation/thankyou',[PatientInfoController::class, 'payment_with_link_from_agent_thankyou'])->name('user.payment_with_link_from_agent_thankyou');
+
+
+Route::get('/blogs', [BlogViewController::class, 'blog_list'])->name('blog.list');
+Route::get('/blogs/post/{id}',[BlogViewController::class, 'blog_detail'])->name('blog.detail');
+Route::get('/trial_report.php', [BlogViewController::class, 'trial_report']);
+
+
+
 
 Route::group(['prefix' => 'admin'], function() {
     Route::group(['middleware' => 'admin.guest'], function(){
@@ -83,6 +96,14 @@ Route::group(['prefix' => 'admin'], function() {
         Route::get('/news-letter',[NewsLetterController::class, 'news_letter_emails']);
         Route::resource('blog', BlogController::class);
         Route::post('/post-active-deactive',[BlogController::class, 'post_active_deactive'])->name('post.status');
+        Route::resource('media-press', MediaPressController::class);
+        Route::resource('media-press-release', MediaPressReleaseController::class);
+        Route::get('/blog/publish/{id}',[BlogController::class, 'blog_publish'])->name('blog.publish');
+        Route::post('/press-media-active-deactive',[MediaPressController::class, 'press_media_active_deactive'])->name('press_media.status');
+        Route::post('/press-media-release-active-deactive',[MediaPressReleaseController::class, 'press_media_release_active_deactive'])->name('press_media_release.status');
+        Route::post('/press-media-list-filterd-by-release-id',[MediaPressReleaseController::class, 'press_media_list_filterd_by_release_id']);
+        Route::post('/save-assigned-media-press',[MediaPressReleaseController::class, 'save_assigned_media_press']);
+        Route::post('/remove-assigned-media-press-byid',[MediaPressReleaseController::class, 'remove_assigned_media_press']);
 
         // Route::get('/question',[QuestionController::class, 'question_filter'])->name('admin.question_filter');
 

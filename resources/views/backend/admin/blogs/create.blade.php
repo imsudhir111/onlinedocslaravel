@@ -58,13 +58,26 @@
 
  
                                     <div class="form-group">
-                                        <label for="photo">Image</label><br>
+                                        <label for="photo">Large Image</label><br>
                                         <img id="preview_photo"  style="margin:0 auto;" max-height="200" max-width="200"> 
                                         <input type="file" class="form-control p-1" id="image" 
                                         name="photo"
                                         onchange="document.getElementById('preview_photo').src = window.URL.createObjectURL(this.files[0])"
                                         placeholder="image" onchange="readURL(this)">
                                         @error('photo')
+                                            <span class="text-danger" role="alert">
+                                                {{ $message }}
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="photo">Small Image</label><br>
+                                        <img id="preview_small_photo"  style="margin:0 auto;" max-height="200" max-width="200"> 
+                                        <input type="file" class="form-control p-1" id="small_image" 
+                                        name="small_image"
+                                        onchange="document.getElementById('preview_small_photo').src = window.URL.createObjectURL(this.files[0])"
+                                        placeholder="image" onchange="readURL(this)">
+                                        @error('small_image')
                                             <span class="text-danger" role="alert">
                                                 {{ $message }}
                                             </span>

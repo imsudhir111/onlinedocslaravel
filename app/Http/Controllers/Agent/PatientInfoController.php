@@ -64,7 +64,7 @@ class PatientInfoController extends Controller
             'notify'=> $notify,
             'reminder_enable'=>true ,
             'notes'=> $notes,
-            'callback_url' => 'http://onlinedocslaravel.test/payment/thanyou','callback_method'=>'get'));
+            'callback_url' => 'http://onlinedocslaravel.test/payment-confirmation/thankyou','callback_method'=>'get'));
             return $created_payment_link_response;
     }
     public function store(Request $request)
@@ -175,6 +175,33 @@ class PatientInfoController extends Controller
 
 
     public function payment_with_link_thankyou(Request $request){
+        $payment_status = new Api('rzp_test_Yah6usTY4v3qOJ', '498XQUKxCAteRA98adD89qRY');
+        $status=0;   
+    //    dd($payment_status->payment->fetch($request->razorpay_payment_id));
+        if(isset($request->razorpay_payment_link_id)){
+        $payment_link_id=Patient_payment::select('patient_id','razorpay_payment_link_id')
+        ->where(['razorpay_payment_link_id'=>$request->razorpay_payment_link_id])->get();
+    // return $payment_link_id[0]->razorpay_payment_link_id;
+        if(count($payment_link_id)==1){
+        if($request->razorpay_payment_link_id == $payment_link_id[0]->razorpay_payment_link_id){
+            if($payment_status->payment->fetch($request->razorpay_payment_id)->status == "captured"){  
+                $paymentstatus="success";
+            }else{
+                $paymentstatus="failed";
+            } 
+            $status = Patient_payment::where('razorpay_payment_link_id',$request->razorpay_payment_link_id)
+            ->update(['payment_status'=>$paymentstatus,'razorpay_orderid'=>$payment_status->payment->fetch($request->razorpay_payment_id)->order_id,'razorpay_paymentid'=>$request->razorpay_payment_id]);
+         }
+        } 
+        } 
+        if($status){
+            return view('backend.agent.pages.thankyou');
+        }else{
+        return view('backend.agent.pages.failed');
+        }
+    }
+
+    public function payment_with_link_from_agent_thankyou(Request $request){
         $payment_status = new Api('rzp_test_Yah6usTY4v3qOJ', '498XQUKxCAteRA98adD89qRY');
         $status=0;   
     //    dd($payment_status->payment->fetch($request->razorpay_payment_id));

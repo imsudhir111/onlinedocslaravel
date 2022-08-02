@@ -1,15 +1,15 @@
 function active_deactive_oncheck($this) {
   if($this.checked) {
     console.log($this.id);
-  active_deactive($this);
+    blog_post_active_deactive($this);
   } else {
-  active_deactive($this);
+    blog_post_active_deactive($this);
   }
   } 
 
 
  
-function active_deactive($this){
+function blog_post_active_deactive($this){
   //  console.log($this);
 $.ajax({
    headers: {

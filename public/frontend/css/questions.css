@@ -35,9 +35,6 @@
     }
     
     @media (max-width: 575px) {
-        .logo img {
-            width: 15%;
-        }
         .footerLogo img {
             width: 50%;
         }

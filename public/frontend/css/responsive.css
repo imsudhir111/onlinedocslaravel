@@ -1,12 +1,38 @@
          /* XX-Large devices (larger desktops, 1400px and up) */
          
          @media (min-width: 1920px) {
-             .trialReportPhotoSection {
-                 top: 144rem !important;
+             .topHeader .social-icons {
+                 width: 1.7rem !important;
+             }
+             .handsPhoto {
+                 max-width: 38rem;
+             }
+             .upper-footer {
+                 margin-top: -15% !important;
+             }
+             .golden-box-floating {
+                 top: 17% !important;
+             }
+             .modal-dialog {
+                 max-width: 700px;
+             }
+             .backShadowright {
+                 left: 94rem !important;
+                 top: 219px !important;
+             }
+             .backShadowleft {
+                 left: 14rem !important;
+             }
+             .appointmentConfirmPage .laptop {
+                 margin-top: -9% !important;
+             }
+             .trialContent {
+                 height: 374px !important;
              }
              .women-overlap {
                  left: 17% !important;
-                 top: 216rem !important;
+                 top: 219rem !important;
+                 height: 12rem !important;
              }
              .hipaIcons img {
                  top: 47rem !important;
@@ -17,16 +43,45 @@
              }
              .yellowDoctor {
                  top: 54rem !important;
+             }
+             .follow_us .social-icons {
+                 width: 35px;
+                 height: 35px;
+             }
+             .appointment-labels {
+                 top: -1.3rem;
+             }
+             .appointment-labels:nth-child(4) {
+                 margin-top: 1.55rem !important;
+             }
+             .appointment-labels:nth-child(6) {
+                 margin-top: 1.6rem !important;
+             }
+             .appointment-labels:nth-child(7) {
+                 margin-top: 3rem !important;
+             }
+             .appointment-labels:nth-child(10) {
+                 margin-top: 2rem !important;
+             }
+             .appoint_health h3 {
+                 margin-top: 23% !important;
+                 line-height: 6rem !important;
+                 font-size: 3.5rem !important;
              }
          }
          
          @media (min-width: 1867px)and (max-width:1919px) {
+             .handsPhoto {
+                 margin-left: -19%;
+                 margin-top: -10%;
+             }
              .trialReportPhotoSection {
                  top: 144rem !important;
              }
              .women-overlap {
                  left: 17% !important;
-                 top: 215rem !important;
+                 top: 219rem !important;
+                 height: 12rem !important;
              }
              .hipaIcons img {
                  top: 47rem !important;
@@ -37,13 +92,28 @@
              }
              .yellowDoctor {
                  top: 54rem !important;
+             }
+             .habbit-text {
+                 height: 19.7rem !important;
+             }
+             .follow_us .social-icons {
+                 width: 2.5rem !important;
+             }
+         }
+         
+         @media (min-width:1915px) {
+             .follow_us .social-icons {
+                 width: 2.2rem !important;
              }
          }
          
          @media (min-width: 1801px)and (max-width:1866px) {
              .hipaIcons img {
-                 top: 42rem !important;
+                 top: 46rem !important;
                  width: 13%;
+             }
+             .appointment {
+                 top: 25rem !important;
              }
              .yellowDoctor {
                  top: 52rem !important;
@@ -52,8 +122,19 @@
                  top: 141rem !important;
              }
              .women-overlap {
-                 left: 15% !important;
-                 top: 212rem !important;
+                 left: 16% !important;
+                 top: 217rem !important;
+                 height: 11rem !important;
+             }
+             .follow_us .social-icons {
+                 width: 2.1rem !important;
+             }
+             .handsPhoto {
+                 margin-left: -22%;
+                 margin-top: -10%;
+             }
+             .habbit-text {
+                 height: 19.7rem !important;
              }
          }
          
@@ -69,15 +150,117 @@
                  top: 52rem !important;
              }
              .trialReportPhotoSection {
-                 top: 139.681rem !important;
+                 top: 136.2rem !important;
              }
              .women-overlap {
                  left: 15% !important;
-                 top: 210rem !important;
+                 top: 215rem !important;
+                 height: 11rem !important;
+             }
+             .follow_us .social-icons {
+                 width: 32px;
+             }
+             .habbit-text {
+                 height: 19.71rem;
+             }
+             .handsPhoto {
+                 margin-left: -29%;
+                 margin-top: -10%;
              }
          }
          
-         @media (min-width: 1601px) {
+         @media (max-width: 1750px) {
+             .women-overlap {
+                 left: 14% !important;
+                 top: 214rem !important;
+             }
+             .habbit-text {
+                 height: 19.7rem !important;
+             }
+         }
+         
+         @media (max-width: 1660px) and (min-width: 1610px) {
+             .women-overlap {
+                 left: 12% !important;
+                 top: 210rem !important;
+                 padding: 1%;
+                 height: 11rem;
+                 width: 25rem;
+             }
+         }
+         
+         @media (max-width: 1615px) {
+             .women-overlap {
+                 left: 11% !important;
+                 top: 205rem !important;
+             }
+             .blueHorizontal {
+                 height: 30.9rem;
+             }
+             .floatViewBtn {
+                 top: 21rem;
+             }
+             .handsPhoto {
+                 margin-top: -10%;
+                 margin-left: -32%;
+             }
+             .footerPhoto {
+                 height: 22rem;
+             }
+             .follow_us .social-icons {
+                 width: 32px;
+             }
+             .newsSectionRight form button {
+                 margin-left: 20%;
+             }
+             .appointment {
+                 padding-left: 2%;
+                 padding-top: 3%;
+             }
+             .hipaIcons img {
+                 top: 60.43%;
+                 width: 11%;
+             }
+             .yellowDoctor {
+                 background-size: 83%;
+                 top: 46rem;
+             }
+             .servicesText {
+                 padding: 22% 11% 26% 13%;
+             }
+         }
+         
+         @media (min-width: 1610px) {
+             .women-overlap {
+                 left: 12% !important;
+                 top: 210rem !important;
+             }
+             .handsPhoto {
+                 margin-left: -27%;
+                 margin-top: -10%;
+             }
+             .follow_us .social-icons {
+                 width: 32px;
+             }
+             .stethoscope {
+                 top: 22% !important;
+                 left: 30% !important;
+             }
+             .doctorEdit .appointment-labels:nth-child(7) {
+                 top: -2rem !important;
+             }
+             .doctorEdit .appointment-labels:nth-child(8) {
+                 top: -3.5%;
+             }
+             .appointment-labels:nth-child(9) {
+                 top: -3rem !important;
+             }
+             .doctorEdit .appointment-labels:nth-child(11) {
+                 top: -2.5%;
+             }
+             .girlBackground img {
+                 margin-top: -25% !important;
+             }
              .mobileNavigation {
                  display: none;
              }
@@ -103,7 +286,7 @@
                  padding: 27% 11% 21% 13%;
              }
              .trialReportPhotoSection {
-                 top: 135.681rem
+                 top: 142.681rem
              }
              .phychaitrists {
                  height: 32.5rem;
@@ -111,15 +294,8 @@
              .happy-women {
                  margin-top: -21%;
              }
-             .women-overlap {
-                 width: 25rem;
-                 height: 14rem;
-                 left: 12%;
-                 top: 205rem;
-                 padding: 1%;
-             }
              .habbit-text {
-                 height: 19.8rem;
+                 height: 19.75rem;
              }
              .floatViewBtn {
                  top: 21rem;
@@ -133,6 +309,64 @@
          }
          
          @media (max-width: 1600px) {
+             .women-overlap {
+                 top: 209rem !important;
+             }
+             .blueHorizontal {
+                 height: 32.5rem;
+             }
+             .servicesText {
+                 padding: 22% 11% 21.5% 13%;
+             }
+             .newsSectionRight form button {
+                 margin-left: 29%;
+             }
+             .handsPhoto {
+                 max-width: 37.5rem;
+             }
+             .stethoscope {
+                 top: 33.5% !important;
+             }
+             .girlBackground img {
+                 margin-top: -25% !important;
+             }
+             .upper-footer {
+                 margin-top: -17% !important;
+             }
+             .golden-box-floating {
+                 top: 18% !important;
+                 left: 90% !important;
+             }
+             .modal-dialog {
+                 max-width: 700px;
+             }
+             .backShadowleft {
+                 left: 2rem !important;
+             }
+             .backShadowright {
+                 left: 81rem !important;
+                 top: 217px !important;
+             }
+             .appointmentConfirmPage .laptop {
+                 margin-top: -10% !important;
+             }
+             .appoint_health h3 {
+                 margin-top: 23% !important;
+                 line-height: 6rem !important;
+                 font-size: 3.5rem !important;
+             }
+             .appointment-labels:nth-child(7) {
+                 margin-top: 4rem !important;
+             }
+             .appointment-labels:nth-child(9) {
+                 margin-top: 1rem !important;
+             }
+             .appointment-labels {
+                 top: -6.5%
+             }
+             .trialContent {
+                 height: 290px !important;
+             }
              .mobileNavigation {
                  display: none;
              }
@@ -153,6 +387,9 @@
              }
              .servicesText h4 {
                  font-weight: bold;
+             }
+             .follow_us .social-icons {
+                 width: 38px;
              }
              .trialReportPhotoSection {
                  top: 132.7rem;
@@ -194,15 +431,44 @@
              }
          }
          
+         @media (max-width:1570px) {
+             .women-overlap {
+                 left: 10% !important;
+                 top: 207rem !important;
+             }
+         }
+         
          @media (max-width: 1545px) {
+             .women-overlap {
+                 left: 9% !important;
+             }
              .yellowDoctor {
                  top: 46rem;
              }
              .trialReportPhotoSection {
-                 top: 131rem;
+                 top: 130.8rem;
              }
              .hipaIcons img {
                  width: 11%;
+             }
+             .appointment-labels {
+                 top: -1.5%;
+                 margin-top: 59% !important;
+             }
+             .appointment-labels:nth-child(2) {
+                 margin-top: 2rem;
+             }
+             .appointment-labels:nth-child(3) {
+                 margin-top: 1.5rem !important;
+             }
+             .appointment-labels:nth-child(5) {
+                 margin-top: 1.5rem !important;
+             }
+             .appointment-labels:nth-child(7) {
+                 margin-top: 3rem !important;
+             }
+             .appointment-labels:nth-child(10) {
+                 margin-top: 2rem !important;
              }
          }
          
@@ -215,7 +481,17 @@
                  top: 21rem;
              }
              .hipaIcons img {
-                 top: 66%;
+                 top: 58%;
+             }
+         }
+         
+         @media (max-width: 1520px) {
+             .women-overlap {
+                 top: 205rem !important;
+                 left: 8% !important;
+             }
+             .hipaIcons img {
+                 width: 12%;
              }
          }
          
@@ -228,8 +504,10 @@
          
          @media (max-width: 1500px) {
              .women-overlap {
-                 top: 202rem;
-                 left: 6.5rem;
+                 top: 204rem !important;
+                 left: 7rem !important;
+                 padding: 1.2%;
+                 width: 27%;
              }
              .appointment {
                  top: 20rem;
@@ -254,9 +532,34 @@
              .hipaIcons img {
                  top: 37rem;
              }
+             .women-overlap {
+                 top: 205rem !important;
+                 left: 6rem !important;
+                 width: 24%;
+                 font-size: 2.5rem;
+                 height: 10rem;
+             }
+         }
+         
+         @media (max-width: 1431px) {
+             .women-overlap {
+                 width: 25%;
+                 left: 5rem !important;
+                 top: 204rem !important;
+             }
          }
          
          @media (max-width: 1452px) {
+             .backShadowleft {
+                 width: 23rem !important;
+                 left: 1rem !important;
+             }
+             .backShadowright {
+                 left: 77rem !important;
+             }
+             .trialContent {
+                 height: 278px !important;
+             }
              .hipaIcons img {
                  top: 36rem;
              }
@@ -267,11 +570,27 @@
                  top: 19rem;
              }
              .trialReportPhotoSection {
-                 top: 128.1rem;
+                 top: 128.5rem;
              }
          }
          
          @media (max-width: 1400px) {
+             .newsSectionRight form button {
+                 margin-left: 19% !important;
+             }
+             .blueHorizontal {
+                 height: 32.5rem !important;
+             }
+             .women-overlap {
+                 left: 4rem !important;
+                 top: 203rem !important;
+             }
+             .follow_us .social-icons {
+                 width: 34px;
+             }
+             .trialContent {
+                 height: 269px !important;
+             }
              .mobileNavigation {
                  display: none;
              }
@@ -280,7 +599,7 @@
                  padding: 22% 11% 21% 13%;
              }
              .trialReportPhotoSection {
-                 top: 126.6rem;
+                 top: 126.6rem !important;
              }
              .blueHorizontal {
                  height: 31rem;
@@ -307,6 +626,9 @@
          }
          
          @media (max-width: 1399px) {
+             .follow_us .social-icons {
+                 width: 32px !important;
+             }
              .servicesText {
                  padding: 17% 11% 21% 13%;
              }
@@ -323,22 +645,50 @@
                  top: 18rem;
              }
              .women-overlap {
-                 left: 11%;
-                 top: 192rem;
+                 left: 11% !important;
+                 top: 199rem !important;
              }
              .habbit-text {
                  font-size: 1.5rem;
                  line-height: 2rem;
-                 height: 17rem;
+                 height: 16.95rem !important;
              }
              .newsSectionRight form input[type="text"] {
                  width: 22.5rem;
+             }
+             .golden-box-floating {
+                 top: 25% !important;
+                 left: 87% !important;
+             }
+             .girlBackground img {
+                 margin-top: -11% !important;
+             }
+             .appointment-labels {
+                 margin-top: 93% !important;
+             }
+             .appointment-labels:nth-child(2) {
+                 margin-top: 2.7rem !important;
+             }
+             .appointment-labels:nth-child(3) {
+                 margin-top: 2.5rem !important;
+             }
+             .doctorEdit .appointment-labels {
+                 margin-top: 170% !important;
+             }
+             .doctorEdit .appointment-labels:nth-child(3) {
+                 margin-top: 3rem !important;
+             }
+             .doctorEdit .appointment-labels:nth-child(10) {
+                 margin-top: 3.2rem !important;
+             }
+             .stethoscope {
+                 top: 40% !important;
              }
          }
          
          @media (max-width: 1397px) {
              .trialReportPhotoSection {
-                 top: 121.1rem;
+                 top: 121.5rem;
              }
              .women-overlap {
                  left: 11%;
@@ -348,13 +698,27 @@
                  height: 32.5rem;
              }
              .habbit-text {
-                 height: 17rem;
-             }
-             .newsSectionRight form button {
-                 margin-left: 19%;
+                 height: 16.99rem !important;
              }
              .newsSectionRight form input[type="text"] {
                  width: 24rem;
+             }
+             .newsSectionRight form button {
+                 margin-left: 30% !important;
+             }
+         }
+         
+         @media(max-width: 1370px) {
+             .habbit-text {
+                 height: 16.95rem !important;
+             }
+         }
+         
+         @media(max-width: 1367px) {
+             .women-overlap {
+                 left: 10% !important;
+                 top: 198rem !important;
+                 width: 26%;
              }
          }
          
@@ -365,6 +729,12 @@
              .hipaIcons img {
                  top: 35rem;
                  width: 13%;
+             }
+             .trialContent {
+                 height: 260px !important;
+             }
+             .trialReportPhotoSection {
+                 top: 121rem;
              }
          }
          
@@ -383,12 +753,22 @@
              .trialReportPhotoSection {
                  top: 120.1rem;
              }
+             .trialContent {
+                 height: 256px !important;
+             }
          }
          
-         @media (max-width: 1334px) {
+         @media (max-width: 1335px) {
              .yellowDoctor {
                  top: 39rem;
                  height: 29rem;
+             }
+             .headerSocialIcons {
+                 margin-right: -3.5rem;
+             }
+             .women-overlap {
+                 left: 9% !important;
+                 top: 197rem !important;
              }
          }
          
@@ -401,15 +781,66 @@
              }
          }
          
+         @media (max-width: 1309px) {
+             .women-overlap {
+                 left: 8% !important;
+                 top: 196rem !important;
+                 width: 27%;
+             }
+         }
+         
          @media (max-width: 1300px) {
              .trialReportPhotoSection {
                  top: 119.1rem;
              }
              .women-overlap {
-                 width: 25rem;
                  left: 7.5%;
                  top: 189rem;
                  padding: 1%;
+             }
+             .handsPhoto {
+                 margin-left: -48%;
+             }
+         }
+         
+         @media (max-width: 1280px) {
+             .women-overlap {
+                 top: 194rem !important;
+             }
+         }
+         
+         @media (max-width: 1260px) {
+             .women-overlap {
+                 left: 7% !important;
+             }
+         }
+         
+         @media (max-width: 1240px) {
+             .habbit-text {
+                 height: 17rem !important;
+             }
+             .women-overlap {
+                 top: 193rem !important;
+                 left: 6% !important;
+             }
+             .headerSocialIcons {
+                 margin-right: -3rem;
+             }
+         }
+         
+         @media (max-width: 1230px) {
+             .habbit-text {
+                 height: 16.99rem !important;
+             }
+         }
+         
+         @media (max-width: 1215px) {
+             .habbit-text {
+                 height: 16.95rem !important;
+             }
+             .women-overlap {
+                 top: 192rem !important;
+                 left: 5% !important;
              }
          }
          
@@ -442,9 +873,6 @@
              .services {
                  width: 18% !important;
              }
-             .navbar-nav li {
-                 width: 10%;
-             }
              .counsellor {
                  width: 14% !important;
              }
@@ -461,6 +889,9 @@
          }
          
          @media (max-width: 1199px) {
+             .headerSocialIcons {
+                 margin-right: -4rem;
+             }
              .servicesText {
                  padding: 4.8% 11% 14.5% 13%;
              }
@@ -469,10 +900,8 @@
                  height: 35rem;
              }
              .women-overlap {
-                 font-size: 2.4rem;
-                 width: 21rem;
-                 left: 11.5%;
-                 top: 182rem;
+                 top: 187rem !important;
+                 left: 12% !important;
              }
              .yellowDoctor {
                  top: 35rem;
@@ -481,7 +910,7 @@
                  height: 33rem;
              }
              .habbit-text {
-                 height: 14.3rem;
+                 height: 14.25rem !important;
              }
              .floatViewBtn {
                  top: 15.5rem;
@@ -490,7 +919,7 @@
                  width: 20rem;
              }
              .newsSectionRight form button {
-                 margin-left: 5%;
+                 margin-left: 19% !important;
              }
              .footerPhoto {
                  height: 21rem;
@@ -498,9 +927,15 @@
              .trialReportPhotoSection {
                  top: 112.5rem;
              }
+             .newsletterSection {
+                 background-image: linear-gradient(90deg, var(--gold) 70%, var(--DarkGrey) 50%);
+             }
          }
          
          @media (max-width: 1186px) {
+             .newsletterSection {
+                 background-image: linear-gradient(90deg, var(--gold) 75%, var(--DarkGrey) 50%);
+             }
              .appointment {
                  top: 13rem;
              }
@@ -520,7 +955,7 @@
              }
              .happy-women {
                  height: 35.4rem;
-                 margin-top: -5%;
+                 margin-top: -10%;
              }
              .habbit-text {
                  height: 14.12rem;
@@ -539,7 +974,37 @@
              }
          }
          
+         @media (max-width: 1175px) {
+             .women-overlap {
+                 top: 186rem !important;
+                 left: 11% !important;
+             }
+         }
+         
+         @media (max-width: 1165px) {
+             .habbit-text {
+                 height: 14.2rem !important;
+             }
+         }
+         
+         @media (max-width: 1160px) {
+             .handsPhoto {
+                 margin-left: -58%;
+             }
+         }
+         
+         @media (max-width: 1145px) {
+             .women-overlap {
+                 top: 185rem !important;
+                 left: 10% !important;
+             }
+         }
+         
          @media (max-width: 1140px) {
+             .women-overlap {
+                 top: 185rem !important;
+                 left: 10% !important;
+             }
              .appointment {
                  height: 215px;
                  padding-top: 3%;
@@ -555,16 +1020,23 @@
              }
          }
          
+         @media (max-width: 1125px) {
+             .women-overlap {
+                 top: 185rem !important;
+                 left: 9% !important;
+                 height: 9rem;
+             }
+         }
+         
          @media (max-width: 1103px) {
+             .women-overlap {
+                 top: 184rem !important;
+             }
              .counsellor {
                  width: 16% !important;
              }
              .hipaIcons img {
                  top: 28rem;
-             }
-             .women-overlap {
-                 top: 179rem;
-                 left: 9%;
              }
              .trialReportPhotoSection {
                  top: 111rem;
@@ -572,16 +1044,40 @@
          }
          /* Large devices (desktops, 992px and up) */
          
-         @media (max-width: 1060px) {
+         @media (max-width: 1080px) {
              .women-overlap {
-                 left: 7%;
+                 top: 183rem !important;
+                 left: 8% !important;
+             }
+         }
+         
+         @media (max-width: 1060px) {
+             .headerSocialIcons {
+                 margin-right: -3rem;
+             }
+             .women-overlap {
+                 left: 7% !important;
+                 top: 180rem !important;
              }
              .yellowDoctor {
                  top: 32.5rem;
              }
+             .handsPhoto {
+                 max-width: 30.5rem;
+                 margin-left: -52%;
+                 margin-top: -2%;
+             }
          }
          
          @media (max-width: 1043px) {
+             .handsPhoto {
+                 margin-left: -51%;
+                 max-width: 29.5rem;
+                 margin-top: 1%;
+             }
+             .w-50 {
+                 width: auto !important;
+             }
              .women-overlap {
                  left: 5%;
              }
@@ -600,11 +1096,43 @@
              .trialReportPhotoSection {
                  top: 107rem;
              }
+             .appointment-labels {
+                 width: 4rem !important;
+                 top: 1.5rem;
+             }
+             .appointment-labels:nth-child(2) {
+                 margin-top: 3.65rem;
+             }
+             .appointment-labels:nth-child(3) {
+                 margin-top: 3.5rem;
+             }
+             .appointment-labels:nth-child(5) {
+                 margin-top: 3.5rem !important;
+             }
+             .appointment-labels:nth-child(9) {
+                 top: 3rem;
+             }
+             .appointment-labels:nth-child(10) {
+                 margin-top: 4.5rem !important;
+             }
+         }
+         
+         @media (max-width: 1030px) {
+             .women-overlap {
+                 left: 6% !important;
+                 top: 179rem !important;
+             }
+             .headerSocialIcons {
+                 margin-right: -2.5rem;
+             }
+             .servicesText {
+                 padding: 4.8% 11% 15.5% 13%;
+             }
          }
          
          @media (max-width: 1010px) {
              .women-overlap {
-                 left: 4%;
-                 top: 177rem;
+                 left: 5% !important;
+                 top: 178rem !important;
              }
          }

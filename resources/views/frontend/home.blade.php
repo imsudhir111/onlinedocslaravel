@@ -63,7 +63,28 @@
     </div>
     <div class="container servicesBottom">
         <div class="row">
-            <div class="col-md-6 col-6 ">
+            @php 
+            $random_four_service = \App\Models\Service::All()->random(4);
+            $random_four_service;
+            @endphp
+            @foreach ($random_four_service as $service)
+             <div class="col-md-6 col-6 ">
+                <div class="row mb-4 g-0">
+                    <div class="col-md-5 col-5">
+                        <div class="servicesPhoto">
+                            <img src="{{ url('/upload/service_icon/'.$service->service_icon)}}" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-7">
+                        <div class="servicesText">
+                            <h4>{{$service->service_name}}</h4>
+                            <p>{{substr(urldecode($service->caption), 0, 40)}}...</p>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            @endforeach
+            {{-- <div class="col-md-6 col-6 ">
                 <div class="row g-0">
                     <div class="col-md-5 col-5">
                         <div class="servicesPhoto">
@@ -125,7 +146,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="row mt-3">
             <div class="col-md-12"><button type="button" class="btn btn-deepBlue w-100">See All Therapy Services</button></div>
         </div>

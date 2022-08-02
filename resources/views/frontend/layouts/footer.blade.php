@@ -124,7 +124,7 @@
       $("#menu").css('height', Height + "px");
   </script>
 <script src="{{asset('frontend/js/script.js')}}"></script>
- <script src={{ asset('/frontend/jquery-validation/jquery.validate.js') }}></script>
+<script src={{ asset('/frontend/jquery-validation/jquery.validate.js') }}></script>
 <script src={{ asset('/frontend/jquery-validation/additional-methods.js') }}></script>
 <script src="{{ asset('/backend/admin_asset/js/backend_form_validation.js') }}"></script>
 <script src="{{ asset('/backend/admin_asset/js/custom_newsletter_function.js') }}"></script>

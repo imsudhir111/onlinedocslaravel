@@ -93,10 +93,11 @@ $available_doctor_by_day_and_time=[]; // array of all available doctors id by da
     $check_appointment = Appointment::where(['doctor_id'=>$available_doctor_by_day_and_time_id,'appointment_date'=>$appointment_date,'appointment_time'=>$booking_time])->get();
     // print_r(count($check_appointment));
     if(count($check_appointment)>0){
-    // print_r($check_appointment[0]->doctor_id);
+    print_r($available_doctor_by_day_and_time);
         if($check_appointment[0]->doctor_id == $available_doctor_by_day_and_time[$key]){
             unset($available_doctor_by_day_and_time[$key]);
         }
+        print_r($available_doctor_by_day_and_time);
 
     }
 }
@@ -104,6 +105,8 @@ if(count($available_doctor_by_day_and_time)>0){
     // print_r($available_doctor_by_day_and_time);
     // $random_doctor_id1 = $available_doctor_by_day_and_time[mt_rand(0,count($available_doctor_by_day_and_time))];
     $random_doctor_id_index =  array_rand($available_doctor_by_day_and_time,1);
+    // print_r($random_doctor_id_index);
+    // print_r($available_doctor_by_day_and_time[$random_doctor_id_index]);
     $appointment_credentials=["doctor_id"=>$available_doctor_by_day_and_time[$random_doctor_id_index], "patient_id"=>$patient_id, "appointment_date"=>$appointment_date, "booking_time"=>$booking_time];
     return response()->json(["status"=>"success", "request_status"=>"matched", "data"=>$appointment_credentials]);
     }
@@ -193,7 +196,7 @@ if(count($available_doctor_by_day_and_time)>0){
     // print_r($tomorrow);
     // print_r($todays["10:00:00"]);
  
-print_r($todays);
+// print_r($todays);
 foreach ($todays as $appointmenttime => $doctorid) {
     # code... 
     $doctorid_array=explode('|',$doctorid);
@@ -203,14 +206,27 @@ foreach ($todays as $appointmenttime => $doctorid) {
              $doctor_scheduled = Appointment::where(['doctor_id'=>$doctorid_array[$i],'appointment_date'=>date("Y-m-d", strtotime("+0 day")),'appointment_time'=>$appointmenttime])->get();
             if (count($doctor_scheduled)>0) {
                  print_r($doctorid_array[$i]);
-                //  print_r($appointmenttime);
-                //  print_r($todays[$appointmenttime][$i]);
-                 //  unset($todays['next_to_tomorrow'][$key]);
-
+                 unset($doctorid_array[$i]);
             }
         }
-      
+        if (count($doctorid_array)==0) {
+            $todays[$appointmenttime]=0;
+        }
+      if (count($doctorid_array)>0) {
+        $todays[$appointmenttime]=0;
+
+        foreach ($doctorid_array as $key => $did) {
+            // unset($todays[$appointmenttime]);
+        if($todays[$appointmenttime]==0){
+            $todays[$appointmenttime]=$did;
+        }else{
+            $todays[$appointmenttime]=$todays[$appointmenttime].'|'.$did;
+
+         }
+        }
+     }
     }
+  
    
     // print_r(count($doctor_scheduled));
 }
@@ -255,6 +271,7 @@ foreach ($next_to_tomorrow as $appointmenttime => $doctorid) {
    
     // print_r(count($doctor_scheduled));
 }
+// print_r($todays);
 
     $today_ids_10=explode('|',$todays["10:00:00"]);
     $today_ids_11=explode('|',$todays["11:00:00"]);
@@ -263,7 +280,10 @@ foreach ($next_to_tomorrow as $appointmenttime => $doctorid) {
     $today_ids_14=explode('|',$todays["14:00:00"]);
     $today_ids_15=explode('|',$todays["15:00:00"]);
     $today_ids_16=explode('|',$todays["16:00:00"]);
-    $todays['10:00:00']=$today_ids_10[array_rand(explode('|',$todays["10:00:00"]),1)];
+    // shuffle($today_ids_10);
+    // print_r($today_ids_10);
+    // $todays['10:00:00']=$today_ids_10[0];
+    $todays['10:00:00']=$today_ids_11[array_rand(explode('|',$todays["10:00:00"]),1)];
     $todays['11:00:00']=$today_ids_11[array_rand(explode('|',$todays["11:00:00"]),1)];
     $todays['12:00:00']=$today_ids_12[array_rand(explode('|',$todays["12:00:00"]),1)];
     $todays['13:00:00']=$today_ids_13[array_rand(explode('|',$todays["13:00:00"]),1)];

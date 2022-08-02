@@ -46,7 +46,7 @@
                                     <p class="qual">{{$list->highest_education}} </p>
                                     <p class="text-justify"> orem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. </p>
 
-                                    <a href="" class="btn btn-deepBlue float-end mb-4">View More</a>
+                                    <a href="{{url('counselor-detail/'.$list->id)}}" class="btn btn-deepBlue float-end mb-4">View More</a>
                                 </div>
                             </div>
                         </div>

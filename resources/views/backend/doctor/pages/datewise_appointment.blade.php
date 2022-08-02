@@ -18,7 +18,7 @@
             <div class="col-md-7 doc-background">
                 <div class="doc-content ">
                     <div class="row">
-                        <div class="col-md-6"><h4>My Appointments</h4></div>
+                        <div class="col-md-6"><h4>My Appointments </h4></div>
                         <div class="col-md-6"><p class="text-right">{{date("l")}}, {{date("d")}} {{date("M")}} {{date("Y")}}</p></div>
                     </div>
                     <div class="table-responsive bg-white p-3 mt-5 rounded-2 border">

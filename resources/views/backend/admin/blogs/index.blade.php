@@ -78,7 +78,10 @@
                                       <input type="checkbox"  id="{{$list->id}}" onchange="active_deactive_oncheck(this)" {{$list->active_status == 1 ? 'checked':''}}>
                                       <span class="slider round"></span>
                                     </label>
-
+                                    
+                                   <a class="btn btn-sm btn-{{is_null($list->published_at) ? 'warning' : 'success pointer__event'}} m-1"  href="{{url('admin/blog/publish')}}/{{ $list->id }}" data-toggle="tooltip" data-placement="top" title="Publish!">
+                                    {{is_null($list->published_at) ? 'Publish' : 'Published'}}
+                              </a>
                              <input type="hidden" name="_method" value="DELETE">
                               <input type="hidden" name="_token"
                                   value="{{ csrf_token() }}">

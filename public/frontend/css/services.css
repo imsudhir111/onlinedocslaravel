@@ -1,0 +1,17 @@
+.services-background {
+    background: linear-gradient(var(--gold), var(--gold) 80%, #000 20px, #000 40px);
+}
+
+.services-background img {
+    margin-left: -23%;
+    margin-top: -23%;
+}
+
+.golden-box-floating {
+    background-color: var(--gold);
+    height: 7rem;
+    width: 7rem;
+    position: absolute;
+    top: 25%;
+    left: 87%;
+}

@@ -69,13 +69,16 @@
 {{-- <script src="{{ asset('/backend/dist/js/demo.js')}}"></script> --}}
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('/backend/dist/js/pages/dashboard.js')}}"></script>
-<!-- 
+ 
 <script src={{ asset('/backend/jquery-validation/jquery.validate.js') }}></script>
 <script src={{ asset('/backend/jquery-validation/additional-methods.js') }}></script>
-<script src={{ asset('/backend/admin_asset/js/validations.js') }}></script> -->
+<script src={{ asset('/backend/admin_asset/js/validations.js') }}></script>  
+<script src="{{ asset('/backend/admin_asset/js/backend_form_validation.js') }}"></script>
+
 <script src="{{ asset('backend/admin_asset/js/custom_admin.js')}}"></script>
 <script src="{{ asset('backend/admin_asset/js/custom_admin.js')}}"></script>
 <script src="{{ asset('backend/admin_asset/js/custom_blog_function.js')}}"></script>
+<script src="{{ asset('backend/admin_asset/js/custom_press_media_function.js')}}"></script>
 
   <script>
   $(function () {
@@ -125,7 +128,19 @@
       "responsive": true,
       
     }).buttons().container().appendTo('.col-md-6:eq(0)');
+    $("#media_press_release_list").DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": true,
+      "responsive": true,
+      
+    }).buttons().container().appendTo('.col-md-6:eq(0)');
   });
+
+  
 </script> 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script>
@@ -152,6 +167,12 @@ switch(type){
 </script>
 <script>
 ClassicEditor.create( document.querySelector( '#blog_description' ) , {
+        toolbar: ['Heading', 'save', 'bold', 'Table', 'italic', 'bulletedList', 'textColor', 'bGColor', 'numberedList', 'blockQuote' , 'link', 'preview' ]
+    } )
+    .catch( error => {
+        console.log( error );
+    } );
+    ClassicEditor.create( document.querySelector( '#press_release_description' ) , {
         toolbar: ['Heading', 'save', 'bold', 'Table', 'italic', 'bulletedList', 'textColor', 'bGColor', 'numberedList', 'blockQuote' , 'link', 'preview' ]
     } )
     .catch( error => {
