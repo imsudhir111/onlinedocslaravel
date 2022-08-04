@@ -56,11 +56,14 @@ class BlogController extends Controller
         $data = stripslashes($data);
         $data='<pre>'.$data.'</pre>';
         // return $data;
+        $slug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $request->caption)));
+
         $post_id = Blog::insertGetId([
             'caption' => $request->caption,
             'tagline' => $request->tagline,
             'published_by' => $request->published_by,
             'description' => $data,
+            'slug'=>$slug,
             'created_at' => Carbon::now()
         ]);
         if($request->file('photo')) {
@@ -124,6 +127,13 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function RemoveSpecialChar($str)
+    {
+        $string = preg_replace('/[^A-Za-z0-9\-]/', ' ', $str); // Removes special chars.
+        $output = strtolower(preg_replace('!\s+!', '-', $string));
+        return $output;
+    }
+
     public function update(Request $request, $id)
     {
         //
@@ -133,10 +143,14 @@ class BlogController extends Controller
         $description='<pre>'.$description.'</pre>';
        
         $post = Blog::find($id);
+        $slug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $request->caption)));
+        // $slug = $this->RemoveSpecialChar($request->caption);
+
         $post_data=[
             'caption'=> $request->caption,
             'tagline'=> $request->tagline,
             'description'=> $description,
+            'slug'=> $slug,
             'published_by' => $request->published_by
         ];
         if(is_null($post)){

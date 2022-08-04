@@ -27,13 +27,27 @@ class BlogViewController extends Controller
         return view('frontend.blogs.index',compact('blog_lists'));
 
     }
-    public function blog_detail($id)
+    public function blog_detail($slug,$id)
     {
         //
-        $blog_detail = Blog::find($id);
-        
-        // return $blog_detail;
-        return view('frontend.blogs.blog_detail',compact('blog_detail'));
+        // $blog_detail = Blog::find($id);
+        // $blog_detail = Blog::select('caption','tagline','photo','description')->where(['slug'=>$slug])->get();
+
+        $blog_detail['blog_detail'] = Blog::select('caption','tagline','photo','description')->where('active_status', '=', '1')
+        ->where('published_at', '!=', 'Null')
+        ->where('id','=',$id)
+        ->get();
+         $blog_detail['blog_list'] = Blog::where('active_status', '=', '1')
+        ->where('published_at', '!=', 'Null')
+        ->whereNotIn('id', [$id])
+        ->get();
+
+        // return sizeof($blog_detail['blog_detail']);
+        if (sizeof($blog_detail['blog_detail'])==1) {
+            return view('frontend.blogs.blog_detail',$blog_detail);
+        }else{
+            return redirect('blogs');
+        }
 
     }
     public function trial_report(){

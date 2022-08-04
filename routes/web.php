@@ -26,6 +26,7 @@ use App\Http\Controllers\Admin\Blog\BlogController;
 use App\Http\Controllers\Customer\BlogViewController;
 use App\Http\Controllers\Admin\Media_Press\MediaPressController;
 use App\Http\Controllers\Admin\Media_Press\MediaPressReleaseController;
+use App\Http\Controllers\Customer\PressMediaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,6 +66,12 @@ Route::get('/payment-confirmation/thankyou',[PatientInfoController::class, 'paym
 
 Route::get('/blogs', [BlogViewController::class, 'blog_list'])->name('blog.list');
 Route::get('/blogs/post/{id}',[BlogViewController::class, 'blog_detail'])->name('blog.detail');
+Route::get('/blogs/{slug}/{id}',[BlogViewController::class, 'blog_detail'])->name('blog.detail');
+
+
+Route::get('/media-press-release', [PressMediaController::class, 'media_press_release'])->name('media_press_release.list');
+
+
 Route::get('/trial_report.php', [BlogViewController::class, 'trial_report']);
 
 
