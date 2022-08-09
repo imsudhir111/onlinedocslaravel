@@ -110,6 +110,9 @@ class MediaPressController extends Controller
     public function edit($id)
     {
         //
+        $media_press = Media_press::where(['id'=>$id])->get();
+        // return $media_press;
+        return view('backend.admin.media_press.edit',compact('media_press'));
     }
 
     /**

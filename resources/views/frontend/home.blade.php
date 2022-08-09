@@ -84,6 +84,7 @@
                 </div>
             </div> 
             @endforeach
+        </div>
             {{-- <div class="col-md-6 col-6 ">
                 <div class="row g-0">
                     <div class="col-md-5 col-5">

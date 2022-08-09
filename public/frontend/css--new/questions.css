@@ -1,0 +1,62 @@
+    .questions {
+        margin-bottom: 3%;
+    }
+    
+    .questions div .bg-deepblue div,
+    .questions div .bg-golden div {
+        color: white;
+        height: 5rem;
+    }
+    
+    .questions div .bg-deepblue div h4 {
+        width: 20%;
+        margin-left: auto;
+        margin-right: 20%;
+        text-align: center;
+        padding-top: 3%;
+    }
+    
+    .questions div .bg-golden div p {
+        margin-left: 6%;
+        padding-top: 2.5%;
+    }
+    
+    @media (max-width: 683px) {
+        .checkboxes {
+            font-size: 0.8rem;
+        }
+        .questions h4 {
+            font-size: 1.2rem;
+        }
+        .questions div .bg-deepblue div,
+        .questions div .bg-golden div {
+            height: 4rem;
+        }
+    }
+    
+    @media (max-width: 575px) {
+        .footerLogo img {
+            width: 50%;
+        }
+        .follow_us img,
+        .fbIcon {
+            width: 55% !important;
+        }
+    }
+    
+    @media (max-width: 400px) {
+        .checkboxes {
+            font-size: 0.7rem;
+        }
+        .questions div .bg-golden div p {
+            font-size: 0.8rem;
+        }
+        .questions div .bg-deepblue div h4 {
+            padding-top: 10%;
+            font-size: 0.8rem;
+        }
+        .questions div .bg-deepblue div,
+        .questions div .bg-golden div {
+            height: 3rem;
+        }
+    }

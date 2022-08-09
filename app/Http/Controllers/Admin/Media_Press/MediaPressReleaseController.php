@@ -245,7 +245,7 @@ class MediaPressReleaseController extends Controller
         $description = stripslashes($description);
         $description='<pre>'.$description.'</pre>';
        
-        $post = Media_press_release::find(11);
+        $post = Media_press_release::find($id);
         // return gettype($post);
         $post_data=[
             'caption'=> $request->caption,

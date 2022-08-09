@@ -12,71 +12,66 @@
                     <div class="col-12">
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">Add Blog Post</h3>
+                                <h3 class="card-title">Update Media/Press</h3>
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
 
-                            <form role="form" id="blog_Form_update" action="{{ route('blog.update',$blog_post->id) }}" method="POST"
+                            <form role="form" id="blog_Form_update" action="{{ route('media-press.update',$media_press[0]->id) }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 {{-- <input type="hidden" name="doctorid" id="doctorid"> --}}
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="caption">Caption</label>
-                                        <input type="text" name="caption" class="form-control" id="caption"
-                                            placeholder="Caption" value="{{$blog_post->caption}}">
-                                        @error('caption')
+                                        <label for="name">Name</label>
+                                        <input type="text" name="name" class="form-control" id="name"
+                                            placeholder="Media/Press Name" value="{{ $media_press[0]->name }}"">
+                                        @error('name')
+                                            <span class="text-danger" role="alert">
+                                                {{ $message }}
+                                            </span>
+                                        @enderror
+                                    </div>
+                                 
+                                    <div class="form-group">
+                                        <label for="photo">Small Icon</label><br>
+                                        <img id="preview_small_icon_photo"
+                                        class="profile-user-img img-fluid" 
+                                        src="{{ !empty($media_press[0]->small_icon) ? url('upload/press-media/small_icon/' . $media_press[0]->small_icon) : url('upload/service_icon/no_image.jpg') }}"
+                                         style="margin:0 auto;" max-height="200" max-width="200"> 
+                                        <input type="file" class="form-control p-1" id="small_icon" 
+                                        name="small_icon"
+                                        onchange="document.getElementById('preview_small_icon_photo').src = window.URL.createObjectURL(this.files[0])"
+                                        placeholder="Small Icon" onchange="readURL(this)">
+                                        @error('small_icon')
                                             <span class="text-danger" role="alert">
                                                 {{ $message }}
                                             </span>
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="tagline">Tagline</label>
-                                        <input type="text" name="tagline" class="form-control" id="tagline"
-                                            placeholder="Tagline" value="{{ $blog_post->tagline }}"">
-                                        @error('tagline')
+                                        <label for="photo">Big Icon</label><br>
+                                        <img id="preview_big_icon_photo" 
+                                        class="profile-user-img img-fluid "
+                                        src="{{ !empty($media_press[0]->big_icon) ? url('upload/press-media/big_icon/' . $media_press[0]->big_icon) : url('upload/service_icon/no_image.jpg') }}"
+                                        style="margin:0 auto;" max-height="200" max-width="200"> 
+                                        <input type="file" class="form-control p-1" id="big_icon" 
+                                        name="big_icon"
+                                        onchange="document.getElementById('preview_big_icon_photo').src = window.URL.createObjectURL(this.files[0])"
+                                        placeholder="Small Icon" onchange="readURL(this)">
+                                        @error('big_icon')
                                             <span class="text-danger" role="alert">
                                                 {{ $message }}
                                             </span>
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="description">Description</label>
-                                        <textarea type="text" class="form-control" id="blog_description" name="description"
-                                            placeholder="Description" value="{{ $blog_post->description }}">{{$blog_post->description}}
-                                        </textarea>
-
-                                        @error('description')
-                                            <span class="text-danger" role="alert">
-                                                {{ $message }}
-                                            </span>
-                                        @enderror
-
-                                    </div>
-
- 
-                                    <div class="form-group">
-                                        <label for="photo">Image</label><br>
-                                        <img id="preview_photo" src="{{$blog_post->photo ? url('/upload/blog/photo/'.$blog_post->photo):''}}" style="margin:0 auto;" max-height="200" max-width="200"> 
-                                        <input type="file" class="form-control p-1" id="image" 
-                                        name="photo"
-                                        onchange="document.getElementById('preview_photo').src = window.URL.createObjectURL(this.files[0])"
-                                        placeholder="image" onchange="readURL(this)">
-                                        @error('photo')
-                                            <span class="text-danger" role="alert">
-                                                {{ $message }}
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="photo">Publishid By</label>
-                                       <select  class="form-control p-1" name="published_by" id="published_by">
+                                        <label for="photo">Created By</label>
+                                       <select  class="form-control p-1" name="created_by" id="created_by">
                                        <option value="admin">Admin</option>
                                     </select>
-                                        @error('published_by')
+                                        @error('created_by')
                                             <span class="text-danger" role="alert">
                                                 {{ $message }}
                                             </span>

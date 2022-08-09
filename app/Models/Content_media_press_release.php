@@ -12,4 +12,8 @@ class Content_media_press_release extends Model
         // return $this->belongsTo('services');
             return $this->belongsTo(media_press::class,'media_press_id','id');
         }
+        public function media_press_release(){
+            // return $this->belongsTo('services');
+                return $this->belongsTo(media_press_release::class,'media_press_release_id','id');
+            }
 }

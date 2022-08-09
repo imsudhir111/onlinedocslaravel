@@ -1,0 +1,12 @@
+.trialContent {
+    display: table-cell;
+    height: 260px;
+    vertical-align: middle;
+    text-align: right;
+}
+
+.Trialcategories a {
+    text-decoration: none;
+    color: black;
+    text-align: right;
+}

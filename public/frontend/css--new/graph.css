@@ -1,0 +1,50 @@
+.score {
+    background-color: var(--gold);
+}
+
+.ribbon6 {
+    display: block;
+    width: calc(100% + 54px);
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    margin-left: -26px;
+    margin-right: -10px;
+    background: var(--deepBlue);
+    color: white;
+    position: relative;
+    top: 40px;
+}
+
+.ribbon6:before,
+.ribbon6:after {
+    content: "";
+    position: absolute;
+}
+
+.ribbon6:before {
+    height: 0;
+    width: 0;
+    bottom: -10px;
+    left: 0;
+    border-top: 10px solid #cd8d11;
+    border-left: 26px solid transparent;
+}
+
+.ribbon6:after {
+    height: 0;
+    width: 0;
+    right: 0;
+    bottom: -10px;
+    border-top: 10px solid #cd8d11;
+    border-right: 28px solid transparent;
+}
+
+.score-div {
+    padding: 3%;
+    margin: 7% 5% 5% 5%;
+}
+
+.score {
+    box-shadow: 0px 32px 38px -27px black;
+}

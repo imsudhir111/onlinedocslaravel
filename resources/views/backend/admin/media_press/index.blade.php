@@ -73,8 +73,8 @@
 
                                 {{-- <a href="{{ route('media-press.show', $list->id) }}"
                                     class="btn btn-primary btn-sm m-1" title="Edit Data"> View </a> --}}
-                              {{-- <a href="{{ route('media-press.edit', $list->id) }}"
-                                    class="btn btn-primary btn-sm m-1" title="Edit Data"> Update </a> --}}
+                              <a href="{{ route('media-press.edit', $list->id) }}"
+                                    class="btn btn-primary btn-sm m-1" title="Edit Data"> Update </a>
 
                                     <label class="switch">
                                       <input type="checkbox"  id="{{$list->id}}" onchange="press_media_deactive_oncheck(this)" {{$list->active_status == 1 ? 'checked':''}}>

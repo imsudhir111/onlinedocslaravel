@@ -1,0 +1,31 @@
+.symptoms,
+.symptoms .appointment-columns {
+    height: 20rem;
+}
+
+.symptoms .col-md-5 {
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+    box-shadow: 0px 32px 38px -22px black
+}
+
+.doctorLogin .symptoms,
+.doctorLogin .symptoms .appointment-columns {
+    height: 15rem;
+}
+
+.forgotPassword {
+    height: 24rem;
+}
+
+.forgotPassword .appointment-columns {
+    height: 12rem;
+}
+
+.shadowRow .col-md-5 {
+    box-shadow: 0px 32px 38px -22px black;
+}
+
+.patientLogin .appointment-columns {
+    height: 11rem;
+}

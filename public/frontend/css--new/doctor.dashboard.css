@@ -1,0 +1,134 @@
+.doctor-menu {
+    border-radius: 8px 0px 0px 8px;
+}
+
+.doctor-menu nav ul li a {
+    text-align: center;
+}
+
+.doctor-menu nav .navbar-nav li,
+.doctor-menu nav .navbar-nav {
+    width: 100%;
+}
+
+.doctor-menu nav .navbar-nav li.active {
+    background: linear-gradient(180deg, #FFFFFF 0%, #e0d8d8 72.67%);
+    border-radius: 8px 0px 0px 0px
+}
+
+.doctor-menu nav .navbar-nav li {
+    background: linear-gradient(180deg, #1AACDB -46%, rgba(26, 172, 219, 0) 54%);
+    border-radius: 0px;
+}
+
+.doctor-menu nav .navbar-nav li.active a {
+    color: #000000;
+}
+
+.doctor-menu nav .navbar-nav li:hover {
+    background: linear-gradient(180deg, #FFFFFF 0%, #e0d8d8 72.67%);
+}
+
+.doctor-menu nav .navbar-nav li:hover a {
+    color: black;
+}
+
+.doctor-menu nav .navbar-nav li a {
+    color: white;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.doctor-menu .navbar {
+    padding-left: 0%;
+    padding-top: 0%;
+}
+
+.doctor-menu .navbar-nav li {
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+
+.doctor-menu .navbar-nav li a {
+    text-transform: uppercase;
+    /* Black */
+}
+
+#tabs-1 a {
+    text-decoration: none;
+}
+
+.all-appoint {
+    margin-bottom: 21.4rem !important;
+    border-bottom: 1px solid #FFFFFF;
+}
+
+.all-appoint-patient {
+    margin-bottom: 19.35rem !important;
+}
+
+.doc-background {
+    background: #E9E9E9;
+    box-shadow: -20px 0 20px -20px gray inset;
+}
+
+.doc-content {
+    background: #E9E9E9;
+    padding: 5%;
+    box-shadow: -20px 0 20px -20px gray inset;
+}
+
+.doc-profile {
+    border-radius: 0px 8px 0px 0px;
+    text-align: center;
+    padding: 6%;
+}
+
+.patient-profile {
+    text-align: left;
+}
+
+.stethoscope {
+    position: absolute;
+    width: 27%;
+    top: 8% ;
+    left: 6% ;
+}
+
+.doc-profile img {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+.doc-profile .qualification {
+    margin-top: -8%;
+    font-size: 0.8rem;
+}
+
+@media screen and (max-width: 1024px) {
+    .all-appoint-patient {
+        margin-bottom: 20.2rem !important;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .all-appoint-patient {
+        margin-bottom: 26.9rem !important;
+    }
+}
+@media screen and (max-width: 767px) {
+    .all-appoint-patient {
+        margin-bottom: 0rem !important;
+        border-bottom: 0px ;
+    }
+    .doctor-menu .navbar{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .all-appoint {
+        margin-bottom: -0.65rem !important;
+        border-bottom: none !important;
+    }
+}

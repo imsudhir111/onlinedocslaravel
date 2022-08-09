@@ -143,15 +143,16 @@ class BlogController extends Controller
         $description='<pre>'.$description.'</pre>';
        
         $post = Blog::find($id);
-        $slug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $request->caption)));
-        // $slug = $this->RemoveSpecialChar($request->caption);
+        // $slug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $request->caption)));
+        $slug = $this->RemoveSpecialChar($request->caption);
 
         $post_data=[
             'caption'=> $request->caption,
             'tagline'=> $request->tagline,
             'description'=> $description,
             'slug'=> $slug,
-            'published_by' => $request->published_by
+            'published_by' => $request->published_by,
+            'updated_at' => Carbon::now()
         ];
         if(is_null($post)){
             $status=0;

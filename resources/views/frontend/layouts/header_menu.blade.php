@@ -2,10 +2,10 @@
     <div class="container">
         <div class="row ">
             <div class="col-md-7 col-1"></div>
-            <div class="col-md-5 col-11">
-                <div class="row float-md-end">
-                    <div class="col-md-2 col-2">
-                        <a href="https://www.instagram.com/online_docs/" target="_blank">
+            <div class="col-md-5 col-11 text-right">
+            <div class="row float-end headerSocialIcons">
+                    <div class="col-md-2 col-2 ">
+                        <a href="https://www.instagram.com/online_docs/" target="_blank" >
                             <div class="bg-golden rounded-circle text-deepblue social-icons text-center"><i class="fab fa-instagram p-1 "></i></div>
                         </a>
                     </div>
@@ -25,7 +25,7 @@
                         </a>
                     </div>
                     <div class="col-md-2 col-2">
-                        <a href="https://www.linkedin.com/showcase/82574113/admin/" target="_blank">
+                        <a href="https://www.linkedin.com/showcase/82574113/admin/" target="_blank" >
                             <div class="bg-golden rounded-circle text-deepblue social-icons text-center"><i class="fab fa-linkedin-in p-1 "></i></div>
                         </a>
                     </div>
