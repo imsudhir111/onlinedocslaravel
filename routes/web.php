@@ -68,7 +68,8 @@ Route::get('/payment-confirmation/thankyou',[PatientInfoController::class, 'paym
 
 Route::get('/blogs', [BlogViewController::class, 'blog_list'])->name('blog.list');
 Route::get('/blogs/post/{id}',[BlogViewController::class, 'blog_detail'])->name('blog.detail');
-Route::get('/blogs/{slug}/{id}',[BlogViewController::class, 'blog_detail'])->name('blog.detail');
+// Route::get('/blogs/{slug}/{id}',[BlogViewController::class, 'blog_detail'])->name('blog.detail');
+Route::get('/blogs/{slug}',[BlogViewController::class, 'blog_detail'])->name('blog.detail');
 Route::get('/faq', [FaqLiveViewController::class, 'index'])->name('faq.list');
 
 
@@ -106,6 +107,8 @@ Route::group(['prefix' => 'admin'], function() {
         Route::get('/news-letter',[NewsLetterController::class, 'news_letter_emails']);
         Route::resource('blog', BlogController::class);
         Route::post('/post-active-deactive',[BlogController::class, 'post_active_deactive'])->name('post.status');
+        Route::post('/counsellor-active-deactive',[DoctorManagementController::class, 'make_counsellor_active_deactive'])->name('doctor.status');
+        
         Route::resource('media-press', MediaPressController::class);
         Route::resource('media-press-release', MediaPressReleaseController::class);
         Route::get('/blog/publish/{id}',[BlogController::class, 'blog_publish'])->name('blog.publish');

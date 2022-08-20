@@ -76,7 +76,7 @@
 <script src="{{ asset('/backend/admin_asset/js/backend_form_validation.js') }}"></script>
 
 <script src="{{ asset('backend/admin_asset/js/custom_admin.js')}}"></script>
-<script src="{{ asset('backend/admin_asset/js/custom_admin.js')}}"></script>
+<script src="{{ asset('backend/admin_asset/js/custom_doctor_function.js')}}"></script>
 <script src="{{ asset('backend/admin_asset/js/custom_blog_function.js')}}"></script>
 <script src="{{ asset('backend/admin_asset/js/custom_press_media_function.js')}}"></script>
 

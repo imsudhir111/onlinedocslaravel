@@ -157,6 +157,12 @@ echo $emp_id;
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function RemoveSpecialChar($str)
+    {
+        $string = preg_replace('/[^A-Za-z0-9\-]/', ' ', $str); // Removes special chars.
+        $output = strtolower(preg_replace('!\s+!', '-', $string));
+        return $output;
+    }
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
@@ -165,6 +171,8 @@ echo $emp_id;
             'description' => 'required',
             'paragraph_1' => 'required',
         ]);
+        $slug = $this->RemoveSpecialChar($request->caption);
+
         Service::find($id)->update([
             'service_name' => $request->service_name,
             'caption' => $request->caption,
@@ -172,6 +180,7 @@ echo $emp_id;
             'paragraph2' => $request->paragraph_2,
             'list' => json_encode($request->list),
             'description' => $request->description,
+            'slug'=> $slug,
             'updated_at' => Carbon::now()
         ]);
         $data = Service::find($id);

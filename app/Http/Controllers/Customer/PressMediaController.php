@@ -18,7 +18,7 @@ class PressMediaController extends Controller
     $press_media_release = Media_press_release::select('id','caption','image','description')
     ->where('active_status', '=', '1')->latest()->take(4)->get();
  
-    // return $press_media_release[0]->id;
+    // return isset($press_media_release[1]->id) ? 'ui' :'io';
     $assigned_press_media=[];
     foreach ($press_media_release as $key => $release) {
     // print_r($release->id);
@@ -29,7 +29,7 @@ class PressMediaController extends Controller
     }
     $other_press_release = Content_media_press_release::select('media_press_release_id','url')
     ->with('media_press_release:id,caption,image,created_at')
-    ->whereNotIn('id', [$press_media_release[0]->id,$press_media_release[1]->id])
+    ->whereNotIn('id', [isset($press_media_release[0]->id) ? $press_media_release[0]->id : '', isset($press_media_release[1]->id) ? $press_media_release[1]->id : '' ])
     ->latest()->take(6)
     ->get();
     $blog_list = Blog::select('id','caption','small_image','slug')

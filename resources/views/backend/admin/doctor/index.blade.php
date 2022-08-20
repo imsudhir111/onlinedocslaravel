@@ -81,7 +81,7 @@
             <div class="col-12">
               <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title"><b>SERVICE LISTS</b> 
+                    <h3 class="card-title"><b>DOCTOR'S LISTS</b> 
                     <a href="{{ route('service.create') }}" class="btn-sm btn btn-primary" 
                     style="position: absolute;
                     right: 14px;
@@ -118,19 +118,23 @@
                                 action="{{ route('doctor-list.destroy', $doctor_list->id) }}"
                                 method="POST" onsubmit="return confirm('Are you sure?');">
                                 <a href="{{ route('doctor-list.show', $doctor_list->id) }}"
-                                    class="btn btn-info btn-xs m-1" title="Edit Data"> View </a>
-                                    <label class="switch">
+                                    class="btn btn-info btn-sm m-1" title="Edit Data"> View </a>
+                                    {{-- <label class="switch">
                                         <input type="checkbox" checked>
                                         <span class="slider"></span>
+                                      </label> --}}
+                                      <label class="switch">
+                                        <input type="checkbox"  id="{{$doctor_list->id}}" onchange="make_counsellor_oncheck(this)" {{$doctor_list->is_counsellor == 1 ? 'checked':''}}>
+                                        <span class="slider round"></span>
                                       </label>
                                 <a href="{{ route('doctor-list.edit', $doctor_list->id) }}"
-                                    class="btn btn-warning btn-xs m-1" title="Edit Data"> Edit
+                                    class="btn btn-warning btn-sm m-1" title="Edit Data"> Edit
                                 </a>
                                 <input type="hidden" name="_method" value="DELETE">
                                 <input type="hidden" name="_token"
                                     value="{{ csrf_token() }}">
                                 <input type="submit"
-                                    class="btn  btn-danger btn-xs float-right m-1"
+                                    class="btn  btn-danger btn-sm float-right m-1"
                                     value="Delete">
                             </form>
                         </td>

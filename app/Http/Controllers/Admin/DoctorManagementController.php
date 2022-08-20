@@ -93,4 +93,31 @@ class DoctorManagementController extends Controller
     {
         //
     }
+    public function make_counsellor_active_deactive(Request $request){
+    
+        $active_status = Doctor::select('is_counsellor')
+                         ->where(['id'=>$request->id])
+                         ->get();
+        $is_counsellor = $active_status[0]->is_counsellor;
+     if($is_counsellor==1){
+     $doctor_status=0;
+     $notification = array(
+        'message' => 'Counsellor Changed to Doctor successfuly',
+        'alert-type' => 'Warning'
+    );
+     }else{
+     $doctor_status=1;
+     $notification = array(
+        'message' => 'Doctor Changed to Counsellor successfuly',
+        'alert-type' => 'Warning'
+    );
+    }
+    $status = Doctor::where(['id'=>$request->id])->update(['is_counsellor'=>$doctor_status]);
+    if($status){
+    return response()->json(["status"=>"success", "data"=>$notification]);
+    }
+    return response()->json(["status"=>"error", "data"=>$notification]);
+    
+    
+    }
 }

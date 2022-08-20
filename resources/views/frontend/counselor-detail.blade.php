@@ -54,15 +54,22 @@
 
                                     @foreach (json_decode($doctor_info[0]->working_days) as $key => $doctor_availabity) 
                                     <tr>
-                                        <th>{{$key}}</th>
+                                        <th>{{$key}} 
+                                        </th>
                                         {{-- <td>{{$doctor_availabity ==1 ? '10:00 AM - 12:00 PM' :'--' }} </td> --}}
                                         @if ($doctor_availabity==1)
                                         @foreach ($doctor_working_hours as $time)
+                                        {{$time}}
+
                                         <td>{{$time->fromTime}} AM - {{$time->toTime}} AM</td>
                                         {{-- <td>03:00 PM - 05:00 PM</td> --}}
-                                    @endforeach
+                                        @endforeach
                                         @endif
-                                     
+                                        @if ($doctor_availabity==0)
+                                        <td>N/A</td>
+                                        <td>N/A</td>
+                                        {{-- <td>03:00 PM - 05:00 PM</td> --}}
+                                        @endif
                                     </tr>
                                          
                                     @endforeach

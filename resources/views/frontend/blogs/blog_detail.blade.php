@@ -69,7 +69,7 @@
                                     <p>{{$blog->caption}}</p>
                                     <div class="row archive-data">
                                         <div class="col-md-6"><span>&nbsp;</span></div>
-                                        <div class="col-md-6 text-right"><a href="{{url('blogs/'.$blog->slug.'/'.$blog->id)}}"><span class="right-arrow"><i class="fas fa-arrow-right-long "></i></span></a></div>
+                                        <div class="col-md-6 text-right"><a href="{{url('blogs/'.$blog->slug)}}"><span class="right-arrow"><i class="fas fa-arrow-right-long "></i></span></a></div>
                                     </div>
                                 </div>
                             </div>

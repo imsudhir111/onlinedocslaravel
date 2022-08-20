@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Customer;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Blog;
+use App\Models\Application_setting;
 
 class BlogViewController extends Controller
 {
@@ -22,32 +23,50 @@ class BlogViewController extends Controller
         //
         $blog_lists = Blog::where('active_status', '=', '1')
         ->where('published_at', '!=', 'Null')
-        ->get();
+        ->latest()->take(4)->get();
         // return $blog_lists;
         return view('frontend.blogs.index',compact('blog_lists'));
 
     }
-    public function blog_detail($slug,$id)
+    public function blog_detail($slug)
     {
-        //
-        // $blog_detail = Blog::find($id);
-        // $blog_detail = Blog::select('caption','tagline','photo','description')->where(['slug'=>$slug])->get();
-
-        $blog_detail['blog_detail'] = Blog::select('caption','tagline','photo','description')->where('active_status', '=', '1')
+          $blog_detail['blog_detail'] = Blog::select('id','caption','tagline','slug','photo','description')->where('active_status', '=', '1')
         ->where('published_at', '!=', 'Null')
-        ->where('id','=',$id)
+        ->where('slug','=',$slug)
         ->get();
-         $blog_detail['blog_list'] = Blog::where('active_status', '=', '1')
-        ->where('published_at', '!=', 'Null')
-        ->whereNotIn('id', [$id])
-        ->get();
+        // return isset($blog_detail['blog_detail']->id) ? 'y' : 'n';
+        if (isset($blog_detail['blog_detail'][0])) {
 
-        // return sizeof($blog_detail['blog_detail']);
-        if (sizeof($blog_detail['blog_detail'])==1) {
-            return view('frontend.blogs.blog_detail',$blog_detail);
+         $blog_detail['blog_list'] = Blog::select('id','caption','slug')->where('active_status', '=', '1')
+        ->where('published_at', '!=',    'Null')
+        ->whereNotIn('id', [$blog_detail['blog_detail'][0]->id])
+        ->get();
+        $blog_detail['social_link'] = Application_setting::select('social_media','url')->get();
+ 
+           
+                return view('frontend.blogs.blog_detail',$blog_detail);
         }else{
-            return redirect('blogs');
-        }
+                return redirect('blogs');
+            }
+
+ 
+
+        //
+        //  $blog_detail['blog_detail'] = Blog::where('active_status', '=', '1')
+        // ->where('published_at', '!=', 'Null')
+        // ->where('id','=',$id)
+        // ->get();
+        //  $blog_detail['blog_list'] = Blog::where('active_status', '=', '1')
+        // ->where('published_at', '!=', 'Null')
+        // ->whereNotIn('id', [$id])
+        // ->get();
+        //  $blog_detail['social_link'] = Application_setting::select('social_media','url','social_media_font_class')->get();
+        // if (sizeof($blog_detail['blog_detail'])==0) {
+        //     // code...
+        // return redirect('/blogs');
+        
+        // }
+        return view('frontend.blogs.blog_detail',$blog_detail);
 
     }
     public function trial_report(){

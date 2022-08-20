@@ -7,8 +7,7 @@
 
         </div>
     </div>
-</div>
-
+</div> 
 <div class="container-fluid pb-5 bg-golden">
     <div class="container ">
         <div class="row pt-5 ">
@@ -28,15 +27,15 @@
                                     <div class="col-md-3 offset-1 mb-4"><img src="{{url('upload/press-media-release/image/'.$press_media_release[0]->image)}}" class="img-fluid border-lightgray"></div>
                                     <div class="col-md-8">
                                         <p class="text-lightgray">22 June, 2022</p>
-                                        <p class="press-caption">{{$press_media_release[0]->caption}}</p>
+                                        <p class="press-caption">{{isset($press_media_release[0]->caption) ? $press_media_release[0]->caption : ''}}</p>
                                     </div>
                                 </div>
                                 <div class="row mt-4">
                                     <div class="owl-carousel owl-theme">
+                                    @if (isset($assigned_press_media[0]))
                                         @foreach ($assigned_press_media[0] as $key => $item)
-                                        {{-- {{$key}}
-                                        {{$item}} --}}
-                                        <div class="item">
+                                       
+                                        <div class="item"> 
                                             <a target="_blank" href="{{$item->url}}"> 
                                                  <div class="p-4 rounded border">
                                                      <img src="{{url('upload/press-media/small_icon/'.$item->media_press->small_icon)}}" class="img-fluid">
@@ -44,7 +43,7 @@
                                             </a>  
                                          </div>
                                         @endforeach
-                                       
+                                       @endif
                                       
                                      
                                         {{-- <div class="item">
@@ -70,17 +69,17 @@
                     <div class="col-md-12">
                             <div class="rounded bg-white border p-3">
                                 <div class="row border-bottom "> 
-                                    <div class="col-md-3 offset-1 mb-4"><img src="{{url('upload/press-media-release/image/'.$press_media_release[1]->image)}}" class="img-fluid border-lightgray"></div>
+                    <div class="col-md-3 offset-1 mb-4"><img src="{{url('upload/press-media-release/image/'.(isset($press_media_release[1]->image) ? $press_media_release[1]->image : ''))}}" class="img-fluid border-lightgray"></div>
                                     <div class="col-md-8">
                                         <p class="text-lightgray">22 June, 2022</p>
-                                        <p class="press-caption">{{$press_media_release[1]->caption}}</p>
+                                        <p class="press-caption">{{isset($press_media_release[1]->caption) ? $press_media_release[1]->caption : ''}}</p>
                                     </div>
                                 </div>
                                 <div class="row mt-4">
                                     <div class="owl-carousel owl-theme">
+                                        @if(isset($assigned_press_media[1]))
                                         @foreach ($assigned_press_media[1] as $key => $item)
-                                        {{-- {{$key}}
-                                        {{$item}} --}}
+                                         
                                         <div class="item">
                                             <a target="_blank" href="{{$item->url}}"> 
                                                  <div class="p-4 rounded border">
@@ -89,7 +88,7 @@
                                             </a>  
                                          </div>
                                         @endforeach
-                                      
+                                      @endif
                                         
                                        
                                     </div>
@@ -126,4 +125,22 @@
     </div>
 </div>
 </div>
+<script>
+    $('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:5
+        }
+    }
+})
+</script>
 @endsection

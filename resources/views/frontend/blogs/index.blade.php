@@ -48,7 +48,7 @@
                            {{$short_desc}}..
                              
                             </p>
-                            <a href="{{url('blogs/'.$blog_list->slug.'/'.$blog_list->id)}}" class="blog-link"><p>Continue reading</p></a>
+                            <a href="{{url('blogs/'.$blog_list->slug)}}" class="blog-link"><p>Continue reading</p></a>
                         </div>
                     </div>
                   
