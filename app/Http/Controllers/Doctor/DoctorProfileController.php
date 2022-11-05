@@ -172,7 +172,7 @@ class DoctorProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function update_profile ($id)
     {
         //
         $profile_info = Doctor::find($id);

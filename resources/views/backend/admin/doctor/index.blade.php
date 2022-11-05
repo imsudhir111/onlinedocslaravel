@@ -112,7 +112,13 @@
                         <td>{{$doctor_list->name ? $doctor_list->name:'n/a'}}</td>
                         <td>{{$doctor_list->email}}</td>
                         <td>{{$doctor_list->mobile ? $doctor_list->mobile:'n/a'}}</td>
-                        <td><img class="profile-user-img img-fluid img-circle" src="{{ !empty($doctor_list->photo) ? url('upload/profile_image/' . $doctor_list->photo) : url('upload/profile_image/no_image.jpg') }}" alt="profile"></td>
+                        <td>
+                          @if (!empty($doctor_list->photo))
+                          <img class="profile-user-img img-fluid " src="{{ url('upload/profile_image/' . $doctor_list->photo)}}" alt="profile">
+                          @else
+                          <img class="profile-user-img img-fluid " src="{{ url('upload/profile_image/no_image.png') }}" alt="profile">
+                          @endif
+                        </td>
                         <td>
                             <form class="form-inline"
                                 action="{{ route('doctor-list.destroy', $doctor_list->id) }}"
@@ -123,8 +129,8 @@
                                         <input type="checkbox" checked>
                                         <span class="slider"></span>
                                       </label> --}}
-                                      <label class="switch">
-                                        <input type="checkbox"  id="{{$doctor_list->id}}" onchange="make_counsellor_oncheck(this)" {{$doctor_list->is_counsellor == 1 ? 'checked':''}}>
+                                      <label class="switch" title="Activate As Counselor">
+                                        <input type="checkbox" id="{{$doctor_list->id}}" onchange="make_counsellor_oncheck(this)" {{$doctor_list->is_counsellor == 1 ? 'checked':''}}>
                                         <span class="slider round"></span>
                                       </label>
                                 <a href="{{ route('doctor-list.edit', $doctor_list->id) }}"

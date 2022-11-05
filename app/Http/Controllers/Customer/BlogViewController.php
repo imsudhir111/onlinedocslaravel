@@ -23,7 +23,7 @@ class BlogViewController extends Controller
         //
         $blog_lists = Blog::where('active_status', '=', '1')
         ->where('published_at', '!=', 'Null')
-        ->latest()->take(4)->get();
+        ->latest()->take(4)->paginate(2);
         // return $blog_lists;
         return view('frontend.blogs.index',compact('blog_lists'));
 

@@ -76,7 +76,10 @@
                     <a class="nav-link" href="{{url('blogs')}}">Blogs</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Press</a>
+                    <a class="nav-link" href="{{route('press_media_release.list')}}">Press</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('/contact')}}">Contact</a>
                 </li>
                 <li class="nav-item dropdown bg-deepblue  rounded-1">
                     <a class="nav-link dropdown-toggle text-white" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Signup / Login </a>

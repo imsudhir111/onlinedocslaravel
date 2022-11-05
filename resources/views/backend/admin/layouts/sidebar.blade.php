@@ -78,23 +78,6 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-cog"></i>
-              <p>
-                Zoom Settings
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ url('admin/add-zoom-setting') }}" class="nav-link">
-                  <i class="fas fa-plus" aria-hidden="true"></i>&nbsp;
-                  <p>Add Setting</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
               <i class="fas fa-user-md"></i>&nbsp;
               <p>
                 Doctor Management
@@ -106,6 +89,23 @@
                 <a href="{{ url('admin/doctor-list') }}" class="nav-link">
                   <i class="fas fa-list" aria-hidden="true"></i>&nbsp;
                   <p>Doctor's List</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-cog"></i>
+              <p>
+                Zoom Settings
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ url('admin/add-zoom-setting') }}" class="nav-link">
+                  <i class="fas fa-plus" aria-hidden="true"></i>&nbsp;
+                  <p>Add Setting</p>
                 </a>
               </li>
             </ul>

@@ -46,9 +46,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="caption">Paragraph 1</label>
-                                        <input type="text" class="form-control" id="caption" name="paragraph_1"
-                                            placeholder="Paragraph 1" >
-
+                                      <!--   <input type="text" class="form-control" id="caption" name="paragraph_1"
+                                            placeholder="Paragraph 1" > -->
+                                        <textarea type="text" class="form-control" id="first_para_section" name="paragraph_1"
+                                        placeholder="Paragraph 1" value="{{ old('paragraph_1') }}">
+                                        </textarea>
                                         @error('paragraph_1')
                                             <span class="text-danger" role="alert">
                                                 {{ $message }}
@@ -58,9 +60,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="caption">Paragraph 2</label>
-                                        <input type="text" class="form-control" id="paragraph_2" name="paragraph_2"
+                                       <!--  <input type="text" class="form-control" id="paragraph_2" name="paragraph_2"
                                             placeholder="paragraph 2" >
-
+ -->                                        <textarea type="text" class="form-control" id="second_para_section" name="paragraph_2"
+                                            placeholder="Paragraph 2" value="{{ old('paragraph_2') }}">
+                                        </textarea>
                                         @error('paragraph_2')
                                             <span class="text-danger" role="alert">
                                                 {{ $message }}

@@ -25,7 +25,7 @@
                                     <div class="form-group">
                                         <label for="caption">Caption</label>
                                         <input type="text" name="caption" class="form-control" id="caption"
-                                            placeholder="Caption" value="{{ old('caption') }}"">
+                                            placeholder="Caption" value="{{ old('caption') }}">
                                         @error('caption')
                                             <span class="text-danger" role="alert">
                                                 {{ $message }}
@@ -35,7 +35,7 @@
                                     <div class="form-group">
                                         <label for="tagline">Tagline</label>
                                         <input type="text" name="tagline" class="form-control" id="tagline"
-                                            placeholder="Tagline" value="{{ old('tagline') }}"">
+                                            placeholder="Tagline" value="{{ old('tagline') }}">
                                         @error('tagline')
                                             <span class="text-danger" role="alert">
                                                 {{ $message }}

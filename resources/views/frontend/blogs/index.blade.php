@@ -82,6 +82,8 @@
                         </div>
 
                     </div>
+                            {{$blog_lists->links()}}
+                    
                 </div>
             </div>
         </div>

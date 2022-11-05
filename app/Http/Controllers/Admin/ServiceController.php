@@ -96,13 +96,21 @@ echo $emp_id;
             'paragraph_1' => 'required',
             'service_icon' => 'required|mimes:jpg,png,jpeg,webp|max:200',
         ]);
+
+        $paragraph_1 = trim($request->paragraph_1);
+        $paragraph_1 = stripslashes($paragraph_1);
+        $paragraph_1='<pre>'.$paragraph_1.'</pre>';
+        $paragraph_2 = trim($request->paragraph_2);
+        $paragraph_2 = stripslashes($paragraph_2);
+        $paragraph_2='<pre>'.$paragraph_2.'</pre>';
+
 // return gettype(urlencode(json_encode($request->list)));
         $service_id = Service::insertGetId([
             'service_name' => $request->service_name,
             'caption' => $request->caption,
             'description' => $request->description,
-            'paragraph1' => $request->paragraph_1,
-            'paragraph2' => $request->paragraph_2,
+            'paragraph1' => $paragraph_1,
+            'paragraph2' => $paragraph_2,
             'list' => json_encode($request->list),
             'created_at' => Carbon::now()
         ]);

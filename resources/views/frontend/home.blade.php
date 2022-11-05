@@ -1,5 +1,5 @@
 @extends('frontend.layouts.app')
-
+@section('page_title','Online Psychiatry and Mental Health Services - Online Docs')
 @section('content')
     <div class="container-fluid no-pl no-pr">
         <div class="row">
@@ -355,6 +355,8 @@
             </div>
         </div>
     </div>
+    <h1 style="text-align: center">Show Instagram Feed on your Website</h1>
+    <div id="instafeed-container"></div>
     <div class="container pressCoverage">
         <div class="row">
             <div class="col-md-12">
@@ -365,6 +367,7 @@
             </div>
         </div>
     </div>
+    
     <div class="container testimonials">
         <div class="row">
             <div class="col-md-4">
@@ -461,6 +464,16 @@
             });
         });
     </script>
+    	<script src="https://cdn.jsdelivr.net/gh/stevenschobert/instafeed.js@2.0.0rc1/src/instafeed.min.js"></script>
+	<script type="text/javascript">
+	var userFeed = new Instafeed({
+		get: 'user',
+		target: "instafeed-container",
+    	resolution: 'low_resolution',
+		accessToken: 'YOUR_INSTAGRAM_ACCESS_TOKEN_GOES_HERE'
+	});
+	userFeed.run();
+	</script>
     <script>
         var Height = window.innerHeight;
         $("#menu").css('height', Height + "px");

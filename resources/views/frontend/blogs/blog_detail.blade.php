@@ -1,4 +1,5 @@
 @extends('frontend.layouts.app')
+@section('page_title', $blog_detail[0]->caption)
 
 @section('content')
 
@@ -60,7 +61,7 @@
                             
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="blog-heading-sidebar"><span>Related</span></div>
+                                    <div class="blog-heading-sidebar"><span>Relatedaa</span></div>
                                 </div>
                             </div>
                             @foreach($blog_list as $blog)

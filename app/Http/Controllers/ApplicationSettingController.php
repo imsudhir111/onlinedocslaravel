@@ -12,6 +12,10 @@ class ApplicationSettingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function contact_us()
+    {
+        return view('frontend.contact');
+    }
     public function index()
     {
         //

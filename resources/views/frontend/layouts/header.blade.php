@@ -5,13 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<title>Online Docs</title>
-
-
+<title>@yield('page_title')</title>
 
 <link rel="stylesheet" type="text/css" href="{{ asset('/frontend/css/responsive-min-mobile.css')}}" />
-
-
 
 <link rel="stylesheet" type="text/css" href="{{ asset('/frontend/css/bootstrap.css')}}" />
 
@@ -24,6 +20,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('/frontend/css/doctor.dashboard.css')}}" />
 
 
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 
 

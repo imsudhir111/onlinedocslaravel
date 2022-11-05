@@ -43,7 +43,7 @@
     </div>
     <div class="row mb-4">
         <div class="col-md-12">
-           <a href="#"><button type="button" class="btn btn-deepBlue">Edit Profile</button></a>
+           <a href="{{route('doctor.update_profile',$id)}}"><button type="button" class="btn btn-deepBlue">Edit Profile</button></a>
            {{-- <a href="{{ route('profile.edit',Auth::guard('doctor')->user()->id) }}"><button type="button" class="btn btn-deepBlue">Edit Profile</button></a> --}}
         </div>
     </div>

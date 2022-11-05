@@ -29,6 +29,7 @@ use App\Http\Controllers\Admin\Media_Press\MediaPressReleaseController;
 use App\Http\Controllers\Customer\PressMediaController;
 use App\Http\Controllers\Admin\Faq_live\FaqLiveController;
 use App\Http\Controllers\Customer\FaqLiveViewController;
+use App\Http\Controllers\ApplicationSettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +65,24 @@ Route::post('/join-us-news-letter', [NewsLetterController::class, 'news_letter']
 Route::post('/user/logout', [LoginController::class, 'userLogout'])->name('user.logout');
 Route::get('/payment/thankyou',[PatientInfoController::class, 'payment_with_link_thankyou'])->name('user.payment_with_link_thankyou');
 Route::get('/payment-confirmation/thankyou',[PatientInfoController::class, 'payment_with_link_from_agent_thankyou'])->name('user.payment_with_link_from_agent_thankyou');
+
+Route::get('/service-detail/{service_id}', [App\Http\Controllers\Customer\HomeController::class, 'service_detail'])->name('service.detail');
+// Route::get('/treatment/{slug}/{service_id}', [App\Http\Controllers\Customer\HomeController::class, 'treatment_detail'])->name('treatment.detail');
+Route::get('/treatment/{slug}', [App\Http\Controllers\Customer\HomeController::class, 'treatment_detail'])->name('treatment.detail');
+
+
+
+Route::get('/contactus', [ApplicationSettingController::class, 'contact_us'])->name('contact_us.contact');
+Route::post('/contact-mail', [App\Http\Controllers\Customer\HomeController::class, 'contact_mail'])->name('contact.mail');
+
+Route::get('enquiry', [EnquiryController::class, 'index'])->name('enquiry');
+Route::post('save-enquiry', [EnquiryController::class, 'sendEnquiry'])->name('save.enquiry');
+
+
+
+
+
+
 
 
 Route::get('/blogs', [BlogViewController::class, 'blog_list'])->name('blog.list');
@@ -140,6 +159,7 @@ Route::group(['prefix' => 'doctor'], function() {
 
     Route::group(['middleware' => 'doctor.auth'], function(){
         Route::get('/dashboard',[DoctorDashboardController::class, 'dashboard'])->name('doctor.dashboard');
+        Route::get('/profile-update/{id}',[DoctorProfileController::class, 'update_profile'])->name('doctor.update_profile');
         Route::get('/myappointment',[AppointmentController::class, 'myappointment'])->name('doctor.myappointment');
         Route::get('/logout', [LoginSignupController::class, 'logout'])->name('doctor.logout');
         Route::resource('/profile', DoctorProfileController::class);

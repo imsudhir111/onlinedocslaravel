@@ -178,4 +178,20 @@ ClassicEditor.create( document.querySelector( '#blog_description' ) , {
     .catch( error => {
         console.log( error );
     } );
+ 
+ClassicEditor.create( document.querySelector( '#first_para_section' ) , {
+        toolbar: ['Heading', 'save', 'bold', 'Table', 'italic', 'bulletedList', 'textColor', 'bGColor', 'numberedList', 'blockQuote' , 'link', 'preview' ]
+    } )
+    .catch( error => {
+        console.log( error );
+    } );
+     
+ 
+ClassicEditor.create( document.querySelector( '#second_para_section' ) , {
+        toolbar: ['Heading', 'save', 'bold', 'Table', 'italic', 'bulletedList', 'textColor', 'bGColor', 'numberedList', 'blockQuote' , 'link', 'preview' ]
+    } )
+    .catch( error => {
+        console.log( error );
+    } );
+   
 </script>
